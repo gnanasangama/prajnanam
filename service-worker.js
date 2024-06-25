@@ -2,9 +2,9 @@ self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open('pwa-cache-v1').then((cache) => {
             return cache.addAll([
-                '/',
-                '/index.html',
-                '/style.css',
+                '/prajananam/',
+                '/prajananam/index.html',
+                '/prajananam/style.css',
                 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css'
             ]);
         })
