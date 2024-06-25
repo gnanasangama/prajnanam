@@ -5,7 +5,8 @@ self.addEventListener('install', (event) => {
                 '/',
                 '/index.html',
                 '/style.css',
-                'https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css'
+                'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css',
+                'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js'
             ]);
         })
     );
