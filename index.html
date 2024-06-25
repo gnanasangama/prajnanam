@@ -5,37 +5,138 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prajnanam</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/style.css">
     <link rel="manifest" href="manifest.json">
 </head>
 
 <body>
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Card Title 1</h5>
-                        <p class="card-text">Some quick example text to build on the card title.</p>
+    <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <span style="color: #ff55aa!important;font-weight: 500;">ಪ್ರಜ್ಞಾನಮ್</span>
+                <!-- <img src="assets/images/brand/icon.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top"> -->
+            </a>
+        </div>
+    </nav>
+
+    <div class="container" style="padding-left: 8px; padding-right: 8px;">
+        <h4 class="text-center">ಆಷಾಢ ಮಾಸ</h4>
+        <h6 class="text-center">( ಜುಲೈ 6 ರಿಂದ ಆಗಸ್ಟ್ 4 2024 )</h6>
+
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" data-bs-toggle="tab" data-bs-target="#tabs-1" role="tab">ಗೀತೆ</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tabs-2" role="tab">ಅಮೃತವಚನ</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tabs-3" role="tab">ಶ್ಲೋಕ</a>
+            </li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div class="tab-pane active" id="tabs-1" role="tabpanel">
+                <div class="card mt-3">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">ಸ್ಮೃತಿಸಚೇತಕ ಧ್ವಜ ನಮೋ</h5>
+                        <!-- <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6> -->
+                        <p class="card-text" style="font-size: 15px;">
+                            ಸ್ಮೃತಿಸಚೇತಕ ಧ್ವಜ ನಮೋ ವ್ರತಿ ಸನಾತನ ಹೇ ವಿಭೋ<br>
+                            ಅಗ್ನಿವರ್ಣದ ಜ್ಞಾನಕಿರಣದ ಜೀವಭೃಂಗಾರವೆ ನಮೋ || ಪ ||<br>
+                            <br>
+                            ವಿಂಧ್ಯ ಹಿಮನಗ ನಿನ್ನ ಧರಿಸಲಿ ವಿಶ್ವವಂದ್ಯತೆ ಗಳಿಸಲಿ<br>
+                            ನದಿ ಸಮುದ್ರದಿ ರೂಪ ಬಿಂಬಿಸಿ ಜಲವ ಪಾವನಗೊಳಿಸಲಿ<br>
+                            ಕೀರ್ತಿವಾರಿಯು ಸ್ಫೂರ್ತಿಧಾರೆಯು ತುಂಬಿದಂಬುಧಿರೂಪ ಓ<br>
+                            ಸತ್ವ ಸಂಗೀತವೇ ನಮೋ || ೧ ||<br>
+                            <br>
+                            ತ್ಯಾಗ ಶೌರ್ಯದಮೋಘ ಸಂಗಮ ನಾಡ ಸ್ಫೂರ್ತಿವಿಹಂಗಮ<br>
+                            ರಾಷ್ಟ್ರದಕ್ಷಯ ಬಾಳ ಲಕ್ಷ್ಯದ ಭವ್ಯ ಸಾಕ್ಷಿ ಸಮಕ್ಷಮ<br>
+                            ಧ್ಯೇಯದಾರಾಧನೆಯು ವೇದ್ಯವು ಹೃದಯಭೇರಿಯೆ ವಾದ್ಯವು<br>
+                            ಜೀವನವೆ ನೈವೇದ್ಯವು || ೨ ||<br>
+                            <br>
+                            ಮೋಹ ಮಾಯೆಯ ನೆರಳ ಗುಡಿಸುತ ಸತ್ಯದರ್ಶನ ಮಾಡಿಸಿ<br>
+                            ಅರಿವುಗೇಡಿನ ಇರುಳ ಮಡಿಸುತ ಜ್ಞಾನಸೂರ್ಯನ ಮೂಡಿಸಿ<br>
+                            ಹಿಂದು ಸಂತತಿಗಿಂದು ನೆನಪಿಸು ಮತ್ತೆ ಗೆಲ್ಲುವ ಮಾರ್ಗವ<br>
+                            ಮರ್ತ್ಯದಿಂದಲಮರ್ತ್ಯವ || ೩ ||<br>
+                        </p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Card Title 2</h5>
-                        <p class="card-text">Some quick example text to build on the card title.</p>
+
+            <div class="tab-pane" id="tabs-2" role="tabpanel">
+                <div class="container mt-3" style="padding-left: 8px; padding-right: 8px;">
+                    <!-- Quote 1 -->
+                    <div class="card">
+                        <div class="card-body">
+                            <blockquote class="mb-0">
+                                <p>ಸಮಾಜಕ್ಕೆ ಏನೂ ಕೊಡದೆ ಅದರಿಂದ ಕೇವಲ ಪಡೆಯುತ್ತಾ ಹೋದರೆ ಅದು ದುರ್ಬಲವಾಗುತ್ತದೆ.
+                                    ಆದ್ದರಿಂದ ಸಮಾಜಕ್ಕೆ ಸಲ್ಲಿಸಬೇಕಾದುದು ಪ್ರತೀ ವ್ಯಕ್ತಿಯ ಆದ್ಯ ಕರ್ತವ್ಯ.</p>
+                                <footer class="blockquote-footer mb-0 mt-0">ಪಂಡಿತ ದೀನದಯಾಳ ಉಪಾಧ್ಯಾಯ</footer>
+                            </blockquote>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-body-secondary">ಜೂನ್ 30 ರಿಂದ ಜುಲೈ 6 2024</small>
+                        </div>
+                    </div>
+
+                    <!-- Quote 2 -->
+                    <div class="card">
+                        <div class="card-body">
+                            <blockquote class="mb-0">
+                                <p>ಭಕ್ತಿ ಎಂದರೆ ವ್ಯಾಪಾರವಲ್ಲ. ಅದು ಸಂಪೂರ್ಣ ಆತ್ಮಾರ್ಪಣೆ. ಅದು ಒಮ್ಮುಖದ ದಾರಿ. ಅರ್ಪಿಸುವುದಷ್ಟೇ
+                                    ನಮ್ಮ ಕೆಲಸ.</p>
+                                <footer class="blockquote-footer mb-0 mt-0">ಪರಮ ಪೂಜನೀಯ ಶ್ರೀ ಗುರೂಜಿ</footer>
+                            </blockquote>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-body-secondary">ಜುಲೈ 7 ರಿಂದ 13 2024</small>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <blockquote class="mb-0">
+                                <p>ಕಣ್ಣೆದುರಿಗೆ ಪವಿತ್ರವಾದ ಧ್ಯೇಯವಿರಲಿ. ಅದಕ್ಕಾಗಿ ದುಡಿಯುವ ಇಲ್ಲವೇ ಮಡಿಯುವ ದೃಢ ಸಂಕಲ್ಪವಿರಲಿ. ಆಗ
+                                    ಮಾತ್ರ ಸ್ವಾರ್ಥವು ಕಸದಂತೆ ದೂರವಾದೀತು.</p>
+                                <footer class="blockquote-footer mb-0 mt-0">ಪರಮ ಪೂಜನೀಯ ಶ್ರೀ ಗುರೂಜಿ</footer>
+                            </blockquote>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-body-secondary">ಜುಲೈ 14 ರಿಂದ 20 2024</small>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <blockquote class="mb-0">
+                                <p>ಗುರುಪೂಜೆಯೆಂದರೆ ಸತ್ಯದ ಪೂಜೆ, ಜ್ಞಾನದ ಪೂಜೆ, ಅನುಭವದ ಪೂಜೆ, ವಿಚಾರದ ಪೂಜೆ.</p>
+                                <footer class="blockquote-footer mb-0 mt-0">ಸಾನೆ ಗುರೂಜಿ</footer>
+                            </blockquote>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-body-secondary">ಜುಲೈ 21 ರಿಂದ 27 2024</small>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <blockquote class="mb-0">
+                                <p>ಒಂದು ಧ್ಯೇಯಕ್ಕೆ ಹುಚ್ಚಾದವನೇ ಬೆಳಕು ಕಂಡಾನು. ಅಲ್ಲಷ್ಟು ಇಲ್ಲಷ್ಟು ಕೈಯಾಡಿಸುವವನು ಎಂದಿಗೂ ಏನನ್ನೂ
+                                    ಸಾಧಿಸಲಾರ.</p>
+                                <footer class="blockquote-footer mb-0 mt-0">ಸ್ವಾಮಿ ವಿವೇಕಾನಂದ</footer>
+                            </blockquote>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-body-secondary">ಜುಲೈ 28 ರಿಂದ ಆಗಸ್ಟ್ 3 2024</small>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Card Title 3</h5>
-                        <p class="card-text">Some quick example text to build on the card title.</p>
-                    </div>
-                </div>
+
+            <div class="tab-pane" id="tabs-3" role="tabpanel">
+                <p>ಶ್ಲೋಕ</p>
             </div>
         </div>
     </div>
@@ -51,7 +152,9 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
     <script>
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('/prajnanam/service-worker.js')
