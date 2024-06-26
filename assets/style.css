@@ -1,84 +1,93 @@
 body {
-    background-color: #f8f9fa;
+  background-color: #f8f9fa;
+  -webkit-user-select: none;
+  /* Safari */
+  -ms-user-select: none;
+  /* IE 10 and IE 11 */
+  user-select: none;
+  /* Standard syntax */
+
 }
 
-.card-body, .card-footer {
-    padding: 8px;
+.card-body,
+.card-footer {
+  padding: 8px;
 }
 
 .card {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .save-app-btn {
-    background-color: white;
-    border: 1px solid #ff69b4;
-    border-radius: 16rem;
-    color: #ff55aa;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    padding: 4px 24px;
+  background-color: white;
+  border: 1px solid #ff69b4;
+  border-radius: 16rem;
+  color: #ff55aa;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 4px 24px;
 }
 
 .save-app-btn:hover {
-    background-color: #ff55aa;
-    color: white;
+  background-color: #ff55aa;
+  color: white;
 }
 
 .install-banner {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background-color: white;
-    border-top: 1px solid #ddd;
-    text-align: center;
-    padding: 10px 0;
-    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
-    z-index: 1000;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: white;
+  border-top: 1px solid #ddd;
+  text-align: center;
+  padding: 10px 0;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
 }
+
 .install-banner .install-message {
-    display: flex;
-    justify-content: center;
-    padding: 0 15px;
+  display: flex;
+  justify-content: center;
+  padding: 0 15px;
 }
+
 .install-banner .close-btn {
-    position: fixed;
-    cursor: pointer;
-    font-size: 20px;
-    padding: 0 10px;
-    right: 0.25rem;
-    bottom: 2.75rem;
+  position: fixed;
+  cursor: pointer;
+  font-size: 20px;
+  padding: 0 10px;
+  right: 0.25rem;
+  bottom: 2.75rem;
 }
 
 
 #exTab1 .tab-content {
-    color : white;
-    background-color: #428bca;
-    padding : 5px 15px;
-  }
-  
-  #exTab2 h3 {
-    color : white;
-    background-color: #428bca;
-    padding : 5px 15px;
-  }
-  
-  /* remove border radius for the tab */
-  
-  #exTab1 .nav-pills > li > a {
-    border-radius: 0;
-  }
-  
-  /* change border radius for the tab , apply corners on top*/
-  
-  #exTab3 .nav-pills > li > a {
-    border-radius: 4px 4px 0 0 ;
-  }
-  
-  #exTab3 .tab-content {
-    color : white;
-    background-color: #428bca;
-    padding : 5px 15px;
-  }
-  
+  color: white;
+  background-color: #428bca;
+  padding: 5px 15px;
+}
+
+#exTab2 h3 {
+  color: white;
+  background-color: #428bca;
+  padding: 5px 15px;
+}
+
+/* remove border radius for the tab */
+
+#exTab1 .nav-pills>li>a {
+  border-radius: 0;
+}
+
+/* change border radius for the tab , apply corners on top*/
+
+#exTab3 .nav-pills>li>a {
+  border-radius: 4px 4px 0 0;
+}
+
+#exTab3 .tab-content {
+  color: white;
+  background-color: #428bca;
+  padding: 5px 15px;
+}
