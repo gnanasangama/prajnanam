@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" href="assets/style.css">
     <link rel="manifest" href="manifest.json">
-    <link rel="icon" sizes="128x128" href="assets/images/brand/icon.png">
+    <link rel="icon" href="assets/images/brand/icon.png">
 
 
     <meta name="description" content="Powered by ಜ್ಞಾನ ಸಂಗಮ">
@@ -16,12 +16,12 @@
 
     <meta property="og:title" content="ಪ್ರಜ್ಞಾನಮ್">
     <meta property="og:description" content="Powered by ಜ್ಞಾನ ಸಂಗಮ">
-    <meta property="og:image" content="assets/images/brand/icon.png">
+    <meta property="og:image" content="/assets/images/brand/icon.png">
     <meta property="og:url" content="https://prajnanam.netlify.app/">
 
     <meta name="twitter:title" content="ಪ್ರಜ್ಞಾನಮ್">
     <meta name="twitter:description" content="Powered by ಜ್ಞಾನ ಸಂಗಮ">
-    <meta name="twitter:url" content="assets/images/brand/icon.png">
+    <meta name="twitter:url" content="/assets/images/brand/icon.png">
     <meta name="twitter:card" content="summary">
 
 
@@ -43,7 +43,7 @@
 <body>
     <nav class="navbar sticky-top bg-white shadow-sm">
         <div class="container-fluid">
-            <a class="navbar-brand h1" href="#">
+            <a class="navbar-brand h1" href="/">
                 <img src="assets/images/brand/icon.png" alt="Logo" width="30" height="24"
                     class="d-inline-block align-text-top">
                 <span style="color: #ff55aa!important;font-weight: 600;">ಪ್ರಜ್ಞಾನಮ್ - ಬೆಂಗಳೂರು ಉತ್ತರ</span>
@@ -415,7 +415,7 @@
         function shareOnWhatsapp(){
 
             const shareUrl = window.location.href;
-            const shareText = 'Prajnanam - Bengaluru North Vibhag !\n';
+            const shareText = 'Prajnanam - Bengaluru North Vibhag !\n\n';
             const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(shareText + shareUrl)}`;
 
             window.open(whatsappUrl, '_blank');
