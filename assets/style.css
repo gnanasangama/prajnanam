@@ -91,3 +91,21 @@ body {
   background-color: #428bca;
   padding: 5px 15px;
 }
+
+.wp-button{
+	margin-top:12px;
+}
+.float{
+	position:fixed;
+	width:54px;
+	height:54px;
+	bottom:20px;
+	right:20px;
+	background-color:#25d366;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+  font-size:35px;
+	box-shadow: 2px 2px 3px #999;
+  z-index:100;
+}
