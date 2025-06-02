@@ -83,7 +83,7 @@ function renderBaudhik() {
     const baudhikContainer = document.getElementById('baudhik-container');
     content.baudhik.forEach(section => {
         const sectionElement = `
-            <div class="col-lg-6 px-1 mb-3">
+            <div class="col-lg-6 px-1">
                 <div class="card">
                     <div class="card-header d-flex justify-content-center align-items-center">
                         <span class="badge rounded-pill" 
