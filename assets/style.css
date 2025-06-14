@@ -5,6 +5,12 @@
 
 body {
   background-color: #f8f9fa;
+  -webkit-user-select: none;
+  /* Safari */
+  -ms-user-select: none;
+  /* IE 10 and IE 11 */
+  user-select: none;
+  /* Standard syntax */
 }
 
 .bottom-nav {
