@@ -1,111 +1,196 @@
+:root {
+  --border-color: #e0e0e0;
+  --primary-color: #ff55aa;
+}
+
 body {
   background-color: #f8f9fa;
-  -webkit-user-select: none;
-  /* Safari */
-  -ms-user-select: none;
-  /* IE 10 and IE 11 */
-  user-select: none;
-  /* Standard syntax */
-
 }
 
-.card-body,
-.card-footer {
-  padding: 8px;
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: white;
+  border-top: 1px solid var(--border-color);
+  padding: 12px;
+  z-index: 1000;
 }
 
-.card {
-  margin-bottom: 20px;
+.content-area {
+  margin-bottom: 70px;
 }
 
-.save-app-btn {
-  background-color: white;
-  border: 1px solid #ff69b4;
-  border-radius: 16rem;
-  color: #ff55aa;
-  font-size: 16px;
-  font-weight: bold;
+.app-card {
+  border-radius: 12px;
+  margin-bottom: 15px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  background: white;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.app-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.nav-icon {
+  font-size: 1.5rem;
+  color: #666;
+  transition: color 0.3s;
+}
+
+.nav-text {
+  font-size: 0.8rem;
+  color: #666;
+  transition: color 0.3s;
+}
+
+.active .nav-icon,
+.active .nav-text {
+  color: var(--primary-color);
+}
+
+.quick-action-card {
   cursor: pointer;
-  padding: 4px 24px;
 }
 
-.save-app-btn:hover {
-  background-color: #ff55aa;
-  color: white;
+.screen {
+  display: none;
+  margin: 12px;
+  padding-bottom: 68px;
+}
+
+.screen.active {
+  display: block;
+}
+
+.navbar {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.card-header {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.back-button {
+  text-decoration: none;
+  border: none;
+  background: none;
+}
+
+.back-button:hover {
+  opacity: 0.8;
+}
+
+.content-text {
+  line-height: 1.8;
+  font-size: 1rem;
+}
+
+audio {
+  border-radius: 20px;
+  height: 40px;
+}
+
+.content-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.back-button {
+  padding: 0;
+  background: none;
+  border: none;
+  line-height: 1;
+}
+
+.content-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.tab-card {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tab-card.active {
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  background: white;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.tab-card h6 {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.tab-card.active h6 {
+  color: var(--primary-color);
+}
+
+.accordion-item {
+  border: none;
+  background-color: transparent;
+}
+
+/* Add these to your existing styles */
+.float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 90px;
+  right: 16px;
+  background-color: #25d366;
+  color: #FFF;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 36px;
+  box-shadow: 2px 2px 3px #999;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.wp-button {
+  margin-top: 0;
 }
 
 .install-banner {
   position: fixed;
-  bottom: 0;
-  width: 100%;
-  background-color: white;
-  border-top: 1px solid #ddd;
-  text-align: center;
-  padding: 10px 0;
-  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  bottom: 70px;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  background: white;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
   z-index: 1000;
 }
 
-.install-banner .install-message {
+.install-message {
   display: flex;
-  justify-content: center;
-  padding: 0 15px;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.install-banner .close-btn {
-  position: fixed;
+.save-app-btn {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  margin-bottom: 8px;
+}
+
+.close-btn {
   cursor: pointer;
-  font-size: 20px;
-  padding: 0 10px;
-  right: 0.25rem;
-  bottom: 2.75rem;
-}
-
-
-#exTab1 .tab-content {
-  color: white;
-  background-color: #428bca;
-  padding: 5px 15px;
-}
-
-#exTab2 h3 {
-  color: white;
-  background-color: #428bca;
-  padding: 5px 15px;
-}
-
-/* remove border radius for the tab */
-
-#exTab1 .nav-pills>li>a {
-  border-radius: 0;
-}
-
-/* change border radius for the tab , apply corners on top*/
-
-#exTab3 .nav-pills>li>a {
-  border-radius: 4px 4px 0 0;
-}
-
-#exTab3 .tab-content {
-  color: white;
-  background-color: #428bca;
-  padding: 5px 15px;
-}
-
-.wp-button{
-	margin-top:12px;
-}
-.float{
-	position:fixed;
-	width:54px;
-	height:54px;
-	bottom:20px;
-	right:20px;
-	background-color:#25d366;
-	color:#FFF;
-	border-radius:50px;
-	text-align:center;
-  font-size:35px;
-	box-shadow: 2px 2px 3px #999;
-  z-index:100;
+  font-size: 24px;
+  color: #666;
 }
