@@ -58,7 +58,6 @@ body {
 .screen {
   display: none;
   margin: 12px;
-  padding-bottom: 68px;
 }
 
 .screen.active {
@@ -209,4 +208,14 @@ audio {
 
 .back-button:hover {
   opacity: 0.8;
+}
+
+footer {
+    margin-bottom: 60px;
+}
+
+@media (max-width: 768px) {
+    footer {
+        margin-bottom: 80px;
+    }
 }

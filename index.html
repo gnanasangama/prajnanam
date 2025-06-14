@@ -22,6 +22,16 @@
     <meta property="og:url" content="https://prajnanam.netlify.app/">
 </head>
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TNM4Z1XVSE"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-TNM4Z1XVSE');
+</script>
+
 <body>
     <!-- Header -->
     <nav class="navbar sticky-top bg-white">
@@ -44,7 +54,7 @@
     <!-- Home Screen -->
     <div class="screen active" id="home-screen">
         <!-- Featured Card -->
-        <div class="card app-card">
+        <div class="card app-card mb-3">
             <div class="card-body text-center">
                 <h5 class="card-title">ಜ್ಯೇಷ್ಠ ಮಾಸ</h5>
                 <h6 class="card-title">ಶ್ರೀ ವಿಶ್ವವಸು ಸಂವತ್ಸರ</h6>
@@ -148,6 +158,46 @@
                 </div>
             </div>
         </div>
+
+        <!-- Add this before the bottom navigation -->
+        <div class="card col-lg-4 mx-2 my-4">
+            <div class="card-header">
+                ಇತರೆ
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <div class="row g-0 align-items-center">
+                        <div class="col-1"></div>
+                        <div class="col-3 d-flex flex-column justify-content-center">
+                            <img src="assets/images/brand/icon-without-bg.png" class="img-fluid rounded-start"
+                                alt="ಜ್ಞಾನ ಸಂಗಮ">
+                        </div>
+                        <div class="col-7">
+                            <a href="https://play.google.com/store/apps/details?id=app.gnanasangama">
+                                <img style="width: -webkit-fill-available;" src="assets/images/google-play-badge.png">
+                            </a>
+                        </div>
+                        <div class="col-1"></div>
+                    </div>
+                    <p class="card-text text-center">
+                        <a href="https://play.google.com/store/apps/details?id=app.gnanasangama"
+                            style="color: #ff69b4;text-decoration: none;cursor: pointer;font-weight: 600;">
+                            ಜ್ಞಾನ ಸಂಗಮ
+                        </a>
+                    </p>
+                </li>
+                <li class="list-group-item">
+                    <a href="https://ganamala.com/" style="text-decoration: none;" target="_blank">
+                        ಗಾನಮಾಲ (Ganamala)
+                    </a> - [ ಗೀತೆ ]
+                </li>
+                <li class="list-group-item">
+                    <a href="https://www.youtube.com/@sukruthi" style="text-decoration: none;" target="_blank">
+                        ಸುಕೃತಿ (Sukruthi)
+                    </a> - [ ಪುಸ್ತಕದ ಪರಿಚಯ ]
+                </li>
+            </ul>
+        </div>
     </div>
 
     <!-- Calendar Screen -->
@@ -175,7 +225,8 @@
                 <div class="col-6">
                     <div class="card app-card" data-content="baudhik">
                         <div class="card-body text-center">
-                            <i class="bi bi-lightning-charge mb-2" style="font-size: 2rem; color: var(--primary-color);"></i>
+                            <i class="bi bi-lightning-charge mb-2"
+                                style="font-size: 2rem; color: var(--primary-color);"></i>
                             <h6>ಬೌದ್ಧಿಕ್<br>ಯೋಜನೆ</h6>
                         </div>
                     </div>
@@ -202,75 +253,75 @@
 
     <!-- Add this after the guide-screen div -->
     <div class="screen" id="baudhik-screen">
-    <div class="content-area">
-        <ul class="nav nav-pills nav-fill mb-3" role="tablist">
-            <li class="nav-item" role="presentation">
-                <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#vidyarthi">ವಿದ್ಯಾರ್ಥಿ</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#udyogi">ಉದ್ಯೋಗಿ</button>
-            </li>
-        </ul>
-        <div class="tab-content">
-            <div class="tab-pane fade show active" id="vidyarthi">
-                <!-- Content will be rendered by JavaScript -->
-            </div>
-            <div class="tab-pane fade" id="udyogi">
-                <!-- Content will be rendered by JavaScript -->
+        <div class="content-area">
+            <ul class="nav nav-pills nav-fill mb-3" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#vidyarthi">ವಿದ್ಯಾರ್ಥಿ</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#udyogi">ಉದ್ಯೋಗಿ</button>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="vidyarthi">
+                    <!-- Content will be rendered by JavaScript -->
+                </div>
+                <div class="tab-pane fade" id="udyogi">
+                    <!-- Content will be rendered by JavaScript -->
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     <!-- Sharirik Screen -->
     <div class="screen" id="sharirik-screen">
-    <div class="content-area">
-        <!-- Content will be rendered by JavaScript -->
+        <div class="content-area">
+            <!-- Content will be rendered by JavaScript -->
+        </div>
     </div>
-</div>
 
-<!-- Shakha Guide Screen -->
-<div class="screen" id="shakha-screen">
-    <div class="content-area">
-        <div class="card app-card">
-            <div class="card-body">
-                <h5 class="card-title mb-3">ಶಾಖಾ ಕಾರ್ಯಕ್ರಮ</h5>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span>ಪ್ರಾರ್ಥನಾ</span>
-                            <small class="text-muted">10 ನಿಮಿಷ</small>
-                        </div>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span>ಯೋಗ ವ್ಯಾಯಾಮ</span>
-                            <small class="text-muted">15 ನಿಮಿಷ</small>
-                        </div>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span>ಖೇಳ್</span>
-                            <small class="text-muted">20 ನಿಮಿಷ</small>
-                        </div>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span>ಬೌದ್ಧಿಕ್</span>
-                            <small class="text-muted">10 ನಿಮಿಷ</small>
-                        </div>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span>ಸಮಾರೋಪ ಪ್ರಾರ್ಥನಾ</span>
-                            <small class="text-muted">5 ನಿಮಿಷ</small>
-                        </div>
-                    </li>
-                </ul>
+    <!-- Shakha Guide Screen -->
+    <div class="screen" id="shakha-screen">
+        <div class="content-area">
+            <div class="card app-card">
+                <div class="card-body">
+                    <h5 class="card-title mb-3">ಶಾಖಾ ಕಾರ್ಯಕ್ರಮ</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span>ಪ್ರಾರ್ಥನಾ</span>
+                                <small class="text-muted">10 ನಿಮಿಷ</small>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span>ಯೋಗ ವ್ಯಾಯಾಮ</span>
+                                <small class="text-muted">15 ನಿಮಿಷ</small>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span>ಖೇಳ್</span>
+                                <small class="text-muted">20 ನಿಮಿಷ</small>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span>ಬೌದ್ಧಿಕ್</span>
+                                <small class="text-muted">10 ನಿಮಿಷ</small>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span>ಸಮಾರೋಪ ಪ್ರಾರ್ಥನಾ</span>
+                                <small class="text-muted">5 ನಿಮಿಷ</small>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     <!-- Bottom Navigation -->
     <div class="bottom-nav">
@@ -333,7 +384,7 @@
         });
 
         // Update the baudhik card click handler
-        document.querySelector('[data-content="baudhik"]').addEventListener('click', function() {
+        document.querySelector('[data-content="baudhik"]').addEventListener('click', function () {
             // Show baudhik screen
             document.querySelectorAll('.screen').forEach(screen => screen.classList.remove('active'));
             document.getElementById('baudhik-screen').classList.add('active');
@@ -348,27 +399,27 @@
         });
 
         // Sharirik Yojane handler
-        document.querySelector('[data-content="sharirik"]').addEventListener('click', function() {
+        document.querySelector('[data-content="sharirik"]').addEventListener('click', function () {
             document.querySelectorAll('.screen').forEach(screen => screen.classList.remove('active'));
             document.getElementById('sharirik-screen').classList.add('active');
-            
+
             document.querySelector('.main-header').style.display = 'none';
             document.querySelector('.content-header').style.display = 'flex';
             document.querySelector('.content-title').textContent = 'ಶಾರೀರಿಕ್ ಯೋಜನೆ';
-            
+
             // Add this line to render the content
             renderSharirik();
         });
 
         // Shakha Guide handler
-        document.querySelector('[data-content="shakha"]').addEventListener('click', function() {
+        document.querySelector('[data-content="shakha"]').addEventListener('click', function () {
             document.querySelectorAll('.screen').forEach(screen => screen.classList.remove('active'));
             document.getElementById('shakha-screen').classList.add('active');
-            
+
             document.querySelector('.main-header').style.display = 'none';
             document.querySelector('.content-header').style.display = 'flex';
             document.querySelector('.content-title').textContent = 'ಶಾಖಾ ಕೈಪಿಡಿ';
-            
+
             // Add this line to render the content
             renderShakha();
         });
@@ -426,6 +477,22 @@
             window.open(whatsappUrl, '_blank');
         }
     </script>
+
+    <!-- Footer -->
+    <footer class="text-center py-4 mt-4" style="color: var(--primary-color); font-size: 0.9rem;">
+        <div class="container">
+            <p class="mb-0">
+                Handcrafted by
+                <a href="https://play.google.com/store/apps/details?id=app.gnanasangama"
+                    style="color: var(--primary-color); text-decoration: none; font-weight: 600;">
+                    ಜ್ಞಾನ ಸಂಗಮ
+                </a>
+            </p>
+            <small class="text-muted">
+                &copy; 2025 ಜ್ಞಾನ ಸಂಗಮ. All rights reserved.
+            </small>
+        </div>
+    </footer>
 </body>
 
 </html>
