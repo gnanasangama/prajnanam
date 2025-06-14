@@ -23,7 +23,6 @@ body {
 
 .app-card {
   border-radius: 12px;
-  margin-bottom: 15px;
   border: 1px solid var(--border-color);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   background: white;
@@ -193,4 +192,21 @@ audio {
   cursor: pointer;
   font-size: 24px;
   color: #666;
+}
+
+.content-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.back-button {
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.back-button:hover {
+  opacity: 0.8;
 }
