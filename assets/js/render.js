@@ -241,3 +241,43 @@ function renderShakha() {
     `;
     container.innerHTML = html;
 }
+
+function renderCalendar() {
+    const container = document.querySelector('#calendar-screen .content-area');
+    if (!container) return;
+
+    const html = `
+        <!-- Current Month Events -->
+        <div class="card app-card mb-3">
+            <div class="card-body">
+                <h5 class="card-title text-center">ಮಾಸಿಕ ವಿಶೇಷ</h5>
+                <hr/>
+                <ul class="list-group list-group-flush">
+                    ${content.calendar.current.map(event => `
+                        <li class="list-group-item">
+                            <div>🔶 <b>${event.title}</b></div>
+                            <small class="ms-3">${event.date}</small>
+                        </li>
+                    `).join('')}
+                </ul>
+            </div>
+        </div>
+
+        <!-- Annual Calendar -->
+        <div class="card app-card">
+            <div class="card-body">
+                <h5 class="card-title text-center">ವಾರ್ಷಿಕ ಯೋಜನೆ</h5>
+                <hr/>
+                <ul class="list-group list-group-flush">
+                    ${content.calendar.annual.map(event => `
+                        <li class="list-group-item">
+                            <div><b>${event.title}</b></div>
+                            <small>${event.date}</small>
+                        </li>
+                    `).join('')}
+                </ul>
+            </div>
+        </div>
+    `;
+    container.innerHTML = html;
+}

@@ -17,10 +17,6 @@ body {
   z-index: 1000;
 }
 
-.content-area {
-  margin-bottom: 70px;
-}
-
 .app-card {
   border-radius: 12px;
   border: 1px solid var(--border-color);
@@ -182,7 +178,7 @@ audio {
   background: var(--primary-color);
   color: white;
   border: none;
-  padding: 8px 16px;
+  padding: 4px 16px;
   border-radius: 20px;
   margin-bottom: 8px;
 }

@@ -203,18 +203,7 @@
     <!-- Calendar Screen -->
     <div class="screen" id="calendar-screen">
         <div class="content-area">
-            <!-- Featured Card -->
-            <div class="card app-card">
-                <div class="card-body">
-                    <h5 class="card-title">ವಿಶೇಷ</h5>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">🔶 <b>ಹಿಂದೂ ಸಾಮ್ರಾಜ್ಯ ದಿನೋತ್ಸವ</b><br><small class="ms-3">ಜ್ಯೆಷ್ಠ
-                                ಶುದ್ಧ ತ್ರಯೋದಶಿ (09 ಜೂನ್ 2025)</small></li>
-                        <li class="list-group-item">🔶 <b>ಸೇವಾ ಸಾಂಘೀಕ್</b><br><small class="ms-3">22 ಜೂನ್ 2025</small>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            <!-- Content will be rendered by JavaScript -->
         </div>
     </div>
 
@@ -283,43 +272,6 @@
     <!-- Shakha Guide Screen -->
     <div class="screen" id="shakha-screen">
         <div class="content-area">
-            <div class="card app-card">
-                <div class="card-body">
-                    <h5 class="card-title mb-3">ಶಾಖಾ ಕಾರ್ಯಕ್ರಮ</h5>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span>ಪ್ರಾರ್ಥನಾ</span>
-                                <small class="text-muted">10 ನಿಮಿಷ</small>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span>ಯೋಗ ವ್ಯಾಯಾಮ</span>
-                                <small class="text-muted">15 ನಿಮಿಷ</small>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span>ಖೇಳ್</span>
-                                <small class="text-muted">20 ನಿಮಿಷ</small>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span>ಬೌದ್ಧಿಕ್</span>
-                                <small class="text-muted">10 ನಿಮಿಷ</small>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span>ಸಮಾರೋಪ ಪ್ರಾರ್ಥನಾ</span>
-                                <small class="text-muted">5 ನಿಮಿಷ</small>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -349,7 +301,7 @@
     <!-- Install Prompt -->
     <div class="install-banner" id="installBanner" style="display: none;">
         <div class="install-message">
-            <div style="display: flex; flex-direction: column;align-items: center;">
+            <div style="display: flex; flex-direction: column;align-items: center;width: -webkit-fill-available;">
                 <button class="save-app-btn" id="installBtn">Install App</button>
                 <span>Install this app for a better experience</span>
             </div>
@@ -379,6 +331,11 @@
                     const screenId = this.dataset.screen;
                     document.querySelectorAll('.screen').forEach(screen => screen.classList.remove('active'));
                     document.getElementById(screenId).classList.add('active');
+
+                    // Render calendar content if calendar screen
+                    if (screenId === 'calendar-screen') {
+                        renderCalendar();
+                    }
                 }
             });
         });
