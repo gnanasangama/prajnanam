@@ -173,7 +173,8 @@
                                 alt="ಜ್ಞಾನ ಸಂಗಮ">
                         </div>
                         <div class="col-7">
-                            <a href="https://play.google.com/store/apps/details?id=app.gnanasangama">
+                            <a class="gnanasangama-playstore-link"
+                                href="https://play.google.com/store/apps/details?id=app.gnanasangama" target="_blank">
                                 <img style="width: -webkit-fill-available;" src="assets/images/google-play-badge.png">
                             </a>
                         </div>
@@ -181,6 +182,7 @@
                     </div>
                     <p class="card-text text-center">
                         <a href="https://play.google.com/store/apps/details?id=app.gnanasangama"
+                            class="gnanasangama-playstore-link" target="_blank"
                             style="color: #ff69b4;text-decoration: none;cursor: pointer;font-weight: 600;">
                             ಜ್ಞಾನ ಸಂಗಮ
                         </a>
@@ -200,8 +202,8 @@
         </div>
     </div>
 
-    <!-- Calendar Screen -->
-    <div class="screen" id="calendar-screen">
+    <!-- Events Screen -->
+    <div class="screen" id="events-screen">
         <div class="content-area">
             <!-- Content will be rendered by JavaScript -->
         </div>
@@ -282,9 +284,9 @@
                 <i class="bi bi-house-door-fill nav-icon"></i>
                 <div class="nav-text">ಮುಖಪುಟ</div>
             </div>
-            <div class="col nav-item" data-screen="calendar-screen">
+            <div class="col nav-item" data-screen="events-screen">
                 <i class="bi bi-calendar2-week nav-icon"></i>
-                <div class="nav-text">ಕಾರ್ಯಕ್ರಮ</div>
+                <div class="nav-text">ಕಾರ್ಯಕ್ರಮಗಳು</div>
             </div>
             <div class="col nav-item" data-screen="guide-screen">
                 <i class="bi bi-book nav-icon"></i>
@@ -332,10 +334,13 @@
                     document.querySelectorAll('.screen').forEach(screen => screen.classList.remove('active'));
                     document.getElementById(screenId).classList.add('active');
 
-                    // Render calendar content if calendar screen
-                    if (screenId === 'calendar-screen') {
-                        renderCalendar();
+                    // Render events content if events screen
+                    if (screenId === 'events-screen') {
+                        renderEvents();
                     }
+
+                    // Track virtual page view
+                    trackVirtualPage(screenId);
                 }
             });
         });
@@ -414,10 +419,15 @@
                 document.getElementById('installBanner').style.display = 'none';
                 deferredPrompt.prompt();
                 deferredPrompt.userChoice.then((choiceResult) => {
-                    if (choiceResult.outcome === 'accepted') {
-                        console.log('User accepted the A2HS prompt');
-                    }
-                    deferredPrompt = null;
+                    gtag('event', 'pwa_install_response', {
+                        event_category: 'engagement',
+                        event_label: choiceResult.outcome // 'accepted' or 'dismissed'
+                    });
+                });
+
+                gtag('event', 'pwa_install_prompt', {
+                    event_category: 'engagement',
+                    event_label: 'Install Prompt Clicked'
                 });
             });
 
@@ -432,7 +442,36 @@
             const shareText = 'Prajnanam - Bengaluru North Vibhag !\n\n';
             const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(shareText + shareUrl)}`;
             window.open(whatsappUrl, '_blank');
+
+            gtag('event', 'whatsapp_share', {
+                event_category: 'engagement',
+                event_label: 'WhatsApp Share Button Clicked'
+            });
         }
+
+        function trackVirtualPage(screenId) {
+            // Map screen IDs to Kannada names
+            const screenNames = {
+                'home-screen': 'ಮುಖಪುಟ',
+                'events-screen': 'ಕಾರ್ಯಕ್ರಮಗಳು',
+                'guide-screen': 'ಕೈಪಿಡಿ',
+                // Add more if needed
+            };
+            gtag('event', 'page_view', {
+                page_title: screenNames[screenId] || screenId,
+                page_location: window.location.href,
+                page_path: '/' + screenId
+            });
+        }
+
+        document.querySelectorAll('.gnanasangama-playstore-link').forEach(link => {
+            link.addEventListener('click', function () {
+                gtag('event', 'playstore_link_click', {
+                    event_category: 'engagement',
+                    event_label: 'Gnana Sangama Play Store'
+                });
+            });
+        });
     </script>
 
     <!-- Footer -->
@@ -440,7 +479,8 @@
         <div class="container">
             <p class="mb-0">
                 Handcrafted by
-                <a href="https://play.google.com/store/apps/details?id=app.gnanasangama"
+                <a class="gnanasangama-playstore-link"
+                    href="https://play.google.com/store/apps/details?id=app.gnanasangama"
                     style="color: var(--primary-color); text-decoration: none; font-weight: 600;">
                     ಜ್ಞಾನ ಸಂಗಮ
                 </a>

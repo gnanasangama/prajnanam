@@ -227,7 +227,7 @@ const content = {
             ]
         }
     ],
-    calendar: {
+    events: {
         current: [
             {
                 title: "ಹಿಂದೂ ಸಾಮ್ರಾಜ್ಯ ದಿನೋತ್ಸವ",

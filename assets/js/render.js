@@ -242,8 +242,8 @@ function renderShakha() {
     container.innerHTML = html;
 }
 
-function renderCalendar() {
-    const container = document.querySelector('#calendar-screen .content-area');
+function renderEvents() {
+    const container = document.querySelector('#events-screen .content-area');
     if (!container) return;
 
     const html = `
@@ -253,7 +253,7 @@ function renderCalendar() {
                 <h5 class="card-title text-center">ಮಾಸಿಕ ವಿಶೇಷ</h5>
                 <hr/>
                 <ul class="list-group list-group-flush">
-                    ${content.calendar.current.map(event => `
+                    ${content.events.current.map(event => `
                         <li class="list-group-item">
                             <div>🔶 <b>${event.title}</b></div>
                             <small class="ms-3">${event.date}</small>
@@ -263,13 +263,13 @@ function renderCalendar() {
             </div>
         </div>
 
-        <!-- Annual Calendar -->
+        <!-- Annual Events -->
         <div class="card app-card">
             <div class="card-body">
                 <h5 class="card-title text-center">ವಾರ್ಷಿಕ ಯೋಜನೆ</h5>
                 <hr/>
                 <ul class="list-group list-group-flush">
-                    ${content.calendar.annual.map(event => `
+                    ${content.events.annual.map(event => `
                         <li class="list-group-item">
                             <div><b>${event.title}</b></div>
                             <small>${event.date}</small>
