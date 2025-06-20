@@ -131,115 +131,15 @@ async function renderPanchanga() {
 }
 
 function renderBaudhikYojane() {
-    const container = document.querySelector('#baudhik-screen .content-area');
-    if (!container) return;
-
-    const html = `
-        <div class="row g-2">
-            <div class="col-12">
-                <div class="card app-card">
-                    <div class="card-body">
-                        <h5 class="card-title mb-3 text-center">
-                            <span class="badge rounded-pill" style="background-color: #dd9b2a">
-                                ವಿದ್ಯಾರ್ಥಿ
-                            </span>
-                        </h5>
-                        <hr/>
-                        <ul class="list-group list-group-flush">
-                            ${content.baudhik[0].other.map(item => `
-                                <li class="list-group-item">
-                                    <small class="text-muted d-block">${item.title}</small>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <span>${item.text}</span>
-                                    </div>
-                                </li>
-                            `).join('')}
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12">
-                <div class="card app-card">
-                    <div class="card-body">
-                        <h5 class="card-title mb-3 text-center">
-                            <span class="badge rounded-pill" style="background-color: #d8755f">
-                                ಉದ್ಯೋಗಿ
-                            </span>
-                        </h5>
-                        <hr/>
-                        <ul class="list-group list-group-flush">
-                            ${content.baudhik[1].other.map(item => `
-                                <li class="list-group-item">
-                                    <small class="text-muted d-block">${item.title}</small>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <span>${item.text}</span>
-                                    </div>
-                                </li>
-                            `).join('')}
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    `;
-    container.innerHTML = html;
+    renderSectionCards('#baudhik-screen .content-area', content.baudhik);
 }
 
 function renderSharirik() {
-    const container = document.querySelector('#sharirik-screen .content-area');
-    if (!container) return;
-
-    const html = `
-        ${content.sharirik.map(month => `
-            <div class="card app-card mb-3">
-                <div class="card-body">
-                    <h5 class="card-title mb-3 text-center">${month.month}</h5>
-                    <hr/>
-                    <ul class="list-unstyled mb-0">
-                        ${month.items.map(item => {
-                            // Split the item at ':' and make the first part bold
-                            const parts = item.split(' : ');
-                            const boldPart = parts[0];
-                            const restPart = parts[1] ? ` : ${parts[1]}` : '';
-                            
-                            return `
-                                <li class="mb-2">
-                                    <i class="bi bi-dot"></i>
-                                    <b>${boldPart}</b>${restPart}
-                                </li>
-                            `;
-                        }).join('')}
-                    </ul>
-                </div>
-            </div>
-        `).join('')}
-    `;
-    container.innerHTML = html;
+    renderSectionCards('#sharirik-screen .content-area', content.sharirik);
 }
 
 function renderShakha() {
-    const container = document.querySelector('#shakha-screen .content-area');
-    if (!container) return;
-
-    const html = `
-        ${content.shakha.map(section => `
-            <div class="card app-card mb-3">
-                <div class="card-body">
-                    <h5 class="card-title mb-3 text-center">${section.title}</h5>
-                    <hr/>
-                    <ul class="list-unstyled mb-0">
-                        ${section.items.map(item => `
-                            <li class="mb-2">
-                                <i class="bi bi-dot"></i>
-                                ${item}
-                            </li>
-                        `).join('')}
-                    </ul>
-                </div>
-            </div>
-        `).join('')}
-    `;
-    container.innerHTML = html;
+    renderSectionCards('#shakha-screen .content-area', content.shakha);
 }
 
 function renderEvents() {
@@ -279,5 +179,50 @@ function renderEvents() {
             </div>
         </div>
     `;
+    container.innerHTML = html;
+}
+
+function renderSectionCards(containerSelector, sections) {
+    const container = document.querySelector(containerSelector);
+    if (!container) return;
+
+    const html = sections.map(section => `
+        <div class="card app-card mb-3">
+            <div class="card-header">
+                <h5 class="card-title my-1 text-center">${section.title || section.month || ''}</h5>
+            </div>
+            <div class="card-body">
+                ${section.items.map((item, idx, arr) => `
+                    ${item.subtitle ? `
+                        <div class="text-center fw-semibold mb-2">${item.subtitle}</div>
+                        <hr class="my-2"/>
+                    ` : ''}
+                    ${
+                        item.listItems || item.items
+                        ? `<ul class="list-unstyled mb-2">
+                            ${(item.listItems || item.items || []).map(listItem => {
+                                if (typeof listItem === 'string') {
+                                    const colonIdx = listItem.indexOf(':');
+                                    if (colonIdx > -1) {
+                                        const boldPart = listItem.slice(0, colonIdx);
+                                        const restPart = listItem.slice(colonIdx);
+                                        return `<li class="mb-1"><i class="bi bi-dot"></i> <b>${boldPart}</b>${restPart}</li>`;
+                                    } else {
+                                        return `<li class="mb-1"><i class="bi bi-dot"></i> ${listItem}</li>`;
+                                    }
+                                } else {
+                                    return `<li class="mb-1"><i class="bi bi-dot"></i> ${listItem}</li>`;
+                                }
+                            }).join('')}
+                        </ul>`
+                        : item.content
+                            ? `<div class="text-center my-2">${Array.isArray(item.content) ? item.content.join('<br>') : item.content}</div>`
+                            : ''
+                    }
+                    ${idx < arr.length - 1 ? '<hr class="my-2"/>' : ''}
+                `).join('')}
+            </div>
+        </div>
+    `).join('');
     container.innerHTML = html;
 }
