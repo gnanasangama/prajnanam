@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ರಸಪ್ರಶ್ನೆ - ಪ್ರಜ್ಞಾನಂ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/style.css">
+    <style>
+        @keyframes fadein {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .animate-fadein {
+            animation: fadein 2s ease-in-out;
+        }
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800 min-h-screen">
+
+    <!-- Navbar -->
+    <header id="header" class="w-full py-3 px-4 font-semibold text-xl text-orange-500 hidden">
+        ರಸಪ್ರಶ್ನೆ - ಪ್ರಜ್ಞಾನಂ
+    </header>
+
+    <!-- Splash Screen -->
+    <div id="splash"
+        class="flex flex-col items-center justify-center animate-fadein w-full h-full absolute bg-orange-400 text-white text-center">
+        <h1 class="text-4xl font-bold mb-4 animate-bounce">ರಸಪ್ರಶ್ನೆ - ಪ್ರಜ್ಞಾನಂ</h1>
+        <!-- <p class="text-lg">Get ready to test your knowledge...</p> -->
+    </div>
+
+    <!-- Start Screen -->
+    <div id="start-screen"
+        class="hidden fixed inset-0 flex flex-col items-center justify-center text-center bg-gray-50 z-10 animate-fadein">
+        <h2 class="text-2xl font-bold mb-2">ನಿಮ್ಮ ರಸಪ್ರಶ್ನೆ ಲೋಡ್ ಆಗುತ್ತಿದೆ!</h2>
+    </div>
+
+    <!-- Quiz Screen -->
+    <div id="quiz" class="hidden px-4 py-6 space-y-4">
+
+        <!-- Quiz Meta Info -->
+        <div class="flex justify-between items-center text-sm text-gray-600">
+            <span id="quiz-category"></span>
+            <span id="quiz-progress"></span>
+        </div>
+
+        <!-- Question -->
+        <div id="question" class="text-lg font-medium"></div>
+
+        <!-- Options -->
+        <div id="options" class="grid grid-cols-1 gap-3 pt-2"></div>
+    </div>
+
+    <!-- Result Modal -->
+    <div id="result-modal" class="hidden fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-20">
+        <div class="bg-white py-8 px-12 rounded-md shadow-lg text-center">
+            <div id="result-icon" class="text-5xl mb-3"></div>
+            <p id="result-text" class="text-2xl font-bold"></p>
+        </div>
+    </div>
+
+    <!-- Summary Screen -->
+    <div id="summary" class="hidden px-3 py-6 space-y-4">
+        <h2 class="text-xl font-bold text-center mb-4">ರಸಪ್ರಶ್ನೆ ಸಾರಾಂಶ</h2>
+        <div id="summary-cards" class="space-y-4"></div>
+    </div>
+
+    <script src="assets/js/quiz-script.js"></script>
+</body>
+
+</html>
