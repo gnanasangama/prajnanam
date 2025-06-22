@@ -167,6 +167,13 @@ function showSummary(savedAnswers = null) {
             date: todayStr,
             data: answers
         }));
+
+        // Track summary page view (first completion only)
+        gtag('event', 'page_view', {
+            page_title: 'ರಸಪ್ರಶ್ನೆ ಫಲಿತಾಂಶ',
+            page_location: window.location.href,
+            page_path: '/quiz-summary'
+        });
     }
 }
 

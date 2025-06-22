@@ -31,6 +31,16 @@
     </style>
 </head>
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TNM4Z1XVSE"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-TNM4Z1XVSE');
+</script>
+
 <body class="bg-gray-50 text-gray-800 min-h-screen">
 
     <!-- Navbar -->
@@ -61,7 +71,9 @@
     <div id="quiz" class="hidden px-4 py-6 space-y-4">
         <!-- Progress Bar -->
         <div class="w-full bg-gray-200 rounded-full h-2 mb-3">
-            <div id="progress-bar" class="bg-gradient-to-r from-orange-500 to-yellow-500 h-2 rounded-full transition-all duration-300" style="width: 0%">
+            <div id="progress-bar"
+                class="bg-gradient-to-r from-orange-500 to-yellow-500 h-2 rounded-full transition-all duration-300"
+                style="width: 0%">
             </div>
         </div>
 

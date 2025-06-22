@@ -482,6 +482,14 @@
                 });
             });
         });
+
+        // For the floating quiz button
+        document.getElementById('quiz-float-btn')?.addEventListener('click', function() {
+            gtag('event', 'quiz_launch', {
+                event_category: 'engagement',
+                event_label: 'Quiz Launch Button Clicked'
+            });
+        });
     </script>
 
     <!-- Footer -->
