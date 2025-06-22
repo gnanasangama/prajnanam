@@ -286,6 +286,12 @@
         <i class="fa fa-whatsapp wp-button"></i>
     </a>
 
+    <!-- Floating Quiz Button -->
+    <!-- <a id="quiz-float-btn" href="/quiz.html" class="float-quiz hidden">
+        ❓
+    </a> -->
+
+
     <!-- Install Prompt -->
     <div class="install-banner" id="installBanner" style="display: none;">
         <div class="install-message">
@@ -305,6 +311,23 @@
         document.addEventListener('DOMContentLoaded', () => {
             renderHomeContent();
             trackVirtualPage('home-screen');
+
+            // floating quiz button logic
+            const quizInfo = JSON.parse(localStorage.getItem("quizStatus") || "{}");
+            const todayStr = new Date().toISOString().split("T")[0];
+            const quizBtn = document.getElementById("quiz-float-btn");
+
+            if (quizBtn) {
+                quizBtn.classList.remove("hidden");
+
+                if (!quizInfo.date || quizInfo.date !== todayStr) {
+                    // ✅ Not played today – make it bounce
+                    quizBtn.classList.add("bounce");
+                } else {
+                    // ✅ Already played – no bounce
+                    quizBtn.classList.remove("bounce");
+                }
+            }
         });
 
         // Navigation functionality

@@ -4,19 +4,38 @@ let userAnswers = [];
 let quizMeta = {}; // For displaying category & group info
 
 window.onload = async function () {
-    await loadQuestions();
+    const quizInfo = JSON.parse(localStorage.getItem("quizStatus") || "{}");
+    const todayStr = new Date().toISOString().split("T")[0];
 
+    // 🧹 Clear old data if it's from a previous day
+    if (quizInfo.date && quizInfo.date !== todayStr) {
+        localStorage.removeItem("quizStatus");
+    }
+    
+    // Always show splash
     setTimeout(() => {
         document.getElementById("splash").classList.add("hidden");
-        document.getElementById("start-screen").classList.remove("hidden");
         document.getElementById("header").classList.remove("hidden");
+
+        if (quizInfo.date === todayStr) {
+            // Already attempted today, show summary after splash
+            showSummary(quizInfo.data);
+            return;
+        }
+
+        // Else: start the quiz normally
+        document.getElementById("start-screen").classList.remove("hidden");
 
         setTimeout(() => {
             document.getElementById("start-screen").classList.add("hidden");
             document.getElementById("quiz").classList.remove("hidden");
             showQuestion();
         }, 2000);
-    }, 3000);
+
+    }, 3000); // splash delay
+
+    // Load today's questions regardless (needed for quiz)
+    await loadQuestions();
 };
 
 async function loadQuestions() {
@@ -47,9 +66,12 @@ async function loadQuestions() {
 function showQuestion() {
     const q = allQuestions[currentQuestionIndex];
 
-    document.getElementById("question").textContent =  `${currentQuestionIndex + 1}. ${q.question}`;
+    document.getElementById("question").textContent = `${currentQuestionIndex + 1}. ${q.question}`;
     document.getElementById("quiz-category").textContent = q.category;
     document.getElementById("quiz-progress").textContent = `ಪ್ರಶ್ನೆ ${currentQuestionIndex + 1} / ${allQuestions.length}`;
+
+    const percent = ((currentQuestionIndex) / allQuestions.length) * 100;
+    document.getElementById("progress-bar").style.width = `${percent}%`;
 
     const optionsContainer = document.getElementById("options");
     optionsContainer.innerHTML = "";
@@ -101,38 +123,51 @@ function showResultModal(isCorrect) {
     }, 1000);
 }
 
-function showSummary() {
+function showSummary(savedAnswers = null) {
     document.getElementById("quiz").classList.add("hidden");
 
     const summaryContainer = document.getElementById("summary");
     const cards = document.getElementById("summary-cards");
     summaryContainer.classList.remove("hidden");
-    cards.innerHTML = ""; // Clear previous content
+    cards.innerHTML = "";
 
-    userAnswers.forEach((entry, index) => {
+    const answers = savedAnswers || userAnswers;
+    const correctCount = answers.filter(a => a.isCorrect).length;
+    const total = answers.length;
+
+    document.getElementById("quiz-score-value").textContent = `${correctCount} / ${total}`;
+
+    let message = correctCount === total
+        ? "ಅಭಿನಂದನೆಗಳು! ಎಲ್ಲಾ ಉತ್ತರ ಸರಿಯಾದವು!"
+        : correctCount >= total * 0.7
+            ? "ಅತ್ಯುತ್ತಮ ಪ್ರಯತ್ನ! ಇನ್ನಷ್ಟು ಅಭ್ಯಾಸ ಮಾಡಿ."
+            : "ಚಿಂತಿಸಬೇಡಿ – ಅಭ್ಯಾಸ ಮುಂದುವರಿಸಿ!";
+    document.getElementById("quiz-score-message").textContent = message;
+
+    answers.forEach((entry, index) => {
         const card = document.createElement("div");
-
-        card.className = `bg-white shadow-sm border-l-4 ${
-            entry.isCorrect ? "border-green-500" : "border-red-500"
-        } rounded-lg p-5 hover:shadow-md transition-shadow`;
-
+        card.className = `bg-white shadow-sm border-l-4 ${entry.isCorrect ? "border-green-500" : "border-red-500"} rounded-lg p-5 hover:shadow-md transition-shadow`;
         card.innerHTML = `
-            <h4 class="font-semibold text-gray-800 mb-2">
-                ${index + 1}. ${entry.question} <span class="ms-1">${entry.isCorrect ? "✅" : "❌"}</span>
-            </h4>
-            <p class="mb-1 ${entry.isCorrect ? "text-green-600" : "text-red-600"}">
-                ನಿಮ್ಮ ಉತ್ತರ: <strong>${entry.yourAnswer}</strong>
-            </p>
-            ${
-                !entry.isCorrect
-                    ? `<p class="mb-1 text-blue-700">ಸರಿಯಾದ ಉತ್ತರ: <strong>${entry.correctAnswer}</strong></p>`
-                    : ""
-            }
-            <p class="text-sm text-gray-500 italic mt-2">${entry.description}</p>
-        `;
-
+      <h4 class="font-semibold text-gray-800 mb-2">
+        ${index + 1}. ${entry.question} <span class="ms-1">${entry.isCorrect ? "✅" : "❌"}</span>
+      </h4>
+      <p class="mb-1 ${entry.isCorrect ? "text-green-600" : "text-red-600"}">
+        ನಿಮ್ಮ ಉತ್ತರ: <strong>${entry.yourAnswer}</strong>
+      </p>
+      ${!entry.isCorrect ? `<p class="mb-1 text-blue-700">ಸರಿಯಾದ ಉತ್ತರ: <strong>${entry.correctAnswer}</strong></p>` : ""}
+      <p class="text-sm text-gray-500 italic mt-2">${entry.description}</p>
+    `;
         cards.appendChild(card);
     });
+
+    // ✅  Only persist the first time
+    if (!savedAnswers) {
+        const todayStr = new Date().toISOString().split("T")[0];
+        localStorage.setItem("quizStatus", JSON.stringify({
+            date: todayStr,
+            data: answers
+        }));
+    }
 }
 
 function goBack() {

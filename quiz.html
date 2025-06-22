@@ -41,7 +41,7 @@
 
     <!-- Splash Screen -->
     <div id="splash"
-        class="flex flex-col items-center justify-center animate-fadein w-full h-full absolute bg-gradient-to-b from-orange-500 to-yellow-500 text-white text-center">
+        class="flex flex-col items-center justify-center animate-fadein w-full h-full absolute bg-gradient-to-t from-orange-500 to-yellow-500 text-white text-center">
 
         <h1 class="text-4xl font-bold mb-4 animate-bounce">
             ರಸಪ್ರಶ್ನೆ - ಪ್ರಜ್ಞಾನಂ
@@ -59,6 +59,11 @@
 
     <!-- Quiz Screen -->
     <div id="quiz" class="hidden px-4 py-6 space-y-4">
+        <!-- Progress Bar -->
+        <div class="w-full bg-gray-200 rounded-full h-2 mb-3">
+            <div id="progress-bar" class="bg-gradient-to-r from-orange-500 to-yellow-500 h-2 rounded-full transition-all duration-300" style="width: 0%">
+            </div>
+        </div>
 
         <!-- Quiz Meta Info -->
         <div class="flex justify-between items-center text-sm text-gray-600">
@@ -86,7 +91,16 @@
         <h2 class="text-xl sm:text-2xl font-semibold text-orange-500 text-center animate-fadein">
             ಅಭಿನಂದನೆಗಳು! ನೀವು ರಸಪ್ರಶ್ನೆ ಪೂರ್ಣಗೊಳಿಸಿದ್ದೀರಿ 🎉
         </h2>
+
+        <div id="quiz-score"
+            class="w-full max-w-sm mx-auto bg-gradient-to-r from-green-100 to-green-50 border border-green-300 rounded-xl p-4 shadow-md text-center animate-fadein">
+            <div class="text-3xl font-bold text-green-700" id="quiz-score-value">5 / 5</div>
+            <div class="text-sm font-medium text-green-600 mt-1" id="quiz-score-message">ಅಭಿನಂದನೆಗಳು! ಎಲ್ಲಾ ಉತ್ತರ
+                ಸರಿಯಾದವು!</div>
+        </div>
+
         <div id="summary-cards" class="space-y-6"></div>
+
         <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mt-8">
             <button onclick="goBack()" class="primary-button w-full sm:w-1/4 transition duration-200">
                 ಪ್ರಜ್ಞಾನಂಗೆ ಹಿಂತಿರುಗಿ
