@@ -13,6 +13,27 @@ body {
   /* Standard syntax */
 }
 
+.primary-button {
+  background-color: var(--primary-color);
+  color: white;
+  border: 1px solid var(--primary-color);
+  padding: 8px 16px;
+  border-radius: 24px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: center;
+}
+
+.custom-button {
+  padding: 8px 16px;
+  border-radius: 24px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: center;
+}
+
 .bottom-nav {
   position: fixed;
   bottom: 0;
@@ -213,11 +234,11 @@ audio {
 }
 
 footer {
-    margin-bottom: 60px;
+  margin-bottom: 60px;
 }
 
 @media (max-width: 768px) {
-    footer {
-        margin-bottom: 80px;
-    }
+  footer {
+    margin-bottom: 80px;
+  }
 }

@@ -34,16 +34,22 @@
 <body class="bg-gray-50 text-gray-800 min-h-screen">
 
     <!-- Navbar -->
-    <header id="header" class="w-full py-3 px-4 font-semibold text-xl text-orange-500 hidden">
-        ರಸಪ್ರಶ್ನೆ - ಪ್ರಜ್ಞಾನಂ
+    <header id="header"
+        class="w-full pt-2 pb-3 px-4 font-semibold text-2xl leading-relaxed min-h-[3rem] hidden border-b border-gray-300 bg-gradient-to-r from-orange-500 to-yellow-500 bg-clip-text text-transparent">
+        <a href="/quiz">ರಸಪ್ರಶ್ನೆ - ಪ್ರಜ್ಞಾನಂ</a>
     </header>
 
     <!-- Splash Screen -->
     <div id="splash"
-        class="flex flex-col items-center justify-center animate-fadein w-full h-full absolute bg-orange-400 text-white text-center">
-        <h1 class="text-4xl font-bold mb-4 animate-bounce">ರಸಪ್ರಶ್ನೆ - ಪ್ರಜ್ಞಾನಂ</h1>
+        class="flex flex-col items-center justify-center animate-fadein w-full h-full absolute bg-gradient-to-b from-orange-500 to-yellow-500 text-white text-center">
+
+        <h1 class="text-4xl font-bold mb-4 animate-bounce">
+            ರಸಪ್ರಶ್ನೆ - ಪ್ರಜ್ಞಾನಂ
+        </h1>
+
         <!-- <p class="text-lg">Get ready to test your knowledge...</p> -->
     </div>
+
 
     <!-- Start Screen -->
     <div id="start-screen"
@@ -64,7 +70,7 @@
         <div id="question" class="text-lg font-medium"></div>
 
         <!-- Options -->
-        <div id="options" class="grid grid-cols-1 gap-3 pt-2"></div>
+        <div id="options" class="grid grid-cols-1 gap-3"></div>
     </div>
 
     <!-- Result Modal -->
@@ -76,9 +82,21 @@
     </div>
 
     <!-- Summary Screen -->
-    <div id="summary" class="hidden px-3 py-6 space-y-4">
-        <h2 class="text-xl font-bold text-center mb-4">ರಸಪ್ರಶ್ನೆ ಸಾರಾಂಶ</h2>
-        <div id="summary-cards" class="space-y-4"></div>
+    <div id="summary" class="hidden px-4 pt-4 pb-8 space-y-6 bg-gray-50 min-h-screen">
+        <h2 class="text-xl sm:text-2xl font-semibold text-orange-500 text-center animate-fadein">
+            ಅಭಿನಂದನೆಗಳು! ನೀವು ರಸಪ್ರಶ್ನೆ ಪೂರ್ಣಗೊಳಿಸಿದ್ದೀರಿ 🎉
+        </h2>
+        <div id="summary-cards" class="space-y-6"></div>
+        <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mt-8">
+            <button onclick="goBack()" class="primary-button w-full sm:w-1/4 transition duration-200">
+                ಪ್ರಜ್ಞಾನಂಗೆ ಹಿಂತಿರುಗಿ
+            </button>
+            <button onclick="shareWhatsApp()"
+                class="custom-button w-full sm:w-1/4 border-2 border-green-500 text-green-600 hover:bg-green-50 transition duration-200">
+                WhatsApp ನಲ್ಲಿ ಹಂಚಿಕೊಳ್ಳಿ
+            </button>
+        </div>
+
     </div>
 
     <script src="assets/js/quiz-script.js"></script>
