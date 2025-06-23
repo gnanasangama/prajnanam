@@ -34,6 +34,14 @@ body {
   text-align: center;
 }
 
+.highlight-text {
+  color: var(--primary-color);
+}
+
+.obscure-text {
+  color: darkgray;
+}
+
 .bottom-nav {
   position: fixed;
   bottom: 0;

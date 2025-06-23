@@ -147,22 +147,6 @@ function renderEvents() {
     if (!container) return;
 
     const html = `
-        <!-- Current Month Events -->
-        <div class="card app-card mb-3">
-            <div class="card-body">
-                <h5 class="card-title text-center">ಮಾಸಿಕ ವಿಶೇಷ</h5>
-                <hr/>
-                <ul class="list-group list-group-flush">
-                    ${content.events.current.map(event => `
-                        <li class="list-group-item">
-                            <div>🔶 <b>${event.title}</b></div>
-                            <small class="ms-3">${event.date}</small>
-                        </li>
-                    `).join('')}
-                </ul>
-            </div>
-        </div>
-
         <!-- Annual Events -->
         <div class="card app-card">
             <div class="card-body">
@@ -170,8 +154,8 @@ function renderEvents() {
                 <hr/>
                 <ul class="list-group list-group-flush">
                     ${content.events.annual.map(event => `
-                        <li class="list-group-item">
-                            <div><b>${event.title}</b></div>
+                        <li class="list-group-item ${event.status == "past" ? "obscure-text" : ""}">
+                            <div class="${event.status == "current" ? "highlight-text" : ""}"><b>${event.title}</b></div>
                             <small>${event.date}</small>
                         </li>
                     `).join('')}
@@ -197,28 +181,27 @@ function renderSectionCards(containerSelector, sections) {
                         <div class="text-center fw-semibold mb-2">${item.subtitle}</div>
                         <hr class="my-2"/>
                     ` : ''}
-                    ${
-                        item.listItems || item.items
-                        ? `<ul class="list-unstyled mb-2">
+                    ${item.listItems || item.items
+            ? `<ul class="list-unstyled mb-2">
                             ${(item.listItems || item.items || []).map(listItem => {
-                                if (typeof listItem === 'string') {
-                                    const colonIdx = listItem.indexOf(':');
-                                    if (colonIdx > -1) {
-                                        const boldPart = listItem.slice(0, colonIdx);
-                                        const restPart = listItem.slice(colonIdx);
-                                        return `<li class="mb-1"><i class="bi bi-dot"></i> <b>${boldPart}</b>${restPart}</li>`;
-                                    } else {
-                                        return `<li class="mb-1"><i class="bi bi-dot"></i> ${listItem}</li>`;
-                                    }
-                                } else {
-                                    return `<li class="mb-1"><i class="bi bi-dot"></i> ${listItem}</li>`;
-                                }
-                            }).join('')}
-                        </ul>`
-                        : item.content
-                            ? `<div class="text-center my-2">${Array.isArray(item.content) ? item.content.join('<br>') : item.content}</div>`
-                            : ''
+                if (typeof listItem === 'string') {
+                    const colonIdx = listItem.indexOf(':');
+                    if (colonIdx > -1) {
+                        const boldPart = listItem.slice(0, colonIdx);
+                        const restPart = listItem.slice(colonIdx);
+                        return `<li class="mb-1"><i class="bi bi-dot"></i> <b>${boldPart}</b>${restPart}</li>`;
+                    } else {
+                        return `<li class="mb-1"><i class="bi bi-dot"></i> ${listItem}</li>`;
                     }
+                } else {
+                    return `<li class="mb-1"><i class="bi bi-dot"></i> ${listItem}</li>`;
+                }
+            }).join('')}
+                        </ul>`
+            : item.content
+                ? `<div class="text-center my-2">${Array.isArray(item.content) ? item.content.join('<br>') : item.content}</div>`
+                : ''
+        }
                     ${idx < arr.length - 1 ? '<hr class="my-2"/>' : ''}
                 `).join('')}
             </div>
