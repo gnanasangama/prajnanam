@@ -171,8 +171,8 @@ audio {
 /* Add these to your existing styles */
 .float {
   position: fixed;
-  width: 60px;
-  height: 60px;
+  width: 56px;
+  height: 56px;
   bottom: 90px;
   right: 16px;
   background-color: #25d366;
@@ -245,31 +245,37 @@ footer {
   margin-bottom: 60px;
 }
 
-.float-quiz {
+/* Quiz Floating Button */
+.quiz-float-btn {
   position: fixed;
-  width: 60px;
-  height: 60px;
-  bottom: 160px;
+  width: 56px;
+  height: 56px;
+  bottom: 152px; /* 90px (WhatsApp) + 64px (Quiz) + margin */
   right: 16px;
-  background: linear-gradient(to top right, #f97316, #facc15);
-  color: white;
-  border-radius: 50%;
-  font-size: 28px;
-  font-weight: bold;
-  text-align: center;
-  text-decoration: none;
+  z-index: 110;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 110;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
-  z-index: 110;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 50%;
+  background: linear-gradient(135deg, orange, gold, #ffe066); /* Gradient border */
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  cursor: pointer;
+  transition: box-shadow 0.2s;
 }
 
 /* Only bounce when allowed */
-.float-quiz.bounce {
+.quiz-float-btn.bounce {
   animation: float-bounce 2s infinite;
+}
+
+.quiz-float-btn.hidden {
+  display: none !important;
+}
+.quiz-float-img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  border-radius: 50%;
 }
 
 @media (max-width: 768px) {
@@ -280,6 +286,6 @@ footer {
 
 /* Animations */
 @keyframes float-bounce {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-8px); }
+  0%, 100% { transform: translateY(0);}
+  50% { transform: translateY(-18px);}
 }

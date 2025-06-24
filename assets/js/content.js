@@ -306,16 +306,17 @@ const content = {
             {
                 title: "ಹಿಂದೂ ಸಾಮ್ರಾಜ್ಯ ದಿನೋತ್ಸವ",
                 date: "ಜ್ಯೇಷ್ಠ ಶುದ್ಧ ತ್ರಯೋದಶಿ (09 ಜೂನ್ 2025)",
-                status: "current"
+                status: "past"
             },
             {
                 title: "ಸೇವಾ ಸಾಂಘೀಕ್",
                 date: "22 ಜೂನ್ 2025",
-                status: "current"
+                status: "past"
             },
             {
                 title: "ಶ್ರೀ ಗುರುಪೂರ್ಣಿಮೆ",
-                date: "ಆಷಾಢ ಹುಣ್ಣಿಮೆ (10 ಜುಲೈ 2025)"
+                date: "ಆಷಾಢ ಹುಣ್ಣಿಮೆ (10 ಜುಲೈ 2025)",
+                status: "current"
             },
             {
                 title: "ರಕ್ಷಾಬಂಧನ",
