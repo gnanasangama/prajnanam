@@ -278,6 +278,41 @@ footer {
   border-radius: 50%;
 }
 
+.song-dropdown-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+#song-month-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: none;
+  border: none;
+  /* min-width: 220px; */
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: #1d1d1d;
+  text-align: left;
+  text-align-last: center;
+  cursor: pointer;
+  outline: none;
+  box-shadow: none;
+  padding-right: 0.5rem;
+}
+
+#song-month-select:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.song-dropdown-chevron {
+    width: auto;
+    height: 18px;
+    color: var(--primary-color);
+    margin-bottom: 6px;
+}
+
 @media (max-width: 768px) {
   footer {
     margin-bottom: 80px;

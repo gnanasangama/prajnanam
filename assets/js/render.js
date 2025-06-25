@@ -1,4 +1,5 @@
 function renderHomeContent() {
+    renderHomeSong();
     renderAmruthavachana();
     renderShlokas();
     renderPanchanga();  // Add this line
@@ -63,7 +64,7 @@ function renderShlokas() {
                         </button>
                     </h2>
                     <div id="collapse${index}" 
-                        class="accordion-collapse collapse ${index === 2 ? 'show' : ''}" 
+                        class="accordion-collapse collapse ${index === 3 ? 'show' : ''}" 
                         aria-labelledby="heading${index}" 
                         data-bs-parent="#shlokaAccordion">
                         <div class="accordion-body p-0">
@@ -208,4 +209,29 @@ function renderSectionCards(containerSelector, sections) {
         </div>
     `).join('');
     container.innerHTML = html;
+}
+
+function renderHomeSong() {
+    if (!songs.length) return;
+
+    // Find current song or fallback to first
+    let currentIdx = songs.findIndex(m => m.current);
+    if (currentIdx === -1) currentIdx = 0;
+
+    // Render dropdown with current as selected
+    const select = document.getElementById('song-month-select');
+    select.innerHTML = songs.map((m, idx) =>
+        `<option value="${idx}" ${idx === currentIdx ? 'selected' : ''} ${idx === currentIdx ? 'class="highlight-text"' : ''}>${m.month}</option>`
+    ).join('');
+
+    // Render song content
+    function renderSong(idx) {
+        const month = songs[idx];
+        document.getElementById('song-content').innerHTML =
+            (month.items[0].content || []).join('');
+    }
+    renderSong(currentIdx);
+
+    // On change, update song
+    select.onchange = e => renderSong(Number(e.target.value));
 }
