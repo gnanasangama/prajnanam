@@ -155,7 +155,7 @@ function showSummary(savedAnswers = null) {
         ನಿಮ್ಮ ಉತ್ತರ: <strong>${entry.yourAnswer}</strong>
       </p>
       ${!entry.isCorrect ? `<p class="mb-1 text-blue-700">ಸರಿಯಾದ ಉತ್ತರ: <strong>${entry.correctAnswer}</strong></p>` : ""}
-      <p class="text-sm text-gray-500 italic mt-2">${entry.description}</p>
+      <p class="text-sm text-gray-500 italic mt-2 text-justify">&emsp;&emsp;&emsp;${entry.description}</p>
     `;
         cards.appendChild(card);
     });
