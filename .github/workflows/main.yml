@@ -1,0 +1,32 @@
+name: Scheduled Merge and Deploy (Sunday Midnight IST)
+
+on:
+  schedule:
+    - cron: '30 18 * * 6'  # Runs every Saturday at 6:30 PM UTC (12 AM IST Sunday)
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  merge-develop-to-main:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Git
+      uses: actions/setup-git@v3
+
+    - name: Configure Git
+      run: |
+        git config user.name "Prajnanam Bot"
+        git config user.email "bot@prajnana.in"
+
+    - name: Merge develop into main
+      run: |
+        git checkout main
+        git pull origin main
+        git merge origin/develop --no-ff -m "Automated merge of develop into main"
+        git push origin main
+
+    - name: Success message
+      run: echo "Merge complete! Changes pushed to main."
