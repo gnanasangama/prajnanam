@@ -40,7 +40,6 @@
             <div class="navbar-brand mb-0 h1 main-header">
                 <span style="color: var(--primary-color);">ಪ್ರಜ್ಞಾನಂ - ಬೆಂಗಳೂರು ಉತ್ತರ</span>
             </div>
-
             <!-- Content Header (Initially Hidden) -->
             <div class="navbar-brand mb-0 h1 content-header" style="display: none;">
                 <button class="btn btn-link p-0 me-2 back-button">
@@ -53,7 +52,41 @@
 
     <!-- Home Screen -->
     <div class="screen active" id="home-screen">
-        <!-- Featured Card -->
+
+        <div class="card app-card mb-3 position-relative overflow-hidden" id="shaka-dinachari-card"
+            style="cursor:pointer;">
+            <img src="/assets/images/sangh-shaakha.png" class="card-img" alt="...">
+            <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark" style="opacity: .35 !important;"></div>
+            <div class="card-img-overlay d-flex flex-column justify-content-start align-items-start text-white">
+                <h5 class="card-title mb-0 h2 fw-bolder">ಶಾಖಾ ದಿನಚರಿ</h5>
+                <p class="card-text"><small>ಶ್ರೀ ವಿಶ್ವಾವಸು ಸಂವತ್ಸರ</small></p>
+            </div>
+        </div>
+
+        <!-- Card to go to Events Page -->
+        <div class="card app-card mb-3" style="cursor: pointer;" onclick="window.location.href='events.html'">
+            <div class="card-body d-flex align-items-center">
+                <!-- Icon on the left -->
+                <div class="me-3">
+                    <i class="bi bi-calendar2-week" style="font-size: 3rem; color: var(--primary-color);"></i>
+                </div>
+
+                <!-- Content on the right -->
+                <div class="text-center mx-auto">
+                    <h5 class="card-title mb-1">ವಾರ್ಷಿಕ ಯೋಜನೆ</h5>
+                    <p class="card-text mb-0">
+                        ಶ್ರೀ ವಿಶ್ವಾವಸು - ಪರಾಭವ ಸಂವತ್ಸರ<br>(2025 - 26)
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Optionally, add other home content/cards here -->
+    </div>
+
+    <!-- Shaka Dinachari Tabbed Screen -->
+    <div class="screen" id="shaka-dinachari-screen">
+        <!-- Featured Card (Month, Year, Dates) -->
         <div class="card app-card mb-3">
             <div class="card-body text-center">
                 <h5 class="card-title">ಆಷಾಢ ಮಾಸ</h5>
@@ -61,7 +94,6 @@
                 <p class="card-text">ಜೂನ್ 26 ರಿಂದ ಜುಲೈ 24 2025</p>
             </div>
         </div>
-
         <!-- Tabs Navigation -->
         <ul class="nav nav-pills nav-fill mb-3" role="tablist">
             <li class="nav-item" role="presentation">
@@ -98,13 +130,11 @@
                 </div>
             </li>
         </ul>
-
         <!-- Tabs Content -->
         <div class="tab-content">
             <div class="tab-pane fade show active" id="geethe">
                 <div class="card app-card">
                     <div class="card-body">
-                        <!-- Existing geethe content -->
                         <div class="content-text">
                             <div class="d-flex justify-content-center mb-3">
                                 <div class="song-dropdown-wrapper">
@@ -120,11 +150,9 @@
                     </div>
                 </div>
             </div>
-
             <div class="tab-pane fade" id="amruthavachana">
                 <!-- Content will be rendered by JavaScript -->
             </div>
-
             <div class="tab-pane fade" id="shloka">
                 <div class="card app-card">
                     <div class="card-body">
@@ -132,7 +160,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="tab-pane fade" id="panchanga">
                 <div class="card app-card">
                     <div class="card-body text-center" style="padding: 1rem 0.5rem;">
@@ -141,7 +168,7 @@
                 </div>
             </div>
         </div>
-
+        <!-- Links Card (Gnanasangama, Ganamala, Sukruthi) -->
         <div class="card app-card my-3">
             <a href="https://play.google.com/store/apps/details?id=app.gnanasangama" class="gnanasangama-playstore-link"
                 target="_blank" rel="noopener" style="text-decoration: none;">
@@ -166,14 +193,6 @@
                     ಸುಕೃತಿ (Sukruthi)
                 </a> - [ ಪುಸ್ತಕದ ಪರಿಚಯ ]
             </div>
-        </div>
-
-    </div>
-
-    <!-- Events Screen -->
-    <div class="screen" id="events-screen">
-        <div class="content-area">
-            <!-- Content will be rendered by JavaScript -->
         </div>
     </div>
 
@@ -238,9 +257,9 @@
                 <i class="bi bi-house-door-fill nav-icon"></i>
                 <div class="nav-text">ಮುಖಪುಟ</div>
             </div>
-            <div class="col nav-item" data-screen="events-screen">
-                <i class="bi bi-calendar2-week nav-icon"></i>
-                <div class="nav-text">ಕಾರ್ಯಕ್ರಮಗಳು</div>
+            <div class="col nav-item" data-screen="shaka-dinachari-screen">
+                <i class="bi bi-flag nav-icon"></i>
+                <div class="nav-text">ಶಾಖಾ ದಿನಚರಿ</div>
             </div>
             <div class="col nav-item" data-screen="guide-screen">
                 <i class="bi bi-book nav-icon"></i>
@@ -297,28 +316,29 @@
                     quizBtn.classList.remove("bounce");
                 }
             }
+
+            // Shaka Dinachari card click switches tab
+            document.getElementById('shaka-dinachari-card')?.addEventListener('click', function () {
+                // Switch bottom nav active state
+                document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+                document.querySelector('.nav-item[data-screen="shaka-dinachari-screen"]').classList.add('active');
+                // Switch screen
+                document.querySelectorAll('.screen').forEach(screen => screen.classList.remove('active'));
+                document.getElementById('shaka-dinachari-screen').classList.add('active');
+                // Track
+                trackVirtualPage('shaka-dinachari-screen');
+            });
         });
 
         // Navigation functionality
         document.querySelectorAll('.nav-item').forEach(item => {
             item.addEventListener('click', function () {
-                // Only handle bottom navigation screens
                 if (this.dataset.screen) {
-                    // Update active state
                     document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
                     this.classList.add('active');
-
-                    // Show corresponding screen
                     const screenId = this.dataset.screen;
                     document.querySelectorAll('.screen').forEach(screen => screen.classList.remove('active'));
                     document.getElementById(screenId).classList.add('active');
-
-                    // Render events content if events screen
-                    if (screenId === 'events-screen') {
-                        renderEvents();
-                    }
-
-                    // Track virtual page view
                     trackVirtualPage(screenId);
                 }
             });
@@ -432,7 +452,7 @@
             // Map screen IDs to Kannada names
             const screenNames = {
                 'home-screen': 'ಮುಖಪುಟ',
-                'events-screen': 'ಕಾರ್ಯಕ್ರಮಗಳು',
+                'shaka-dinachari-screen': 'ಶಾಖಾ ದಿನಚರಿ',
                 'guide-screen': 'ಕೈಪಿಡಿ',
                 // Add more if needed
             };
