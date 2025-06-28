@@ -18,6 +18,10 @@ jobs:
         git config user.name "Prajnanam Bot"
         git config user.email "bot@prajnanam.in"
 
+    - name: Fetch all remote branches
+      run: |
+        git fetch --all
+
     - name: Merge develop into main
       run: |
         git checkout main
