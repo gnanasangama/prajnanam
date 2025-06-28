@@ -54,14 +54,29 @@
     <div class="screen active" id="home-screen">
 
         <div class="card app-card mb-3 position-relative overflow-hidden" id="shaka-dinachari-card"
-            style="cursor:pointer;">
-            <img src="/assets/images/sangh-shaakha.png" class="card-img" alt="...">
-            <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark" style="opacity: .35 !important;"></div>
-            <div class="card-img-overlay d-flex flex-column justify-content-start align-items-start text-white">
+            style="cursor:pointer; user-select: none;">
+            <div class="card-img-overlay d-flex flex-column justify-content-start align-items-start text-white"
+                style="z-index: 2;">
                 <h5 class="card-title mb-0 h2 fw-bolder">ಶಾಖಾ ದಿನಚರಿ</h5>
                 <p class="card-text"><small>ಶ್ರೀ ವಿಶ್ವಾವಸು ಸಂವತ್ಸರ</small></p>
             </div>
+            <div class="card-img"
+                style="background-image: url('/assets/images/sangh-shaakha.png'); background-size: cover; background-position: center; height: 220px;">
+            </div>
+            <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark" style="opacity: .35;"></div>
         </div>
+
+        <!-- <a class="card app-card mb-3 position-relative overflow-hidden" href="/events.html" style="cursor:pointer;">
+            <div class="card-img-overlay d-flex flex-column justify-content-start align-items-start text-white"
+                style="z-index: 2;">
+                <h5 class="card-title mb-0 h2 fw-bolder">ಸಮಾಚಾರ ಸಮೀಕ್ಷೆ</h5>
+                <p class="card-text"><small>ಪ್ರಮುಖ ಸುದ್ದಿಗಳ ಸಂಕ್ಷಿಪ್ತ ಪರಿಚಯ</small></p>
+            </div>
+            <div class="card-img"
+                style="background-image: url('/assets/images/news-survey.webp'); background-size: cover; background-position: center; height: 220px;">
+            </div>
+            <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark" style="opacity: .35;"></div>
+        </a> -->
 
         <!-- Card to go to Events Page -->
         <div class="card app-card mb-3" style="cursor: pointer;" onclick="window.location.href='events.html'">
