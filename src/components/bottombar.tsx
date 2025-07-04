@@ -23,7 +23,7 @@ export default function BottomBar({
         className={`flex flex-col items-center justify-center flex-1 py-2 transition ${
           active === "home" ? "text-pink-400 font-semibold" : "text-gray-400"
         }`}
-        onClick={() => router.push(`/${communityId}`)}
+        onClick={() => router.push(`/`)}
       >
         <HomeIcon className="w-6 h-6 mb-1" />
         <span className="text-xs">ಮುಖಪುಟ</span>
@@ -32,7 +32,7 @@ export default function BottomBar({
         className={`flex flex-col items-center justify-center flex-1 py-2 transition ${
           active === "community" ? "text-pink-400 font-semibold" : "text-gray-400"
         }`}
-        onClick={() => router.push(`/${communityId}/community`)}
+        onClick={() => router.push(`/${communityId}`)}
       >
         <UsersIcon className="w-6 h-6 mb-1" />
         <span className="text-xs">{communityName}</span>
@@ -41,7 +41,7 @@ export default function BottomBar({
         className={`flex flex-col items-center justify-center flex-1 py-2 transition ${
           active === "kaipidi" ? "text-pink-400 font-semibold" : "text-gray-400"
         }`}
-        onClick={() => router.push(`/${communityId}/guide`)}
+        onClick={() => router.push(`/guide`)}
       >
         <BookOpenIcon className="w-6 h-6 mb-1" />
         <span className="text-xs">ಕೈಪಿಡಿ</span>

@@ -1,57 +1,38 @@
 "use client";
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import AppBar from "@/components/appbar";
+import BottomBar from "@/components/bottombar";
 
-const communities = [
-  { id: "sangh", name: "Sangh", kn: "ರಾಷ್ಟ್ರೀಯ ಸ್ವಯಂಸೇವಕ ಸಂಘ" },
-  { id: "balagokula", name: "Balagokula", kn: "ಬಾಲಗೋಕುಲ" },
-];
+const communityNames: Record<string, string> = {
+  sangh: "ರಾ. ಸ್ವ. ಸಂಘ",
+  balagokula: "ಬಾಲಗೋಕುಲ",
+};
 
 export default function Home() {
-  const [selected, setSelected] = useState<string>("");
+  const [community, setCommunity] = useState<string | null>(null);
   const router = useRouter();
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (selected) {
-      router.push(`/${selected}`);
+  useEffect(() => {
+    const stored = localStorage.getItem("community");
+    if (!stored) {
+      router.replace("/select-community");
+    } else {
+      setCommunity(stored);
     }
-  };
+  }, [router]);
+
+  if (!community) return null;
+
+  const name = communityNames[community] || community;
 
   return (
-    <main className="flex flex-col items-center justify-center min-h-[70vh] px-4">
-      <h1 className="text-xl font-semibold mb-6 text-center">
-        ನಿಮ್ಮ ಕಮ್ಯೂನಿಟಿಯನ್ನು ಆಯ್ಕೆಮಾಡಿ
-      </h1>
-      <form className="w-full max-w-xs space-y-4" onSubmit={handleSubmit}>
-        {communities.map((c) => (
-          <label
-            key={c.id}
-            className={`flex items-center p-3 border rounded-4xl cursor-pointer transition-colors ${
-              selected === c.id
-                ? "border-pink-400 text-pink-400 font-semibold bg-primary/10"
-                : "border-gray-300 bg-white"
-            }`}
-          >
-            <input
-              type="radio"
-              name="community"
-              value={c.id}
-              checked={selected === c.id}
-              onChange={() => setSelected(c.id)}
-              className="form-radio accent-primary mr-3"
-            />
-            <span className="text-base">{c.kn}</span>
-          </label>
-        ))}
-        <button
-          type="submit"
-          disabled={!selected}
-          className="w-full mt-2 py-2 rounded-4xl font-semibold text-white bg-pink-400 disabled:bg-gray-300 transition"
-        >
-          ಆಯ್ಕೆಮಾಡಿ
-        </button>
-      </form>
-    </main>
+    <>
+      <AppBar title={`ಪ್ರಜ್ಞಾನಂ - ${name}`} />
+      <main className="flex flex-col items-center justify-center min-h-[70vh] px-4 pt-14 pb-16">
+        <h1 className="text-xl font-semibold text-center">ಪ್ರಜ್ಞಾನಂ - ಮುಖಪುಟ</h1>
+      </main>
+      <BottomBar communityId={community} communityName={name} active="home" />
+    </>
   );
 }
