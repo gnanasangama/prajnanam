@@ -18,7 +18,7 @@ export default function BottomBar({
   const router = useRouter();
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t shadow-lg flex justify-around items-center h-16">
+    <nav className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-300 shadow-lg flex justify-around items-center h-16">
       <button
         className={`flex flex-col items-center justify-center flex-1 py-2 transition ${
           active === "home" ? "text-pink-400 font-semibold" : "text-gray-400"

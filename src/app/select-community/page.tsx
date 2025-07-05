@@ -1,21 +1,30 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-
-const communities = [
-  { id: "sangh", name: "Sangh", kn: "ರಾಷ್ಟ್ರೀಯ ಸ್ವಯಂಸೇವಕ ಸಂಘ" },
-  { id: "balagokula", name: "Balagokula", kn: "ಬಾಲಗೋಕುಲ" },
-];
+import { getCommunities } from "@/api/getCommunities";
+import type { Community } from "@/models/community";
 
 export default function SelectCommunity() {
+  const [communities, setCommunities] = useState<Community[]>([]);
   const [selected, setSelected] = useState<string>("");
   const router = useRouter();
+
+  useEffect(() => {
+    getCommunities().then(setCommunities).catch(console.error);
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (selected) {
-      localStorage.setItem("community", selected);
-      router.replace("/");
+      const selectedObj = communities.find((c) => c.community_id === selected);
+      if (selectedObj) {
+        localStorage.setItem("community", selected);
+        localStorage.setItem(
+          `selectedCommunity`,
+          JSON.stringify(selectedObj)
+        );
+        router.replace("/");
+      }
     }
   };
 
@@ -27,9 +36,9 @@ export default function SelectCommunity() {
       <form className="w-full max-w-xs space-y-4" onSubmit={handleSubmit}>
         {communities.map((c) => (
           <label
-            key={c.id}
+            key={c.community_id}
             className={`flex items-center p-3 border rounded-4xl cursor-pointer transition-colors ${
-              selected === c.id
+              selected === c.community_id
                 ? "border-pink-400 text-pink-400 font-semibold bg-pink-50"
                 : "border-gray-300 bg-white"
             }`}
@@ -37,12 +46,12 @@ export default function SelectCommunity() {
             <input
               type="radio"
               name="community"
-              value={c.id}
-              checked={selected === c.id}
-              onChange={() => setSelected(c.id)}
+              value={c.community_id}
+              checked={selected === c.community_id}
+              onChange={() => setSelected(c.community_id)}
               className="form-radio accent-pink-400 mr-3"
             />
-            <span className="text-base">{c.kn}</span>
+            <span className="text-base">{c.name.kn}</span>
           </label>
         ))}
         <button

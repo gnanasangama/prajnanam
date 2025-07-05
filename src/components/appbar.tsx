@@ -46,6 +46,15 @@ export default function AppBar({ title }: { title?: string }) {
             >
               ಕಮ್ಯೂನಿಟಿ ಬದಲಾಯಿಸಿ
             </button>
+            <button
+              className="w-full text-left px-4 py-2 hover:bg-pink-50 text-gray-700"
+              onClick={() => {
+                setOpen(false);
+                router.push("/select-language");
+              }}
+            >
+              ಭಾಷೆ ಬದಲಾಯಿಸಿ
+            </button>
           </div>
         )}
       </div>

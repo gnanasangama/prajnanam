@@ -9,23 +9,35 @@ const communityNames: Record<string, string> = {
 };
 
 export default function GuideTab() {
-  const [community, setCommunity] = useState<string | null>(null);
+  const [communityId, setCommunityId] = useState<string>("prajnanam");
+  const [community, setCommunity] = useState<any>(null);
+  const [lang, setLang] = useState("kn");
 
   useEffect(() => {
-    setCommunity(localStorage.getItem("community"));
+    // Get language preference
+    const storedLang = localStorage.getItem("preferences.lang") || "kn";
+    setLang(storedLang);
+
+    // Get community ID from localStorage
+    setCommunityId(localStorage.getItem("community") || "prajnanam");
   }, []);
+
+
+  useEffect(() => {
+    // Get community object from localStorage
+    const data = localStorage.getItem(`selectedCommunity`);
+    if (data) setCommunity(JSON.parse(data));
+  }, [communityId]);
 
   if (!community) return null;
 
-  const name = communityNames[community] || community;
-
   return (
     <>
-      <AppBar title={`ಪ್ರಜ್ಞಾನಂ - ${name}`} />
+      <AppBar title={`ಪ್ರಜ್ಞಾನಂ - ${community.name?.[lang] || community.community_id}`} />
       <main className="flex flex-col items-center justify-center min-h-[70vh] px-4 pt-14 pb-16">
-        <h1 className="text-xl font-semibold text-center">{name} - ಕೈಪಿಡಿ</h1>
+        <h1 className="text-xl font-semibold text-center">{community.name?.[lang] || community.community_id} - ಕೈಪಿಡಿ</h1>
       </main>
-      <BottomBar communityId={community} communityName={name} active="kaipidi" />
+      <BottomBar communityId={communityId} communityName={community.name?.[lang] || community.community_id} active="kaipidi" />
     </>
   );
 }
