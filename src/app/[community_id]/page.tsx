@@ -1,25 +1,42 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { use } from "react";
-import AppBar from "@/components/appbar";
-import BottomBar from "@/components/bottombar";
+import AppBar from "@/components/AppBar";
+import BottomBar from "@/components/BottomBar";
 import ClippedBanner from "@/components/ClippedBanner";
 import BottomTopSheet from "@/components/BottomTopSheet";
+import { getKnowledgeItemsByCommunity } from "@/api/getKnowledgeItemsByCommunity";
+import type { KnowledgeItem } from "@/models/KnowledgeItem";
+import FeatureCard from "@/components/FeatureCard";
 
 export default function CommunityTab({ params }: { params: Promise<{ community_id: string }> }) {
   const { community_id } = use(params);
   const [community, setCommunity] = useState<any>(null);
   const [lang, setLang] = useState("kn");
   const [showSheet, setShowSheet] = useState(false);
+  const [knowledgeItems, setKnowledgeItems] = useState<KnowledgeItem[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Get language preference
     const storedLang = localStorage.getItem("preferences.lang") || "kn";
     setLang(storedLang);
 
-    // Get community object from localStorage
     const data = localStorage.getItem(`selectedCommunity`);
     if (data) setCommunity(JSON.parse(data));
+  }, [community_id]);
+
+  useEffect(() => {
+    if (!community_id) return;
+    setLoading(true);
+    getKnowledgeItemsByCommunity(community_id)
+      .then((items) => {
+        setKnowledgeItems(items);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Failed to fetch knowledge items:", error);
+        setLoading(false);
+      });
   }, [community_id]);
 
   if (!community) return null;
@@ -27,6 +44,7 @@ export default function CommunityTab({ params }: { params: Promise<{ community_i
   return (
     <>
       <AppBar title={`ಪ್ರಜ್ಞಾನಂ - ${community.name?.[lang] || community.community_id}`} />
+
       <ClippedBanner
         title={community.name?.[lang] || community.name?.en || "Prajnanam"}
         description={community.description?.[lang] || community.description?.en}
@@ -38,11 +56,19 @@ export default function CommunityTab({ params }: { params: Promise<{ community_i
         title={community.name?.[lang] || community.name?.en || "Prajnanam"}
         description={community.description?.[lang] || community.description?.en}
       />
-      <main className="flex flex-col items-center justify-center min-h-[70vh] px-4 pt-14 pb-16">
-        <h1 className="text-xl font-semibold text-center">{community.name?.[lang] || community.community_id}</h1>
-        <p className="mt-4 text-gray-600 text-center">{community.description?.[lang]}</p>
-      </main>
-      <BottomBar communityId={community_id} communityName={community.name?.[lang] || community.community_id} active="community" />
+
+      <FeatureCard
+        title="ಶಾಖಾ ದಿನಚರಿ"
+        subtitle="ಶ್ರೀ ವಿಶ್ವಾವಸು ಸಂವತ್ಸರ"
+        image="/images/sangh-shaakha.png"
+        link="/community/routine"
+      />
+
+      <BottomBar
+        communityId={community_id}
+        communityName={community.name?.[lang] || community.community_id}
+        active="community"
+      />
     </>
   );
 }

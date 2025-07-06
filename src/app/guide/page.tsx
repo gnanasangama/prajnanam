@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
-import AppBar from "@/components/appbar";
-import BottomBar from "@/components/bottombar";
+import AppBar from "@/components/AppBar";
+import BottomBar from "@/components/BottomBar";
 
 const communityNames: Record<string, string> = {
   sangh: "ರಾ. ಸ್ವ. ಸಂಘ",

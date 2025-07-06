@@ -10,7 +10,7 @@ export default function ClippedBanner({
   onMore: () => void;
 }) {
   return (
-    <div className="bg-pink-50 border border-pink-200 rounded-xl p-2 mx-3 my-4 text-center">
+    <div className="bg-pink-50 border border-pink-200 rounded-xl p-2 my-4 text-center">
       <h2 className="text-lg font-semibold text-pink-400 mb-1">{title}</h2>
       <div className="relative inline-block text-left text-gray-700 max-w-full">
         <p
@@ -25,7 +25,7 @@ export default function ClippedBanner({
           {description}
         </p>
         <div className="absolute right-0 bottom-0 bg-pink-50">
-          ... <button
+          &nbsp;... <button
             onClick={onMore}
             className="text-pink-400 font-semibold underline text-sm"
           >
