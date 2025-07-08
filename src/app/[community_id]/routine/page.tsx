@@ -1,17 +1,21 @@
 "use client";
 
-import React, { use, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import AppBar from "@/components/AppBar";
 import BottomBar from "@/components/BottomBar";
 import { getRoutinesByCommunity } from "@/api/getKnowledgeItemsByCommunity";
 import type { KnowledgeItem } from "@/models/KnowledgeItem";
 import Loader from "@/components/Loader";
+import Tabs from "@/components/Tabs";
+import { BiMusic, BiSolidQuoteAltLeft, BiBookAlt, BiCalendar } from "react-icons/bi";
+import ReactMarkdown from "react-markdown";
 
 export default function RoutinePage() {
     const [community, setCommunity] = useState<any>(null);
     const [lang, setLang] = useState("kn");
     const [routineItems, setRoutineItems] = useState<KnowledgeItem[]>([]);
     const [loading, setLoading] = useState(true);
+    const [selectedId, setSelectedId] = useState<string | null>(null);
 
     useEffect(() => {
         const storedLang = localStorage.getItem("preferences.lang") || "kn";
@@ -24,7 +28,6 @@ export default function RoutinePage() {
     useEffect(() => {
         if (!community) return;
         setLoading(true);
-        // Fetch only routine type items
         getRoutinesByCommunity(community.community_id)
             .then((items) => {
                 setRoutineItems(items);
@@ -38,25 +41,109 @@ export default function RoutinePage() {
 
     if (!community) return null;
 
+    const header = {
+        title: "ಆಷಾಢ ಮಾಸ",
+        subtitle: "ಶ್ರೀ ವಿಶ್ವಾವಸು ಸಂವತ್ಸರ",
+        dates: "ಜೂನ್ 26 ರಿಂದ ಜುಲೈ 24 2025",
+    };
+
+
+    const renderItems = (type: string) => {
+        const filtered = routineItems.filter((item) => item.type === type);
+
+        if (filtered.length === 0) {
+            return <p className="text-gray-500">ಈ ವಿಭಾಗದಲ್ಲಿ ವಿಷಯ ಲಭ್ಯವಿಲ್ಲ.</p>;
+        }
+
+        const activeItem = selectedId
+            ? filtered.find((item) => item.id === selectedId) || filtered[0]
+            : filtered[0];
+
+        return (
+            <div className="space-y-4">
+                {filtered.length > 1 && (
+                    <select
+                        className="font-semibold text-lg mb-2 text-center w-full appearance-none bg-white border border-gray-300 rounded-lg px-4 py-2 pr-8 focus:outline-none focus:ring-2 focus:ring-pink-400 focus:border-transparent"
+                        style={{
+                            backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23374151' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`,
+                            backgroundPosition: 'right 0.5rem center',
+                            backgroundRepeat: 'no-repeat',
+                            backgroundSize: '1.5em 1.5em'
+                        }}
+                        value={activeItem.id}
+                        onChange={(e) => setSelectedId(e.target.value)}
+                    >
+                        {filtered.map((item) => (
+                            <option key={item.id} value={item.id}>
+                                {item.title}
+                            </option>
+                        ))}
+                    </select>
+                )}
+
+                <div>
+                    {filtered.length == 1 && (
+                        <>
+                            <h2 className="font-semibold text-lg mb-2">{activeItem.title}</h2>
+                            <hr className="mb-4 border-gray-300" />
+                        </>
+                    )}
+
+                    <div className="prose prose-sm sm:prose lg:prose-lg max-w-none">
+                        <ReactMarkdown
+                            components={{
+                                hr: () => <hr className="my-4 border-t border-gray-300" />,
+                                blockquote: ({ children }) => (
+                                    <blockquote className="border-l-4 pl-4 italic border-gray-400">
+                                        {children}
+                                    </blockquote>
+                                ),
+                            }}
+                        >{activeItem.type != "shloka"
+                            ? activeItem.content.replace(/\n/g, '\n &nbsp;').replace(/\n/g, '  \n')
+                            : activeItem.content}
+                        </ReactMarkdown>
+                    </div>
+                </div>
+            </div>
+        );
+    };
+
+    const tabs = [
+        {
+            id: "geethe",
+            label: "ಗೀತೆ",
+            icon: BiMusic,
+            content: () => renderItems("song"),
+        },
+        {
+            id: "amruthavachana",
+            label: "ಅಮೃತವಚನ",
+            icon: BiSolidQuoteAltLeft,
+            content: () => renderItems("quote"),
+        },
+        {
+            id: "shloka",
+            label: "ಶ್ಲೋಕ",
+            icon: BiBookAlt,
+            content: () => renderItems("shloka"),
+        },
+        {
+            id: "panchanga",
+            label: "ಪಂಚಾಂಗ",
+            icon: BiCalendar,
+            content: () => renderItems("calendar"),
+        },
+    ];
+
     return (
         <>
             <AppBar title={`${community.name?.[lang] || community.community_id} - ದಿನಚರಿ`} />
-            <main className="flex flex-col items-center justify-center min-h-[70vh] px-3 pb-16 w-full max-w-3xl mx-auto">
-                {loading && Loader()}
-
-                {!loading && routineItems.length === 0 && (
-                    <p className="mt-8 text-center text-gray-500">No routine items found.</p>
-                )}
-
-                <div className="grid grid-cols-1 gap-4 mt-8 w-full">
-                    {routineItems.map((item) => (
-                        <div key={item.id} className="border rounded-lg p-4 shadow hover:shadow-md transition">
-                            <h2 className="font-semibold text-lg mb-2">{item.title}</h2>
-                            <div className="prose max-w-none whitespace-pre-wrap">{item.content}</div>
-                        </div>
-                    ))}
-                </div>
-            </main>
+            {loading && Loader()}
+            {!loading && routineItems.length === 0 && (
+                <p className="mt-8 text-center text-gray-500">No routine items found.</p>
+            )}
+            <Tabs header={header} tabs={tabs} />
             <BottomBar
                 communityId={community.community_id}
                 communityName={community.name?.[lang] || community.community_id}

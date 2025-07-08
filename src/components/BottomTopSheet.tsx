@@ -28,7 +28,7 @@ export default function BottomTopSheet({
 
   return (
     <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/40 pb-16">
-      <div className="bg-white rounded-t-2xl w-full max-w-md shadow-lg animate-slideup h-[80vh] flex flex-col">
+      <div className="bg-white rounded-t-2xl w-full max-w-md shadow-lg animate-slideup h-[70vh] flex flex-col">
         {/* Header (fixed) */}
         <div className="px-4 py-3 flex items-start justify-between border-b border-gray-300">
           <h2 className="text-lg font-semibold text-pink-400">{title}</h2>

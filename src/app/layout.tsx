@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased pt-14 pb-8 px-3 min-h-screen bg-gray-50`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased pt-14 pb-20 px-3 min-h-screen bg-gray-50`}
       >
         <AppBar />
         {children}
