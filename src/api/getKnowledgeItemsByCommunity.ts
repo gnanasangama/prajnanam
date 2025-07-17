@@ -15,7 +15,7 @@ export async function getKnowledgeItemsByCommunity(
 }
 
 export async function getRoutinesByCommunity(communityId: string): Promise<KnowledgeItem[]> {
-  let query = supabase
+  const query = supabase
     .from("knowledge_items")
     .select("*")
     .eq("community", communityId)
