@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import AppBar from "@/components/AppBar";
-import BottomBar from "@/components/BottomBar";
+import AppBar from "@/components/app-bar";
+import BottomBar from "@/components/bottom-bar";
 import { getRoutinesByCommunity } from "@/api/getKnowledgeItemsByCommunity";
 import type { KnowledgeItem } from "@/models/KnowledgeItem";
 import Loader from "@/components/Loader";

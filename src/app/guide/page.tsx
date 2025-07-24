@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
-import AppBar from "@/components/AppBar";
-import BottomBar from "@/components/BottomBar";
+import AppBar from "@/components/app-bar";
+import BottomBar from "@/components/bottom-bar";
 import { Community } from "@/models/community";
 
 export default function GuideTab() {

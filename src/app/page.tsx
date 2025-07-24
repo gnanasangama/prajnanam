@@ -1,8 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import AppBar from "@/components/AppBar";
-import BottomBar from "@/components/BottomBar";
+import AppBar from "@/components/app-bar";
+import BottomBar from "@/components/bottom-bar";
 import ClippedBanner from "@/components/ClippedBanner";
 import BottomTopSheet from "@/components/BottomTopSheet";
 import { getGlobalCommunity } from "@/api/getGlobalCommunity";
