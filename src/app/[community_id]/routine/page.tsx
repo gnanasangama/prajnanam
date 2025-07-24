@@ -9,9 +9,10 @@ import Loader from "@/components/Loader";
 import Tabs from "@/components/Tabs";
 import { BiMusic, BiSolidQuoteAltLeft, BiBookAlt, BiCalendar } from "react-icons/bi";
 import ReactMarkdown from "react-markdown";
+import { Community } from "@/models/community";
 
 export default function RoutinePage() {
-    const [community, setCommunity] = useState<any>(null);
+    const [community, setCommunity] = useState<Community | null>(null);
     const [lang, setLang] = useState("kn");
     const [routineItems, setRoutineItems] = useState<KnowledgeItem[]>([]);
     const [loading, setLoading] = useState(true);

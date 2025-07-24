@@ -6,16 +6,17 @@ import BottomBar from "@/components/BottomBar";
 import ClippedBanner from "@/components/ClippedBanner";
 import BottomTopSheet from "@/components/BottomTopSheet";
 import { getKnowledgeItemsByCommunity } from "@/api/getKnowledgeItemsByCommunity";
-import type { KnowledgeItem } from "@/models/KnowledgeItem";
+// import type { KnowledgeItem } from "@/models/KnowledgeItem";
 import FeatureCard from "@/components/FeatureCard";
+import { Community } from "@/models/community";
 
 export default function CommunityTab({ params }: { params: Promise<{ community_id: string }> }) {
   const { community_id } = use(params);
-  const [community, setCommunity] = useState<any>(null);
+  const [community, setCommunity] = useState<Community|null>(null);
   const [lang, setLang] = useState("kn");
   const [showSheet, setShowSheet] = useState(false);
-  const [knowledgeItems, setKnowledgeItems] = useState<KnowledgeItem[]>([]);
-  const [loading, setLoading] = useState(true);
+  // const [knowledgeItems, setKnowledgeItems] = useState<KnowledgeItem[]>([]);
+  // const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const storedLang = localStorage.getItem("preferences.lang") || "kn";
@@ -27,15 +28,16 @@ export default function CommunityTab({ params }: { params: Promise<{ community_i
 
   useEffect(() => {
     if (!community_id) return;
-    setLoading(true);
+    // setLoading(true);
     getKnowledgeItemsByCommunity(community_id)
       .then((items) => {
-        setKnowledgeItems(items);
-        setLoading(false);
+        console.log("Knowledge items fetched:", items);
+        // setKnowledgeItems(items);
+        // setLoading(false);
       })
       .catch((error) => {
         console.error("Failed to fetch knowledge items:", error);
-        setLoading(false);
+        // setLoading(false);
       });
   }, [community_id]);
 

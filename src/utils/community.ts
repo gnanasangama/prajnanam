@@ -1,4 +1,6 @@
-export function getSelectedCommunity(): any | null {
+import { Community } from "@/models/community";
+
+export function getSelectedCommunity(): Community | null {
   if (typeof window === "undefined") return null;
   const id = localStorage.getItem("community");
   if (!id) return null;

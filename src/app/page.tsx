@@ -9,7 +9,7 @@ import { getGlobalCommunity } from "@/api/getGlobalCommunity";
 import type { Community } from "@/models/community";
 
 export default function Home() {
-  const [community, setCommunity] = useState<any>(null);
+  const [community, setCommunity] = useState<Community | null>(null);
   const [globalCommunity, setGlobalCommunity] = useState<Community | null>(null);
   const [lang, setLang] = useState("kn");
   const [showSheet, setShowSheet] = useState(false);

@@ -2,15 +2,11 @@
 import { useEffect, useState } from "react";
 import AppBar from "@/components/AppBar";
 import BottomBar from "@/components/BottomBar";
-
-const communityNames: Record<string, string> = {
-  sangh: "ರಾ. ಸ್ವ. ಸಂಘ",
-  balagokula: "ಬಾಲಗೋಕುಲ",
-};
+import { Community } from "@/models/community";
 
 export default function GuideTab() {
   const [communityId, setCommunityId] = useState<string>("prajnanam");
-  const [community, setCommunity] = useState<any>(null);
+  const [community, setCommunity] = useState<Community | null>(null);
   const [lang, setLang] = useState("kn");
 
   useEffect(() => {
