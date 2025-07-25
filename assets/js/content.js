@@ -324,11 +324,12 @@ const content = {
             {
                 title: "ಶ್ರೀ ಗುರುಪೂರ್ಣಿಮೆ",
                 date: "ಆಷಾಢ ಹುಣ್ಣಿಮೆ (10 ಜುಲೈ 2025)",
-                status: "current"
+                status: "past"
             },
             {
                 title: "ರಕ್ಷಾಬಂಧನ",
                 date: "ಶ್ರಾವಣ ಹುಣ್ಣಿಮೆ (09 ಆಗಸ್ಟ್ 2025)"
+                status: "current"
             },
             {
                 title: "ಸೇವಾ ಸಾಂಘೀಕ್",
