@@ -10,7 +10,7 @@ export default function ClippedBanner({
   onMore: () => void;
 }) {
   return (
-    <div className="bg-pink-50 border border-pink-200 rounded-xl p-2 my-4 text-center">
+    <div className="bg-pink-50 border border-pink-200 rounded-xl p-2 mb-2 text-center">
       <h2 className="text-lg font-semibold text-pink-400 mb-1">{title}</h2>
       <div className="relative inline-block text-left text-gray-700 max-w-full">
         <p

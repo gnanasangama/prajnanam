@@ -43,3 +43,22 @@ export async function getKnowledgeItemsByCategory(
   if (error) throw error;
   return data as KnowledgeItem[];
 }
+
+
+export async function getKnowledgeItemsGroupedByType(
+  communityId: string,
+  category: string
+): Promise<{ type: string; items: KnowledgeItem[] }[]> {
+  const { data, error } = await supabase
+    .rpc("get_knowledge_items_grouped_by_type", {
+      community_id: communityId,
+      input_category: category
+    });
+
+  if (error) throw error;
+
+  return data.map((group: { type: string; items: KnowledgeItem[]; }) => ({
+    type: group.type,
+    items: group.items as KnowledgeItem[]
+  }));
+}

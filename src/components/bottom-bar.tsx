@@ -32,7 +32,7 @@ export default function BottomBar({
       <button
         className={`flex flex-col items-center justify-center flex-1 py-2 transition ${active === "kaipidi" ? "text-pink-400 font-semibold" : "text-gray-400"
           }`}
-        onClick={() => router.push(`/guide`)}
+        onClick={() => router.push(`/wiki`)}
       >
         <BookOpenIcon className="w-6 h-6 mb-1" />
         <span className="text-xs">ಕೈಪಿಡಿ</span>
