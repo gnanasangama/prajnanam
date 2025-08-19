@@ -27,3 +27,19 @@ export async function getRoutinesByCommunity(communityId: string): Promise<Knowl
   if (error) throw error;
   return data as KnowledgeItem[];
 }
+
+
+export async function getKnowledgeItemsByCategory(
+  communityId: string,
+  category: string
+): Promise<KnowledgeItem[]> {
+  const { data, error } = await supabase
+    .from("knowledge_items")
+    .select("*")
+    .eq("community", communityId)
+    .eq("category", category)
+    .order("created_at", { ascending: true });
+
+  if (error) throw error;
+  return data as KnowledgeItem[];
+}

@@ -47,8 +47,6 @@ export default function RoutinePage() {
             });
     }, [community]);
 
-    if (!community) return null;
-
     const header = {
         title: "ಆಷಾಢ ಮಾಸ",
         subtitle: "ಶ್ರೀ ವಿಶ್ವಾವಸು ಸಂವತ್ಸರ",
@@ -61,7 +59,7 @@ export default function RoutinePage() {
 
         if (filtered.length === 0) {
             return renderType == "calendar"
-                ? <Panchanga/>
+                ? <Panchanga />
                 : <p className="text-gray-500">ಈ ವಿಭಾಗದಲ್ಲಿ ವಿಷಯ ಲಭ್ಯವಿಲ್ಲ.</p>;
         }
 
@@ -136,13 +134,13 @@ export default function RoutinePage() {
         },
     ];
 
+    if (!community || (!loading && routineItems.length == 0)) return <p className="text-center text-gray-500 mt-50">ಯಾವುದೇ ಮಾಹಿತಿ ಲಭ್ಯವಿಲ್ಲ</p>;
+
+    if (loading) return Loader();
+
     return (
         <>
             <AppBar title={`${community.name?.[lang] || community.community_id} - ದಿನಚರಿ`} />
-            {loading && Loader()}
-            {!loading && routineItems.length === 0 && (
-                <p className="mt-8 text-center text-gray-500">No routine items found.</p>
-            )}
             <Tabs header={header} tabs={tabs} />
             <BottomBar
                 communityName={community.name?.[lang] || community.community_id}

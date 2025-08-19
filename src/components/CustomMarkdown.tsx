@@ -16,7 +16,7 @@ const CustomMarkdown = ({ content }: CustomMarkdownProps) => {
 
                 // Custom styling for blockquotes
                 blockquote: ({ children }) => (
-                    <blockquote className="border-l-4 pl-4 italic border-gray-400 my-4">
+                    <blockquote className="border-l-4 pl-4 italic border-gray-400 my-4 text-left">
                         {children}
                     </blockquote>
                 ),
@@ -30,6 +30,9 @@ const CustomMarkdown = ({ content }: CustomMarkdownProps) => {
                 ),
                 h3: ({ children }) => (
                     <h3 className="text-xl font-semibold text-gray-700 mt-2 mb-1">{children}</h3>
+                ),
+                h4: ({ children }) => (
+                    <h3 className="text-lg font-semibold text-gray-700 mt-2 mb-1">{children}</h3>
                 ),
 
                 // Custom styling for lists

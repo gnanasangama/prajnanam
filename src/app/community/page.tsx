@@ -67,8 +67,15 @@ export default function CommunityTab() {
       <FeatureCard
         title="ಶಾಖಾ ದಿನಚರಿ"
         subtitle="ಶ್ರೀ ವಿಶ್ವಾವಸು ಸಂವತ್ಸರ"
-        image="/images/sangh-shaakha.png"
+        image={`/images/features/${community.community_id}.png`}
         link="/community/routine"
+      />
+
+      <FeatureCard
+        title="ವಾರ್ಷಿಕ ಯೋಜನೆ"
+        subtitle="ಶ್ರೀ ವಿಶ್ವಾವಸು ಸಂವತ್ಸರ"
+        image={`/images/features/annual-plan.png`}
+        link="/community/annual-plan"
       />
 
       <BottomBar

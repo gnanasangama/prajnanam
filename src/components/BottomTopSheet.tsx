@@ -1,5 +1,6 @@
 import { XMarkIcon } from "@heroicons/react/24/solid";
 import React, { useEffect } from "react";
+import CustomMarkdown from "./CustomMarkdown";
 
 export default function BottomTopSheet({
   open,
@@ -43,9 +44,7 @@ export default function BottomTopSheet({
 
         {/* Scrollable Content */}
         <div className="px-4 py-2 overflow-y-auto flex-1">
-          <p className="text-gray-700 text-justify whitespace-pre-line">
-            {description}
-          </p>
+          <CustomMarkdown content={description} />
         </div>
       </div>
     </div>
