@@ -3,11 +3,9 @@ import React from "react";
 import { useRouter } from "next/navigation";
 
 export default function BottomBar({
-  communityId,
   communityName,
   active = "home",
 }: {
-  communityId: string;
   communityName: string;
   active?: "home" | "community" | "kaipidi";
 }) {
@@ -26,7 +24,7 @@ export default function BottomBar({
       <button
         className={`flex flex-col items-center justify-center flex-1 py-2 transition ${active === "community" ? "text-pink-400 font-semibold" : "text-gray-400"
           }`}
-        onClick={() => router.push(`/${communityId}`)}
+        onClick={() => router.push(`/community`)}
       >
         <UsersIcon className="w-6 h-6 mb-1" />
         <span className="text-xs">{communityName}</span>

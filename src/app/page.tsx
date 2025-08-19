@@ -16,11 +16,11 @@ export default function Home() {
   const router = useRouter();
 
   useEffect(() => {
-    const stored = localStorage.getItem("community");
-    if (!stored) {
+    const selectedCommunity = localStorage.getItem("selectedCommunity");
+    if (!selectedCommunity) {
       router.replace("/select-community");
     } else {
-      setCommunity(JSON.parse(localStorage.getItem(`selectedCommunity`) || "{}"));
+      setCommunity(JSON.parse(selectedCommunity || "{}"));
     }
     setLang(localStorage.getItem("preferences.lang") || "kn");
     getGlobalCommunity().then(setGlobalCommunity);
@@ -44,12 +44,12 @@ export default function Home() {
             title={globalCommunity.name?.[lang] || globalCommunity.name?.en || "Prajnanam"}
             description={globalCommunity.description?.[lang] || globalCommunity.description?.en}
           />
-      <main className="flex flex-col items-center justify-center min-h-[70vh] px-4 pt-14 pb-16">
-        <h1 className="text-xl font-semibold text-center">{globalCommunity.name?.[lang] || globalCommunity.community_id} - ಮುಖಪುಟ</h1>
-      </main>
+          <main className="flex flex-col items-center justify-center min-h-[70vh] px-4 pt-14 pb-16">
+            <h1 className="text-xl font-semibold text-center">{globalCommunity.name?.[lang] || globalCommunity.community_id} - ಮುಖಪುಟ</h1>
+          </main>
         </>
       )}
-      <BottomBar communityId={community.community_id} communityName={community.name?.[lang] || community.community_id} active="home" />
+      <BottomBar communityName={community.name?.[lang] || community.community_id} active="home" />
     </>
   );
 }

@@ -8,8 +8,10 @@ import type { KnowledgeItem } from "@/models/KnowledgeItem";
 import Loader from "@/components/Loader";
 import Tabs from "@/components/Tabs";
 import { BiMusic, BiSolidQuoteAltLeft, BiBookAlt, BiCalendar } from "react-icons/bi";
-import ReactMarkdown from "react-markdown";
 import { Community } from "@/models/community";
+import { useRouter } from "next/navigation";
+import CustomMarkdown from "@/components/CustomMarkdown";
+import Panchanga from "@/components/Panchanga";
 
 export default function RoutinePage() {
     const [community, setCommunity] = useState<Community | null>(null);
@@ -17,13 +19,18 @@ export default function RoutinePage() {
     const [routineItems, setRoutineItems] = useState<KnowledgeItem[]>([]);
     const [loading, setLoading] = useState(true);
     const [selectedId, setSelectedId] = useState<string | null>(null);
+    const router = useRouter();
 
     useEffect(() => {
         const storedLang = localStorage.getItem("preferences.lang") || "kn";
         setLang(storedLang);
 
-        const data = localStorage.getItem(`selectedCommunity`);
-        if (data) setCommunity(JSON.parse(data));
+        const selectedCommunity = localStorage.getItem("selectedCommunity");
+        if (!selectedCommunity) {
+            router.replace("/select-community");
+        } else {
+            setCommunity(JSON.parse(selectedCommunity || "{}"));
+        }
     }, []);
 
     useEffect(() => {
@@ -49,11 +56,13 @@ export default function RoutinePage() {
     };
 
 
-    const renderItems = (type: string) => {
-        const filtered = routineItems.filter((item) => item.type === type);
+    const renderItems = (renderType: string) => {
+        const filtered = routineItems.filter((item) => item.type === renderType);
 
         if (filtered.length === 0) {
-            return <p className="text-gray-500">ಈ ವಿಭಾಗದಲ್ಲಿ ವಿಷಯ ಲಭ್ಯವಿಲ್ಲ.</p>;
+            return renderType == "calendar"
+                ? <Panchanga/>
+                : <p className="text-gray-500">ಈ ವಿಭಾಗದಲ್ಲಿ ವಿಷಯ ಲಭ್ಯವಿಲ್ಲ.</p>;
         }
 
         const activeItem = selectedId
@@ -91,19 +100,9 @@ export default function RoutinePage() {
                     )}
 
                     <div className="prose prose-sm sm:prose lg:prose-lg max-w-none">
-                        <ReactMarkdown
-                            components={{
-                                hr: () => <hr className="my-4 border-t border-gray-300" />,
-                                blockquote: ({ children }) => (
-                                    <blockquote className="border-l-4 pl-4 italic border-gray-400">
-                                        {children}
-                                    </blockquote>
-                                ),
-                            }}
-                        >{activeItem.type != "shloka"
+                        <CustomMarkdown content={activeItem.type == "song"
                             ? activeItem.content.replace(/\n/g, '\n &nbsp;').replace(/\n/g, '  \n')
-                            : activeItem.content}
-                        </ReactMarkdown>
+                            : activeItem.content} />
                     </div>
                 </div>
             </div>
@@ -146,7 +145,6 @@ export default function RoutinePage() {
             )}
             <Tabs header={header} tabs={tabs} />
             <BottomBar
-                communityId={community.community_id}
                 communityName={community.name?.[lang] || community.community_id}
                 active="community"
             />

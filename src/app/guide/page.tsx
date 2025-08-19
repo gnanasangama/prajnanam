@@ -5,7 +5,6 @@ import BottomBar from "@/components/bottom-bar";
 import { Community } from "@/models/community";
 
 export default function GuideTab() {
-  const [communityId, setCommunityId] = useState<string>("prajnanam");
   const [community, setCommunity] = useState<Community | null>(null);
   const [lang, setLang] = useState("kn");
 
@@ -14,16 +13,10 @@ export default function GuideTab() {
     const storedLang = localStorage.getItem("preferences.lang") || "kn";
     setLang(storedLang);
 
-    // Get community ID from localStorage
-    setCommunityId(localStorage.getItem("community") || "prajnanam");
-  }, []);
-
-
-  useEffect(() => {
     // Get community object from localStorage
     const data = localStorage.getItem(`selectedCommunity`);
     if (data) setCommunity(JSON.parse(data));
-  }, [communityId]);
+  }, []);
 
   if (!community) return null;
 
@@ -33,7 +26,7 @@ export default function GuideTab() {
       <main className="flex flex-col items-center justify-center min-h-[70vh] px-4 pt-14 pb-16">
         <h1 className="text-xl font-semibold text-center">{community.name?.[lang] || community.community_id} - ಕೈಪಿಡಿ</h1>
       </main>
-      <BottomBar communityId={communityId} communityName={community.name?.[lang] || community.community_id} active="kaipidi" />
+      <BottomBar communityName={community.name?.[lang] || community.community_id} active="kaipidi" />
     </>
   );
 }

@@ -18,7 +18,6 @@ export default function SelectCommunity() {
     if (selected) {
       const selectedObj = communities.find((c) => c.community_id === selected);
       if (selectedObj) {
-        localStorage.setItem("community", selected);
         localStorage.setItem(
           `selectedCommunity`,
           JSON.stringify(selectedObj)

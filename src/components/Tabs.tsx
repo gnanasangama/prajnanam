@@ -54,7 +54,7 @@ export default function Tabs({ header, tabs }: TabsProps) {
             </div>
 
             {/* Tab Content */}
-            <div className="bg-white border border-gray-300 rounded-xl shadow transition p-3">
+            <div className="bg-white border border-gray-300 rounded-xl transition p-3">
                 {tabs.map((tab) =>
                     activeTab === tab.id ? (
                         <div key={tab.id} className="text-center text-base text-gray-700">
