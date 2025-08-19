@@ -15,7 +15,7 @@ export default function FeatureCard({ title, subtitle, image, link }: FeatureCar
   return (
     <div
       onClick={() => router.push(link)}
-      className="relative mb-4 w-full max-w-md h-[220px] rounded-lg overflow-hidden cursor-pointer select-none"
+      className="relative mb-4 w-full max-w-md h-[180px] rounded-lg overflow-hidden cursor-pointer select-none"
     >
       {/* Background image */}
       <div

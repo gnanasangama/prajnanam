@@ -28,7 +28,7 @@ export default function Tabs({ header, tabs }: TabsProps) {
 
             {/* Card Header */}
             {header && (
-                <div className="bg-white shadow rounded p-4 text-center">
+                <div className="p-4 text-center">
                     <h5 className="text-lg font-semibold">{header.title}</h5>
                     <h6 className="text-md text-gray-600">{header.subtitle}</h6>
                     <p className="text-sm text-gray-500">{header.dates}</p>
