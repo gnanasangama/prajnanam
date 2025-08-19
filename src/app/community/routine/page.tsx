@@ -47,12 +47,6 @@ export default function RoutinePage() {
             });
     }, [community]);
 
-    const header = {
-        title: "ಆಷಾಢ ಮಾಸ",
-        subtitle: "ಶ್ರೀ ವಿಶ್ವಾವಸು ಸಂವತ್ಸರ",
-        dates: "ಜೂನ್ 26 ರಿಂದ ಜುಲೈ 24 2025",
-    };
-
 
     const renderItems = (renderType: string) => {
         const filtered = routineItems.filter((item) => item.type === renderType);
@@ -141,7 +135,7 @@ export default function RoutinePage() {
     return (
         <>
             <AppBar title={`${community.name?.[lang] || community.community_id} - ದಿನಚರಿ`} />
-            <Tabs header={header} tabs={tabs} />
+            <Tabs header={community?.properties?.routine.header ?? undefined} tabs={tabs} />
             <BottomBar
                 communityName={community.name?.[lang] || community.community_id}
                 active="community"

@@ -1,5 +1,6 @@
 'use client';
 
+import { Properties } from '@/models/community';
 import { useState, ReactNode } from 'react';
 
 type Tab = {
@@ -9,20 +10,13 @@ type Tab = {
     content: ReactNode | (() => ReactNode);
 };
 
-type Header = {
-    title: string;
-    subtitle: string;
-    dates: string;
-};
-
 type TabsProps = {
-    header?: Header;
+    header?: Properties['routine']['header'];
     tabs: Tab[];
 };
 
 export default function Tabs({ header, tabs }: TabsProps) {
     const [activeTab, setActiveTab] = useState(tabs?.[0]?.id || '');
-
     return (
         <div className="space-y-4">
 
@@ -30,8 +24,8 @@ export default function Tabs({ header, tabs }: TabsProps) {
             {header && (
                 <div className="p-4 text-center">
                     <h5 className="text-lg font-semibold">{header.title}</h5>
-                    <h6 className="text-md text-gray-600">{header.subtitle}</h6>
-                    <p className="text-sm text-gray-500">{header.dates}</p>
+                    {header.subtitle && <h6 className="text-md text-gray-600">{header.subtitle}</h6>}
+                    {header.tagline && <p className="text-sm text-gray-500">{header.tagline}</p>}
                 </div>
             )}
 
