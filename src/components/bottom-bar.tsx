@@ -10,7 +10,7 @@ export default function BottomBar({
   communityName: string;
   active?: "home" | "community" | "kaipidi";
 }) {
-  const { community, lang } = useApp();
+  const { lang } = useApp();
   const router = useRouter();
 
   return (

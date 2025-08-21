@@ -89,7 +89,7 @@ const CustomMarkdown = ({ content }: CustomMarkdownProps) => {
                     <img src={src} alt={alt} className="max-w-full h-auto my-4" />
                 ),
             }}
-        >{content}</ReactMarkdown>
+        >{normalizedContent}</ReactMarkdown>
     );
 };
 
