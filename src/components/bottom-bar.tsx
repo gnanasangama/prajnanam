@@ -1,6 +1,7 @@
 import { HomeIcon, UsersIcon, BookOpenIcon } from "@heroicons/react/24/solid";
 import React from "react";
 import { useRouter } from "next/navigation";
+import { useApp } from "@/context/AppContext";
 
 export default function BottomBar({
   communityName,
@@ -9,6 +10,7 @@ export default function BottomBar({
   communityName: string;
   active?: "home" | "community" | "kaipidi";
 }) {
+  const { community, lang } = useApp();
   const router = useRouter();
 
   return (
@@ -19,7 +21,7 @@ export default function BottomBar({
         onClick={() => router.push(`/`)}
       >
         <HomeIcon className="w-6 h-6 mb-1" />
-        <span className="text-xs">ಮುಖಪುಟ</span>
+        <span className="text-xs">{lang == 'kn' ? "ಮುಖಪುಟ" : "Home"}</span>
       </button>
       <button
         className={`flex flex-col items-center justify-center flex-1 py-2 transition ${active === "community" ? "text-pink-400 font-semibold" : "text-gray-400"
@@ -35,7 +37,7 @@ export default function BottomBar({
         onClick={() => router.push(`/wiki`)}
       >
         <BookOpenIcon className="w-6 h-6 mb-1" />
-        <span className="text-xs">ಕೈಪಿಡಿ</span>
+        <span className="text-xs">{lang == 'kn' ? "ಕೈಪಿಡಿ" : "Wiki"}</span>
       </button>
     </nav>
   );

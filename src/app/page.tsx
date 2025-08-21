@@ -21,7 +21,7 @@ export default function Home() {
 
   return (
     <>
-      <AppBar title="ಪ್ರಜ್ಞಾನಂ" />
+      <AppBar title={globalCommunity.name?.[lang] || "ಪ್ರಜ್ಞಾನಂ"} />
       <ClippedBanner
         title={globalCommunity.name?.[lang] || globalCommunity.name?.en || "Prajnanam"}
         description={globalCommunity.description?.[lang] || globalCommunity.description?.en}
@@ -38,9 +38,9 @@ export default function Home() {
           {globalCommunity.name?.[lang] || globalCommunity.community_id} - ಮುಖಪುಟ
         </h1>
       </main>
-      <BottomBar 
-        communityName={community.name?.[lang] || community.community_id} 
-        active="home" 
+      <BottomBar
+        communityName={community.name?.[lang] || community.community_id}
+        active="home"
       />
     </>
   );
