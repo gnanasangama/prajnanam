@@ -8,44 +8,29 @@ import type { KnowledgeItem } from "@/models/KnowledgeItem";
 import Loader from "@/components/Loader";
 import Tabs from "@/components/Tabs";
 import { BiMusic, BiSolidQuoteAltLeft, BiBookAlt, BiCalendar } from "react-icons/bi";
-import { Community } from "@/models/community";
-import { useRouter } from "next/navigation";
+import { useApp } from '@/context/AppContext'
 import CustomMarkdown from "@/components/CustomMarkdown";
 import Panchanga from "@/components/Panchanga";
 
 export default function RoutinePage() {
-    const [community, setCommunity] = useState<Community | null>(null);
-    const [lang, setLang] = useState("kn");
-    const [routineItems, setRoutineItems] = useState<KnowledgeItem[]>([]);
-    const [loading, setLoading] = useState(true);
-    const [selectedId, setSelectedId] = useState<string | null>(null);
-    const router = useRouter();
+    const { community, lang } = useApp()
+    const [routineItems, setRoutineItems] = useState<KnowledgeItem[]>([])
+    const [loading, setLoading] = useState(true)
+    const [selectedId, setSelectedId] = useState<string | null>(null)
 
     useEffect(() => {
-        const storedLang = localStorage.getItem("preferences.lang") || "kn";
-        setLang(storedLang);
-
-        const selectedCommunity = localStorage.getItem("selectedCommunity");
-        if (!selectedCommunity) {
-            router.replace("/select-community");
-        } else {
-            setCommunity(JSON.parse(selectedCommunity || "{}"));
-        }
-    }, []);
-
-    useEffect(() => {
-        if (!community) return;
-        setLoading(true);
+        if (!community) return
+        setLoading(true)
         getRoutinesByCommunity(community.community_id)
             .then((items) => {
-                setRoutineItems(items);
-                setLoading(false);
+                setRoutineItems(items)
+                setLoading(false)
             })
             .catch((error) => {
-                console.error("Failed to fetch routine items:", error);
-                setLoading(false);
-            });
-    }, [community]);
+                console.error("Failed to fetch routine items:", error)
+                setLoading(false)
+            })
+    }, [community])
 
 
     const renderItems = (renderType: string) => {

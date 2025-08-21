@@ -1,6 +1,8 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { getLang, setLang } from "@/utils/cookies";
+import { useApp } from "@/context/AppContext";
 
 const languages = [
   { code: "kn", label: "ಕನ್ನಡ" },
@@ -8,16 +10,14 @@ const languages = [
 ];
 
 export default function SelectLanguage() {
-  const [selected, setSelected] = useState<string>(() =>
-    typeof window !== "undefined"
-      ? localStorage.getItem("preferences.lang") || "kn"
-      : "kn"
-  );
+  const [selected, setSelected] = useState<string>(() => getLang());
+  const { setLang: setAppLang } = useApp();
   const router = useRouter();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    localStorage.setItem("preferences.lang", selected);
+    setLang(selected);
+    setAppLang(selected);
     router.replace("/");
   };
 
@@ -28,11 +28,10 @@ export default function SelectLanguage() {
         {languages.map((lang) => (
           <label
             key={lang.code}
-            className={`flex items-center p-3 border rounded-4xl cursor-pointer transition-colors ${
-              selected === lang.code
-                ? "border-pink-400 text-pink-400 font-semibold bg-pink-50"
-                : "border-gray-300 bg-white"
-            }`}
+            className={`flex items-center p-3 border rounded-4xl cursor-pointer transition-colors ${selected === lang.code
+              ? "border-pink-400 text-pink-400 font-semibold bg-pink-50"
+              : "border-gray-300 bg-white"
+              }`}
           >
             <input
               type="radio"

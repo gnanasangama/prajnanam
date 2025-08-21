@@ -4,29 +4,14 @@ import { getKnowledgeItemsByCategory } from '@/api/getKnowledgeItemsByCommunity'
 import AppBar from '@/components/app-bar';
 import BottomBar from '@/components/bottom-bar';
 import Loader from '@/components/Loader';
-import { Community } from '@/models/community';
 import { EventType } from '@/models/KnowledgeItem';
-import { useRouter } from 'next/navigation';
+import { useApp } from '@/context/AppContext';
 import React, { useEffect, useState } from 'react';
 
 export default function AnnualPlan() {
-    const [community, setCommunity] = useState<Community | null>(null);
-    const [lang, setLang] = useState("kn");
+    const { community, lang } = useApp();
     const [annualPlan, setAnnualPlan] = useState<EventType[]>([]);
     const [loading, setLoading] = useState(true);
-    const router = useRouter();
-
-    useEffect(() => {
-        const storedLang = localStorage.getItem("preferences.lang") || "kn";
-        setLang(storedLang);
-
-        const selectedCommunity = localStorage.getItem("selectedCommunity");
-        if (!selectedCommunity) {
-            router.replace("/select-community");
-        } else {
-            setCommunity(JSON.parse(selectedCommunity || "{}"));
-        }
-    }, []);
 
     useEffect(() => {
         if (!community) return;
@@ -34,10 +19,8 @@ export default function AnnualPlan() {
         getKnowledgeItemsByCategory(community.community_id, 'calendar')
             .then((items) => {
                 const annualPlanItem = items.find(item => item.type === "annual_plan");
-                if (annualPlanItem && annualPlanItem.content) {
-                    // Parse the JSON content string
-                    const content = JSON.parse(annualPlanItem.content);
-                    setAnnualPlan(content);
+                if (annualPlanItem?.content) {
+                    setAnnualPlan(JSON.parse(annualPlanItem.content));
                 }
                 setLoading(false);
             })
@@ -47,7 +30,9 @@ export default function AnnualPlan() {
             });
     }, [community]);
 
-    if (!community || (!loading && annualPlan.length == 0)) return <p className="text-center text-gray-500 mt-50">ಯಾವುದೇ ಮಾಹಿತಿ ಲಭ್ಯವಿಲ್ಲ</p>;
+    if (!community || (!loading && annualPlan.length == 0)) {
+        return <p className="text-center text-gray-500 mt-50">ಯಾವುದೇ ಮಾಹಿತಿ ಲಭ್ಯವಿಲ್ಲ</p>;
+    }
 
     if (loading) return Loader();
 

@@ -3,11 +3,14 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { getCommunities } from "@/api/getCommunities";
 import type { Community } from "@/models/community";
+import { setCommunity } from "@/utils/cookies";
+import { useApp } from "@/context/AppContext";
 
 export default function SelectCommunity() {
   const [communities, setCommunities] = useState<Community[]>([]);
   const [selected, setSelected] = useState<string>("");
   const router = useRouter();
+  const { setCommunity: setAppCommunity } = useApp();
 
   useEffect(() => {
     getCommunities().then(setCommunities).catch(console.error);
@@ -18,10 +21,9 @@ export default function SelectCommunity() {
     if (selected) {
       const selectedObj = communities.find((c) => c.community_id === selected);
       if (selectedObj) {
-        localStorage.setItem(
-          `selectedCommunity`,
-          JSON.stringify(selectedObj)
-        );
+        // Update both cookie and context
+        setCommunity(selectedObj);
+        setAppCommunity(selectedObj);
         router.replace("/");
       }
     }

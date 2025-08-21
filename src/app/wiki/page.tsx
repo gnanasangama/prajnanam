@@ -1,31 +1,23 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 import AppBar from "@/components/app-bar";
 import BottomBar from "@/components/bottom-bar";
 import Loader from "@/components/Loader";
 import BottomTopSheet from "@/components/BottomTopSheet";
 import { getKnowledgeItemsGroupedByType } from "@/api/getKnowledgeItemsByCommunity";
-import type { Community } from "@/models/community";
 import type { KnowledgeItem } from "@/models/KnowledgeItem";
+import { useApp } from "@/context/AppContext";
 
 export default function WikiTab() {
-  const [community, setCommunity] = useState<Community | null>(null);
-  const [lang, setLang] = useState("kn");
-
+  const { community, lang } = useApp();
   const [communityWikiItems, setCommunityWikiItems] = useState<{ type: string; items: KnowledgeItem[] }[]>([]);
   const [globalWikiItems, setGlobalWikiItems] = useState<{ type: string; items: KnowledgeItem[] }[]>([]);
-
   const [loading, setLoading] = useState(true);
-
   const [openCommunityIndex, setOpenCommunityIndex] = useState<number | null>(null);
   const [openGlobalIndex, setOpenGlobalIndex] = useState<number | null>(null);
-
   const [selectedItem, setSelectedItem] = useState<KnowledgeItem | null>(null);
   const [showSheet, setShowSheet] = useState(false);
-
-  const router = useRouter();
 
   const toggleIndex = (index: number, type: "community" | "global") => {
     if (type === "community") {
@@ -34,18 +26,6 @@ export default function WikiTab() {
       setOpenGlobalIndex(openGlobalIndex === index ? null : index);
     }
   };
-
-  useEffect(() => {
-    const storedLang = localStorage.getItem("preferences.lang") || "kn";
-    setLang(storedLang);
-
-    const selectedCommunity = localStorage.getItem("selectedCommunity");
-    if (!selectedCommunity) {
-      router.replace("/select-community");
-    } else {
-      setCommunity(JSON.parse(selectedCommunity));
-    }
-  }, []);
 
   useEffect(() => {
     if (!community) return;
