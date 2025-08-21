@@ -1,0 +1,24 @@
+{
+  "name": "Prajnanam",
+  "short_name": "Prajnanam",
+  "description": "Knowledge Base for Sanskrit Communities",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "orientation": "portrait",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "/images/brand/icon-without-bg.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/brand/icon-without-bg.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
