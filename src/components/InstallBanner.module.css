@@ -1,0 +1,102 @@
+.banner {
+    position: fixed;
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+    background-color: #ffffff;
+    border-radius: 1rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    padding: 1rem;
+    z-index: 1000;
+    animation: slideUp 0.3s ease-out;
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.content {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    position: relative;
+}
+
+.iconContainer {
+    position: relative;
+    width: 5rem;
+    height: auto;
+    flex-shrink: 0;
+}
+
+.appIcon {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+}
+
+.closeButton {
+    position: absolute;
+    top: -0.5rem;
+    right: -0.5rem;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 9999px;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+}
+
+.closeButton:hover {
+    background: #f2f2f2;
+    color: #000;
+}
+
+.textContent {
+    flex: 1;
+    text-align: center;
+}
+
+.textContent strong {
+    font-size: 1rem;
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.textContent p {
+    font-size: 0.875rem;
+    color: #555;
+    margin: 0;
+}
+
+.installButton {
+    margin-top: 1rem;
+    width: 100%;
+    background-color: #EC4899;
+    color: white;
+    border: none;
+    padding: 0.75rem;
+    border-radius: 2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    font-size: 1rem;
+}
+
+.installButton:hover {
+    background-color: #db2777;
+}

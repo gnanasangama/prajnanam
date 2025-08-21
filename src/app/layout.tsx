@@ -19,7 +19,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Prajnanam",
   description: "Knowledge Base for Communities",
-  // manifest: "/manifest.json",
+  manifest: "/manifest.json",
   icons: {
     apple: "/images/brand/icon-without-bg.png",
     icon: "/images/brand/icon-without-bg.png",

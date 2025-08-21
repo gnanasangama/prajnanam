@@ -6,7 +6,9 @@ export function middleware(request: NextRequest) {
     if (
         request.nextUrl.pathname.startsWith('/api') ||
         request.nextUrl.pathname.startsWith('/_next') ||
-        request.nextUrl.pathname.startsWith('/select-community')
+        request.nextUrl.pathname.startsWith('/select-community') ||
+        request.nextUrl.pathname.startsWith('/manifest.json') ||
+        request.nextUrl.pathname.startsWith('/images')
     ) {
         return NextResponse.next()
     }
