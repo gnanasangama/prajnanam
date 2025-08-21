@@ -1,14 +1,33 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw';
+import remarkBreaks from 'remark-breaks';
+import remarkGfm from 'remark-gfm';
 
 interface CustomMarkdownProps {
     content: string;
 }
 
+function convertCenterBlocks(md: string) {
+    return md.replace(
+        /<center>([\s\S]*?)<\/center>/g,
+        (_, inner) => {
+            const withBreaks = inner.trim().replace(/\n/g, '<br />');
+            return `<center>${withBreaks}</center>`;
+        }
+    );
+}
+
 const CustomMarkdown = ({ content }: CustomMarkdownProps) => {
+    const normalizedContent = convertCenterBlocks(content);
     return (
         <ReactMarkdown
+            remarkPlugins={[remarkGfm, remarkBreaks]}
+            rehypePlugins={[rehypeRaw]}
             components={{
+                center: ({ children }) => (
+                    <div className="text-center my-4">{children}</div>
+                ),
                 // Custom styling for horizontal rule (hr)
                 hr: () => (
                     <hr className="my-4 border-t border-gray-300" />
