@@ -8,7 +8,8 @@ export async function getKnowledgeItemsByCommunity(
     .from("knowledge_items")
     .select("*")
     .eq("community", communityId)
-    .order("created_at", { ascending: true });
+    .eq("is_visible", true)
+    .order("sequence", { ascending: true });
 
   if (error) throw error;
   return data as KnowledgeItem[];
@@ -20,7 +21,8 @@ export async function getRoutinesByCommunity(communityId: string): Promise<Knowl
     .select("*")
     .eq("community", communityId)
     .eq("is_visible", true)
-    .eq("category", 'routine');
+    .eq("category", 'routine')
+    .order("sequence", { ascending: true });
 
   const { data, error } = await query.order("created_at", { ascending: false });
 
@@ -38,7 +40,8 @@ export async function getKnowledgeItemsByCategory(
     .select("*")
     .eq("community", communityId)
     .eq("category", category)
-    .order("created_at", { ascending: true });
+    .eq("is_visible", true)
+    .order("sequence", { ascending: true });
 
   if (error) throw error;
   return data as KnowledgeItem[];
