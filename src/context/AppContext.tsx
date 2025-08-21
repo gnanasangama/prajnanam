@@ -2,7 +2,8 @@
 
 import React, { createContext, useContext, useState, useEffect } from 'react'
 import type { Community } from '@/models/community'
-import { getCommunity, getLang } from '@/utils/cookies'
+import { getCommunity, getLang, setCommunity as setCookieCommunity } from '@/utils/cookies'
+import { getCommunityById } from '@/api/getCommunities';
 
 interface AppContextType {
     community: Community | null
@@ -19,7 +20,23 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
 
     useEffect(() => {
         setLang(getLang())
-        setCommunity(getCommunity())
+
+        const storedCommunity = getCommunity()
+        if (storedCommunity) {
+            // First set from cookie to avoid blank screen
+            setCommunity(storedCommunity)
+
+            // Then fetch fresh data
+            getCommunityById(storedCommunity.community_id)
+                .then(freshCommunity => {
+                    setCommunity(freshCommunity)
+                    // Update cookie with fresh data
+                    setCookieCommunity(freshCommunity)
+                })
+                .catch(error => {
+                    console.error('Failed to refresh community data:', error)
+                })
+        }
     }, [])
 
     return (
