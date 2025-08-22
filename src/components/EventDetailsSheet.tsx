@@ -43,18 +43,17 @@ export default function EventDetailsSheet({ open, onClose, event }: EventDetails
                 </div>
 
                 {/* Scrollable Content */}
-                <div className="px-4 py-3 overflow-y-auto flex-1 space-y-3">
+                <div className="px-3 py-3 overflow-y-auto flex-1 space-y-3">
                     {/* Image */}
-                    {event.image_url && (
-                        <div className="w-full max-h-100 bg-gray-100 rounded-lg overflow-hidden">
+                    {event.image_url &&
+                        (<div className="flex justify-center items-center bg-gray-100 rounded-lg">
                             <img
                                 src={event.image_url}
                                 alt={event.title}
-                                className="w-full h-full object-fill"
+                                className="h-auto w-auto rounded-lg"
                                 loading="lazy"
                             />
-                        </div>
-                    )}
+                        </div>)}
 
                     <hr className="mb-2 border-gray-300" />
 
