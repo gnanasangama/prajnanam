@@ -7,6 +7,7 @@ import BottomTopSheet from "@/components/BottomTopSheet";
 import { getGlobalCommunity } from "@/api/getGlobalCommunity";
 import type { Community } from "@/models/community";
 import { useApp } from "@/context/AppContext";
+import WhatsAppFloatButton from "@/components/WhatsAppFloatButton";
 
 export default function Home() {
   const { community, lang } = useApp();
@@ -22,22 +23,21 @@ export default function Home() {
   return (
     <>
       <AppBar title={globalCommunity.name?.[lang] || "ಪ್ರಜ್ಞಾನಂ"} />
-      <ClippedBanner
-        title={globalCommunity.name?.[lang] || globalCommunity.name?.en || "Prajnanam"}
-        description={globalCommunity.description?.[lang] || globalCommunity.description?.en}
-        onMore={() => setShowSheet(true)}
-      />
-      <BottomTopSheet
-        open={showSheet}
-        onClose={() => setShowSheet(false)}
-        title={globalCommunity.name?.[lang] || globalCommunity.name?.en || "Prajnanam"}
-        description={globalCommunity.description?.[lang] || globalCommunity.description?.en}
-      />
-      <main className="flex flex-col items-center justify-center min-h-[70vh] px-4 pt-14 pb-16">
-        <h1 className="text-xl font-semibold text-center">
-          {globalCommunity.name?.[lang] || globalCommunity.community_id} - ಮುಖಪುಟ
-        </h1>
+      <main className="flex flex-col min-h-[70vh]">
+        <ClippedBanner
+          title={globalCommunity.name?.[lang] || globalCommunity.name?.en || "Prajnanam"}
+          description={globalCommunity.description?.[lang] || globalCommunity.description?.en}
+          onMore={() => setShowSheet(true)}
+        />
+        <BottomTopSheet
+          open={showSheet}
+          onClose={() => setShowSheet(false)}
+          title={globalCommunity.name?.[lang] || globalCommunity.name?.en || "Prajnanam"}
+          description={globalCommunity.description?.[lang] || globalCommunity.description?.en}
+        />
+        <WhatsAppFloatButton />
       </main>
+
       <BottomBar
         communityName={community.name?.[lang] || community.community_id}
         active="home"

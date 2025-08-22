@@ -8,6 +8,7 @@ import BottomTopSheet from "@/components/BottomTopSheet";
 import { getKnowledgeItemsGroupedByType } from "@/api/getKnowledgeItemsByCommunity";
 import type { KnowledgeItem } from "@/models/KnowledgeItem";
 import { useApp } from "@/context/AppContext";
+import WhatsAppFloatButton from "@/components/WhatsAppFloatButton";
 
 export default function WikiTab() {
   const { community, lang } = useApp();
@@ -99,6 +100,8 @@ export default function WikiTab() {
           description={selectedItem.content || "ವಿವರಗಳು ಲಭ್ಯವಿಲ್ಲ"}
         />
       )}
+
+      <WhatsAppFloatButton />
 
       <BottomBar
         communityName={community.name?.[lang] || community.community_id}

@@ -6,6 +6,7 @@ import BottomBar from "@/components/bottom-bar";
 import FeatureCard from "@/components/FeatureCard";
 import { useApp } from "@/context/AppContext";
 import WikiWidget from "@/components/wikiWidget";
+import WhatsAppFloatButton from "@/components/WhatsAppFloatButton";
 
 export default function CommunityTab() {
   const { community, lang } = useApp();
@@ -34,6 +35,8 @@ export default function CommunityTab() {
       {community.features.wiki &&
         <WikiWidget />}
 
+      <WhatsAppFloatButton />
+      
       <BottomBar
         communityName={community.name?.[lang] || community.community_id}
         active="community"
