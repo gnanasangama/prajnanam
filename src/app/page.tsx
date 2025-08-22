@@ -8,6 +8,7 @@ import { getGlobalCommunity } from "@/api/getGlobalCommunity";
 import type { Community } from "@/models/community";
 import { useApp } from "@/context/AppContext";
 import WhatsAppFloatButton from "@/components/WhatsAppFloatButton";
+import EventsWidget from "@/components/eventWidget";
 
 export default function Home() {
   const { community, lang } = useApp();
@@ -35,6 +36,9 @@ export default function Home() {
           title={globalCommunity.name?.[lang] || globalCommunity.name?.en || "Prajnanam"}
           description={globalCommunity.description?.[lang] || globalCommunity.description?.en}
         />
+        
+        <EventsWidget />
+
         <WhatsAppFloatButton />
       </main>
 
