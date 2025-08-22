@@ -7,9 +7,13 @@ import FeatureCard from "@/components/FeatureCard";
 import { useApp } from "@/context/AppContext";
 import WikiWidget from "@/components/wikiWidget";
 import WhatsAppFloatButton from "@/components/WhatsAppFloatButton";
+import { pageview } from "@/utils/analytics";
 
 export default function CommunityTab() {
   const { community, lang } = useApp();
+
+  // Track page view
+  pageview('/community', `Community - ${community?.name[lang] || community?.community_id}`);
 
   if (!community) return null;
 

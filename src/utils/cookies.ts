@@ -11,7 +11,7 @@ export const StorageKeys = {
 const isClient = typeof window !== 'undefined'
 
 export function setCommunityId(communityId: string) {
-    Cookies.set(StorageKeys.COMMUNITY_ID, communityId)
+    Cookies.set(StorageKeys.COMMUNITY_ID, communityId, { expires: 30 }) // expires in 30 days
 }
 
 export function getCommunityId(): string | null {

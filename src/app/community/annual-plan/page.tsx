@@ -7,11 +7,15 @@ import Loader from '@/components/Loader';
 import { EventType } from '@/models/KnowledgeItem';
 import { useApp } from '@/context/AppContext';
 import React, { useEffect, useState } from 'react';
+import { pageview } from '@/utils/analytics';
 
 export default function AnnualPlan() {
     const { community, lang } = useApp();
     const [annualPlan, setAnnualPlan] = useState<EventType[]>([]);
     const [loading, setLoading] = useState(true);
+
+    // Track page view
+    pageview('/community/annual-plan', `Annual Plan - ${community?.name[lang] || community?.community_id}`);
 
     useEffect(() => {
         if (!community) return;

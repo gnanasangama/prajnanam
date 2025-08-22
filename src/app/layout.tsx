@@ -8,6 +8,7 @@ import InstallBanner from "@/components/InstallBanner";
 import Script from "next/script";
 import Analytics from "@/components/analytics";
 import { Suspense } from "react";
+import { GA_MEASUREMENT_ID } from "@/utils/analytics";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -99,7 +100,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=G-TNM4Z1XVSE`}
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
           strategy="afterInteractive"
         />
         <Script id="ga-init" strategy="afterInteractive">
@@ -107,7 +108,7 @@ export default function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-TNM4Z1XVSE');
+            gtag('config', '${GA_MEASUREMENT_ID}');
           `}
         </Script>
       </head>
