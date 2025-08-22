@@ -3,17 +3,19 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { getCommunities } from "@/api/getCommunities";
 import type { Community } from "@/models/community";
-import { setCommunity } from "@/utils/cookies";
+import { setCommunityData, setCommunityId } from "@/utils/cookies";
 import { useApp } from "@/context/AppContext";
+import Loader from "@/components/Loader";
 
 export default function SelectCommunity() {
   const [communities, setCommunities] = useState<Community[]>([]);
   const [selectedId, setSelectedId] = useState<string>("");
-
+  const [loading, setLoading] = useState(true)
   const router = useRouter();
   const { community: currentCommunity, setCommunity: setAppCommunity } = useApp();
 
   useEffect(() => {
+    setLoading(true)
     const fetchData = async () => {
       try {
         const data = await getCommunities();
@@ -24,6 +26,8 @@ export default function SelectCommunity() {
         }
       } catch (error) {
         console.error(error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -34,11 +38,14 @@ export default function SelectCommunity() {
     e.preventDefault();
     const selectedCommunity = communities.find(c => c.community_id === selectedId);
     if (selectedCommunity) {
-      setCommunity(selectedCommunity);       // Set cookie
-      setAppCommunity(selectedCommunity);    // Set in context
+      setCommunityId(selectedCommunity.community_id);  // Set cookie with just ID
+      setCommunityData(selectedCommunity);            // Store full data in localStorage
+      setAppCommunity(selectedCommunity);             // Set in context
       router.replace("/");
     }
   };
+
+  if (loading) return Loader();
 
   return (
     <main className="flex flex-col items-center justify-center min-h-[70vh] px-4">

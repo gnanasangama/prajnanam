@@ -16,6 +16,7 @@ export default function SelectLanguage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    // Store in localStorage and update context
     setLang(selected);
     setAppLang(selected);
     router.replace("/");

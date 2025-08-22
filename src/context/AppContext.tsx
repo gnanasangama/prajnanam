@@ -2,7 +2,7 @@
 
 import React, { createContext, useContext, useState, useEffect } from 'react'
 import type { Community } from '@/models/community'
-import { getCommunity, getLang, setCommunity as setCookieCommunity } from '@/utils/cookies'
+import { getCommunityData, getCommunityId, getLang, setCommunityData, setCommunityId } from '@/utils/cookies'
 import { getCommunityById } from '@/api/getCommunities';
 
 interface AppContextType {
@@ -19,23 +19,37 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     const [lang, setLang] = useState("kn")
 
     useEffect(() => {
-        setLang(getLang())
-
-        const storedCommunity = getCommunity()
-        if (storedCommunity) {
-            // First set from cookie to avoid blank screen
-            setCommunity(storedCommunity)
-
-            // Then fetch fresh data
-            getCommunityById(storedCommunity.community_id)
-                .then(freshCommunity => {
-                    setCommunity(freshCommunity)
-                    // Update cookie with fresh data
-                    setCookieCommunity(freshCommunity)
-                })
-                .catch(error => {
-                    console.error('Failed to refresh community data:', error)
-                })
+        if (typeof window !== 'undefined') {
+            setLang(getLang())
+            
+            // Check cookie first
+            const communityId = getCommunityId()
+            
+            if (communityId) {
+                // Try to get from localStorage first
+                const storedCommunity = getCommunityData()
+                if (storedCommunity && storedCommunity.community_id === communityId) {
+                    setCommunity(storedCommunity)
+                }
+                
+                // Refresh data from backend
+                getCommunityById(communityId)
+                    .then(freshCommunity => {
+                        setCommunity(freshCommunity)
+                        setCommunityData(freshCommunity)
+                    })
+                    .catch(error => {
+                        console.error('Failed to refresh community data:', error)
+                    })
+            } else {
+                // If no cookie, check localStorage
+                const storedCommunity = getCommunityData()
+                if (storedCommunity) {
+                    // Restore from localStorage
+                    setCommunity(storedCommunity)
+                    setCommunityId(storedCommunity.community_id)
+                }
+            }
         }
     }, [])
 

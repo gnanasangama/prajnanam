@@ -6,7 +6,7 @@ export async function getCommunities(): Promise<Community[]> {
     .from("communities")
     .select("*")
     .eq("type", "community")
-    .order("created_at", { ascending: true });
+    .order("created_at", { ascending: false });
 
   if (error) throw error;
   return data as Community[];

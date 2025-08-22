@@ -13,9 +13,9 @@ export function middleware(request: NextRequest) {
         return NextResponse.next()
     }
 
-    const selectedCommunity = request.cookies.get('selectedCommunity')
+    const communityId = request.cookies.get('selectedCommunityId')
     
-    if (!selectedCommunity) {
+    if (!communityId) {
         return NextResponse.redirect(new URL('/select-community', request.url))
     }
 

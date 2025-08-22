@@ -40,7 +40,7 @@ export default function WikiWidget() {
     items: { type: string; items: KnowledgeItem[] }[],
   ) => (
     <div className="w-full max-w-4xl mx-auto">
-      <h2 className="text-xl font-semibold text-center my-4">{title}</h2>
+      <h2 className="text-xl font-semibold text-center text-pink-400 my-4">{title}</h2>
       {items.map((group, index) => (
         <div key={index} className="border-b border-gray-300">
           <button
