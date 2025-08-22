@@ -1,24 +1,22 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import AppBar from "@/components/app-bar";
-import BottomBar from "@/components/bottom-bar";
 import Loader from "@/components/Loader";
 import BottomTopSheet from "@/components/BottomTopSheet";
 import { getKnowledgeItemsGroupedByType } from "@/api/getKnowledgeItemsByCommunity";
 import type { KnowledgeItem } from "@/models/KnowledgeItem";
 import { useApp } from "@/context/AppContext";
 
-export default function WikiTab() {
+export default function WikiWidget() {
   const { community, lang } = useApp();
-  const [globalWikiItems, setGlobalWikiItems] = useState<{ type: string; items: KnowledgeItem[] }[]>([]);
+  const [communityWikiItems, setCommunityWikiItems] = useState<{ type: string; items: KnowledgeItem[] }[]>([]);
   const [loading, setLoading] = useState(true);
-  const [openWikiIndex, setOpenWikiIndex] = useState<number | null>(null);
+  const [openCommunityIndex, setOpenCommunityIndex] = useState<number | null>(null);
   const [selectedItem, setSelectedItem] = useState<KnowledgeItem | null>(null);
   const [showSheet, setShowSheet] = useState(false);
 
   const toggleIndex = (index: number) => {
-    setOpenWikiIndex(openWikiIndex === index ? null : index);
+    setOpenCommunityIndex(openCommunityIndex === index ? null : index);
   };
 
   useEffect(() => {
@@ -26,38 +24,38 @@ export default function WikiTab() {
 
     setLoading(true);
 
-    getKnowledgeItemsGroupedByType("prajnanam", "wiki").then(setGlobalWikiItems)
+    getKnowledgeItemsGroupedByType(community.community_id, "wiki").then(setCommunityWikiItems)
       .catch((error) => console.error("Failed to fetch wiki items:", error))
       .finally(() => setLoading(false));
   }, [community]);
 
-  if (!community || (!loading && globalWikiItems.length === 0)) {
+  if (!community || (!loading && communityWikiItems.length === 0)) {
     return <p className="text-center text-gray-500 mt-20">ಯಾವುದೇ ಮಾಹಿತಿ ಲಭ್ಯವಿಲ್ಲ</p>;
   }
 
   if (loading) return Loader();
 
-
-
   const renderWikiSection = (
+    title: string,
     items: { type: string; items: KnowledgeItem[] }[],
   ) => (
     <div className="w-full max-w-4xl mx-auto">
+      <h2 className="text-xl font-semibold text-center my-4">{title}</h2>
       {items.map((group, index) => (
         <div key={index} className="border-b border-gray-300">
           <button
             onClick={() => toggleIndex(index)}
-            className={`w-full text-left px-4 py-3 ${openWikiIndex === index
+            className={`w-full text-left px-4 py-3 ${openCommunityIndex === index
               ? "bg-gray-100"
               : "bg-white"
               } transition-all flex justify-between items-center`}
-            aria-expanded={openWikiIndex === index}
+            aria-expanded={openCommunityIndex === index}
           >
             <span className="text-lg font-semibold">{group.type}</span>
-            <span>{openWikiIndex === index ? "−" : "+"}</span>
+            <span>{openCommunityIndex === index ? "−" : "+"}</span>
           </button>
 
-          {openWikiIndex === index && (
+          {openCommunityIndex === index && (
             <div className="py-3 bg-white">
               <div className="flex flex-col space-y-2 overflow-hidden px-2">
                 {group.items.map((item) => (
@@ -82,11 +80,11 @@ export default function WikiTab() {
 
   return (
     <>
-      <AppBar title={`ಪ್ರಜ್ಞಾನಂ - ಕೈಪಿಡಿ`} />
-
-      <main className="flex flex-col items-center min-h-[70vh]">
-        {renderWikiSection(globalWikiItems)}
-      </main>
+      {communityWikiItems.length != 0 &&
+        <>
+          <hr className="my-4 border-gray-400" />
+          {renderWikiSection(`${community.name?.[lang] || community.community_id} - ಕೈಪಿಡಿ`, communityWikiItems)}
+        </>}
 
       {selectedItem && (
         <BottomTopSheet
@@ -99,11 +97,6 @@ export default function WikiTab() {
           description={selectedItem.content || "ವಿವರಗಳು ಲಭ್ಯವಿಲ್ಲ"}
         />
       )}
-
-      <BottomBar
-        communityName={community.name?.[lang] || community.community_id}
-        active="kaipidi"
-      />
     </>
   );
 }

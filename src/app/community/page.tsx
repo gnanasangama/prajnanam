@@ -5,6 +5,7 @@ import AppBar from "@/components/app-bar";
 import BottomBar from "@/components/bottom-bar";
 import FeatureCard from "@/components/FeatureCard";
 import { useApp } from "@/context/AppContext";
+import WikiWidget from "@/components/wikiWidget";
 
 export default function CommunityTab() {
   const { community, lang } = useApp();
@@ -29,6 +30,9 @@ export default function CommunityTab() {
           image={`/images/features/annual-plan.png`}
           link="/community/annual-plan"
         />}
+
+      {community.features.wiki &&
+        <WikiWidget />}
 
       <BottomBar
         communityName={community.name?.[lang] || community.community_id}
