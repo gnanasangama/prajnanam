@@ -1,6 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { getLang, setLang } from "@/utils/cookies";
 import { useApp } from "@/context/AppContext";
 
@@ -10,9 +10,14 @@ const languages = [
 ];
 
 export default function SelectLanguage() {
-  const [selected, setSelected] = useState<string>(() => getLang());
+  const [selected, setSelected] = useState<string>("kn"); // Default value
   const { setLang: setAppLang } = useApp();
   const router = useRouter();
+
+  useEffect(() => {
+    // Set initial value after mount
+    setSelected(getLang());
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
