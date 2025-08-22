@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import styles from './InstallBanner.module.css';
+import { trackEvent } from '@/utils/analytics';
 
 interface BeforeInstallPromptEvent extends Event {
     prompt: () => Promise<void>;
@@ -41,13 +42,10 @@ export default function InstallBanner() {
         try {
             await deferredPrompt.prompt();
             const { outcome } = await deferredPrompt.userChoice;
-
-            if (typeof window.gtag !== 'undefined') {
-                window.gtag('event', 'pwa_install_response', {
-                    event_category: 'engagement',
-                    event_label: outcome,
-                });
-            }
+            trackEvent('pwa_install', {
+                event_category: 'engagement',
+                event_label: outcome,
+            });
         } catch (err) {
             console.error('Installation error:', err);
         }
@@ -66,17 +64,17 @@ export default function InstallBanner() {
                     <strong>Install Prajnanam</strong>
                     <p>Enjoy a faster, full-screen experience on your device.</p>
                 </div>
-                    <button 
-                        className={styles.closeButton} 
-                        onClick={() => setShowBanner(false)}
-                        aria-label="Close Install Banner"
-                    >
-                        ✕
-                    </button>
+                <button
+                    className={styles.closeButton}
+                    onClick={() => setShowBanner(false)}
+                    aria-label="Close Install Banner"
+                >
+                    ✕
+                </button>
             </div>
 
-            <button 
-                className={styles.installButton} 
+            <button
+                className={styles.installButton}
                 onClick={handleInstall}
                 aria-label="Install App"
             >
