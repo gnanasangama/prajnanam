@@ -69,14 +69,15 @@ export default function EventDetailsSheet({ open, onClose, event }: EventDetails
                         })}
                     </p>
 
-                    <p className="text-sm text-gray-600">
-                        <strong>Organiser: </strong> {event.organizer}
-                    </p>
+                    {event.organizer &&
+                        <p className="text-sm text-gray-600">
+                            <strong>ಅಯೋಜಕರು: </strong> {event.organizer}
+                        </p>}
+
 
                     <Chip label={`${formatLabel(event.event_type)}`} className="bg-blue-200 text-blue-800" />
 
                     <Chip label={`${formatLabel(event.category)}`} className="bg-pink-100 text-pink-600" />
-
 
                     {/* {event.cta_label && event.cta_link && (
                         <a href={event.cta_link} target="_blank" rel="noopener noreferrer" className="underline">
@@ -103,7 +104,7 @@ interface ChipProps {
 export function Chip({ label, className = "" }: ChipProps) {
     return (
         <span
-            className={`inline-block me-1 px-3 py-1 text-sm font-medium rounded-full select-none ${className}`}
+            className={`inline-block me-1 px-3 py-0.75 text-sm font-medium rounded-full select-none ${className}`}
         >
             {label}
         </span>
