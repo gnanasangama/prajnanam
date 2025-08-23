@@ -6,6 +6,7 @@ export async function getCommunities(): Promise<Community[]> {
     .from("communities")
     .select("*")
     .eq("type", "community")
+    .eq("is_visible", true)
     .order("created_at", { ascending: false });
 
   if (error) throw error;
