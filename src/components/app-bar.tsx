@@ -37,9 +37,9 @@ export default function AppBar({ title }: { title?: string }) {
           </svg>
         </button>
         {open && (
-          <div className="absolute right-0 mt-2 w-60 bg-white border rounded shadow-lg z-50">
+          <div className="absolute right-0 mt-2 w-60 bg-white border border-gray-400 rounded shadow-lg z-50">
             <button
-              className="w-full text-left px-4 py-2 hover:bg-pink-50 text-gray-700"
+              className="w-full text-left px-4 py-2 hover:bg-pink-50 text-gray-700 border-b border-gray-400"
               onClick={() => {
                 setOpen(false);
                 router.push("/select-community");
@@ -47,7 +47,7 @@ export default function AppBar({ title }: { title?: string }) {
             >
               ಕಮ್ಯೂನಿಟಿ ಬದಲಾಯಿಸಿ
             </button>
-            <button
+            {/* <button
               className="w-full text-left px-4 py-2 hover:bg-pink-50 text-gray-700"
               onClick={() => {
                 setOpen(false);
@@ -55,7 +55,7 @@ export default function AppBar({ title }: { title?: string }) {
               }}
             >
               ಭಾಷೆ ಬದಲಾಯಿಸಿ
-            </button>
+            </button> */}
           </div>
         )}
       </div>

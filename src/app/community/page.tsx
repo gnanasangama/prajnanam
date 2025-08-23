@@ -1,19 +1,21 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import AppBar from "@/components/app-bar";
 import BottomBar from "@/components/bottom-bar";
 import FeatureCard from "@/components/FeatureCard";
 import { useApp } from "@/context/AppContext";
 import WikiWidget from "@/components/wikiWidget";
 import WhatsAppFloatButton from "@/components/WhatsAppFloatButton";
-import { pageview } from "@/utils/analytics";
 
 export default function CommunityTab() {
   const { community, lang } = useApp();
 
-  // Track page view
-  pageview('/community', `Community - ${community?.name[lang] || community?.community_id}`);
+  useEffect(() => {
+    if (community) {
+      document.title = `Community - ${community.name?.['en'] || community.community_id}`;
+    }
+  }, [community]);
 
   if (!community) return null;
 
@@ -40,7 +42,7 @@ export default function CommunityTab() {
         <WikiWidget />}
 
       <WhatsAppFloatButton />
-      
+
       <BottomBar
         communityName={community.name?.[lang] || community.community_id}
         active="community"

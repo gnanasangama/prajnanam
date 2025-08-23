@@ -15,6 +15,10 @@ export default function SelectLanguage() {
   const router = useRouter();
 
   useEffect(() => {
+    document.title = `Select Language | Prajnanam`;
+  }, [setAppLang]);
+
+  useEffect(() => {
     // Set initial value after mount
     setSelected(getLang());
   }, []);

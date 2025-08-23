@@ -11,7 +11,6 @@ import { BiMusic, BiSolidQuoteAltLeft, BiBookAlt, BiCalendar } from "react-icons
 import { useApp } from '@/context/AppContext'
 import CustomMarkdown from "@/components/CustomMarkdown";
 import Panchanga from "@/components/Panchanga";
-import { pageview } from "@/utils/analytics";
 
 export default function RoutinePage() {
     const { community, lang } = useApp()
@@ -19,8 +18,11 @@ export default function RoutinePage() {
     const [loading, setLoading] = useState(true)
     const [selectedId, setSelectedId] = useState<string | null>(null)
 
-    // Track page view
-    pageview('/community/routine', `Routine - ${community?.name[lang] || community?.community_id}`);
+    useEffect(() => {
+        if (community) {
+            document.title = `Routine - ${community.name?.['en'] || community.community_id}`;
+        }
+    }, [community]);
 
     useEffect(() => {
         if (!community) return

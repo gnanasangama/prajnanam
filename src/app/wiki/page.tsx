@@ -9,7 +9,6 @@ import { getKnowledgeItemsGroupedByType } from "@/api/getKnowledgeItemsByCommuni
 import type { KnowledgeItem } from "@/models/KnowledgeItem";
 import { useApp } from "@/context/AppContext";
 import WhatsAppFloatButton from "@/components/WhatsAppFloatButton";
-import { pageview } from "@/utils/analytics";
 
 export default function WikiTab() {
   const { community, lang } = useApp();
@@ -19,7 +18,11 @@ export default function WikiTab() {
   const [selectedItem, setSelectedItem] = useState<KnowledgeItem | null>(null);
   const [showSheet, setShowSheet] = useState(false);
 
-  pageview('/wiki', 'Wiki - Prajnanam');
+  useEffect(() => {
+    if (community) {
+      document.title = `Wiki - Prajnanam`;
+    }
+  }, [community]);
 
   const toggleIndex = (index: number) => {
     setOpenWikiIndex(openWikiIndex === index ? null : index);

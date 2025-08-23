@@ -15,6 +15,10 @@ export default function SelectCommunity() {
   const { community: currentCommunity, setCommunity: setAppCommunity } = useApp();
 
   useEffect(() => {
+    document.title = `Select Community | Prajnanam`;
+  }, [currentCommunity]);
+
+  useEffect(() => {
     setLoading(true)
     const fetchData = async () => {
       try {
