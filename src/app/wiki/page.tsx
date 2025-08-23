@@ -9,6 +9,7 @@ import { getKnowledgeItemsGroupedByType } from "@/api/getKnowledgeItemsByCommuni
 import type { KnowledgeItem } from "@/models/KnowledgeItem";
 import { useApp } from "@/context/AppContext";
 import WhatsAppFloatButton from "@/components/WhatsAppFloatButton";
+import { BsFillChatDotsFill } from "react-icons/bs";
 
 export default function WikiTab() {
   const { community, lang } = useApp();
@@ -89,8 +90,28 @@ export default function WikiTab() {
     <>
       <AppBar title={`ಪ್ರಜ್ಞಾನಂ - ಕೈಪಿಡಿ`} />
 
-      <main className="flex flex-col items-center min-h-[70vh]">
+      <main className="items-center min-h-[70vh]">
         {renderWikiSection(globalWikiItems)}
+
+        <a
+          href="https://forms.gle/voubX8XDJjR5jyzc6"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="no-underline"
+        >
+          <div className="mt-3 rounded-lg bg-white hover:shadow-sm border border-gray-300 transition duration-200">
+            <div className="flex items-center p-4">
+              <BsFillChatDotsFill className="text-pink-400 text-4xl mr-3" />
+              <div className="mx-auto text-center">
+                <div className="text-gray-600 text-sm">
+                  ಆಪ್‌ ಅನ್ನು ಇನ್ನಷ್ಟು ಉತ್ತಮವಾಗಿಸಲು
+                </div>
+                <h6 className="mt-2 text-pink-500 font-semibold">ನಿಮ್ಮ ಸಲಹೆ</h6>
+              </div>
+            </div>
+          </div>
+        </a>
+        
       </main>
 
       {selectedItem && (
