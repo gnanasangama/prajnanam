@@ -2,7 +2,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useRouter } from "next/navigation";
 
-export default function AppBar({ title }: { title?: string }) {
+export default function AppBar({ title, isSpecialGradient = false }: { title?: string, isSpecialGradient?: boolean }) {
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
@@ -21,7 +21,7 @@ export default function AppBar({ title }: { title?: string }) {
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 ${isDev ? "bg-pink-400" : "bg-white"} shadow-sm flex items-center h-14 px-4 border-b border-gray-100`}>
-      <span className={`font-bold text-lg tracking-wide ${isDev ? "text-white" : "text-pink-400"} flex-1`}>
+      <span className={`font-bold text-lg tracking-wide ${isDev ? "text-white" : (isSpecialGradient ? "bg-gradient-to-r from-orange-500 to-yellow-400 bg-clip-text text-transparent" : "text-pink-400")} flex-1`}>
         {title || "ಪ್ರಜ್ಞಾನಂ"}
       </span>
       <div className="relative" ref={menuRef}>

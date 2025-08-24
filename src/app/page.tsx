@@ -10,6 +10,7 @@ import { useApp } from "@/context/AppContext";
 import WhatsAppFloatButton from "@/components/WhatsAppFloatButton";
 import EventsWidget from "@/components/eventWidget";
 import { BsFillChatDotsFill } from "react-icons/bs";
+import FeatureCard from "@/components/FeatureCard";
 
 export default function Home() {
   const { community, lang } = useApp();
@@ -38,6 +39,13 @@ export default function Home() {
           description={globalCommunity.description?.[lang] || globalCommunity.description?.en}
         />
 
+        <FeatureCard
+          title="ರಸಪ್ರಶ್ನೆ"
+          subtitle="ನಿತ್ಯ ಸಾಧನೆಗೆ, ಸವಾಲುಗಳ ಪರೀಕ್ಷೆ"
+          image={`/images/features/quiz-cover-photo.webp`}
+          link="/quiz"
+        />
+        
         <EventsWidget />
 
         <a

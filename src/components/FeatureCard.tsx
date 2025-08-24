@@ -29,7 +29,7 @@ export default function FeatureCard({ title, subtitle, image, link }: FeatureCar
       {/* Text on top */}
       <div className="absolute inset-0 z-20 text-white flex flex-col justify-start items-start p-4">
         <h5 className="text-2xl font-bold mb-0">{title}</h5>
-        {subtitle && <p className="text-sm mt-1 font-medium">{subtitle}</p>}
+        {subtitle && <p className="text-sm mt-1 font-semibold">{subtitle}</p>}
       </div>
     </div>
   );
