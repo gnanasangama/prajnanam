@@ -150,7 +150,7 @@ export default function QuizPage() {
         const correctCount = userAnswers.filter((a) => a.isCorrect).length;
         const total = userAnswers.length;
 
-        let message =
+        const message =
             correctCount === total
                 ? 'ಅಭಿನಂದನೆಗಳು! ಎಲ್ಲಾ ಉತ್ತರ ಸರಿಯಾದವು!'
                 : correctCount >= total * 0.7
