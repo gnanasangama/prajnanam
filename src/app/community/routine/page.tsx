@@ -83,6 +83,25 @@ export default function RoutinePage() {
                     )}
 
                     <div className="prose prose-sm sm:prose lg:prose-lg max-w-none">
+                        {activeItem.media && (activeItem.media.type === "audio" || activeItem.media.type === "video") && (
+                            <div className="my-3">
+                                {activeItem.media.type === "audio" ? (
+                                    <audio controls
+                                        controlsList="nodownload"
+                                        className="w-full">
+                                        <source src={activeItem.media.url} type="audio/mpeg" />
+                                        Your device does not support the audio element.
+                                    </audio>
+                                ) : (
+                                    <video controls
+                                        controlsList="nodownload"
+                                        className="w-full rounded-md">
+                                        <source src={activeItem.media.url} type="video/mp4" />
+                                        Your device does not support the video tag.
+                                    </video>
+                                )}
+                            </div>
+                        )}
                         <CustomMarkdown content={activeItem.type == "song"
                             ? activeItem.content.replace(/\n/g, '\n &nbsp;').replace(/\n/g, '  \n')
                             : activeItem.content} />

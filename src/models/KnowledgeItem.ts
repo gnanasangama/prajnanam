@@ -7,6 +7,7 @@ export interface KnowledgeItem {
   type: 'quote' | 'song' | 'shloka' | 'annual_plan';
   scope: 'global' | 'community' | 'zone';
   category: 'routine' | 'wiki' | 'calendar';
+  media: { type: string, url: string } | null; // e.g., { type: 'image', url: 'http://...' }
   is_visible: boolean;
   created_at: string; // ISO timestamp
   updated_at: string; // ISO timestamp
