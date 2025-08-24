@@ -77,7 +77,7 @@ export default function EventDetailsSheet({ open, onClose, event }: EventDetails
 
                     <Chip label={`${formatLabel(event.event_type)}`} className="bg-blue-200 text-blue-800" />
 
-                    <Chip label={`${formatLabel(event.category)}`} className="bg-pink-100 text-pink-600" />
+                    <Chip label={`${formatLabel(event.category)}`} className="bg-pink-100 text-pink-500" />
 
                     {/* {event.cta_label && event.cta_link && (
                         <a href={event.cta_link} target="_blank" rel="noopener noreferrer" className="underline">

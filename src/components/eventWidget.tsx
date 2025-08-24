@@ -54,7 +54,7 @@ export default function EventsWidget() {
                             {/* Chips */}
                             <div className="absolute top-2 right-1 flex space-x-2 z-10">
                                 {event.event_type === 'online' && <Chip label={`${formatLabel(event.event_type)}`} className="bg-blue-200 text-blue-800" />}
-                                <Chip label={`${formatLabel(event.category)}`} className="bg-pink-100 text-pink-600 font-semibold" />
+                                <Chip label={`${formatLabel(event.category)}`} className="bg-pink-100 text-pink-500 font-semibold" />
                             </div>
 
                             {/* Image */}
