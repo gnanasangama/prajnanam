@@ -37,6 +37,10 @@ export default function QuizPage() {
     const [showSummaryScreen, setShowSummaryScreen] = useState(false);
 
     useEffect(() => {
+        document.title = `Quiz - Prajnanam`;
+    }, []);
+
+    useEffect(() => {
         async function initializeQuiz() {
             const todayStr = new Date().toISOString().split('T')[0];
             const savedStatus = localStorage.getItem('quizStatus');
@@ -147,6 +151,7 @@ export default function QuizPage() {
     }
 
     function showSummary() {
+        document.title = `Quiz Results - Prajnanam`;
         const correctCount = userAnswers.filter((a) => a.isCorrect).length;
         const total = userAnswers.length;
 
