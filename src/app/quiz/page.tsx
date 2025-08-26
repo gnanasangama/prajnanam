@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabaseClient';
 import AppBar from '@/components/app-bar';
+import AdsterraAd300x250 from '@/components/AdsterraAd/300x250';
 
 type Question = {
     id: string;
@@ -316,6 +317,9 @@ export default function QuizPage() {
 
                 {/* Summary Screen */}
                 {showSummaryScreen && showSummary()}
+                <div className="mt-3 flex flex-col justify-center items-center" >
+                    <AdsterraAd300x250 />
+                </div>
             </main>
         </>
     );
