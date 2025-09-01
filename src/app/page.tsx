@@ -10,7 +10,7 @@ import { useApp } from "@/context/AppContext";
 import WhatsAppFloatButton from "@/components/WhatsAppFloatButton";
 import EventsWidget from "@/components/eventWidget";
 import { BsFillChatDotsFill } from "react-icons/bs";
-import FeatureCard from "@/components/FeatureCard";
+// import FeatureCard from "@/components/FeatureCard";
 
 export default function Home() {
   const { community, lang } = useApp();
