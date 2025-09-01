@@ -39,12 +39,12 @@ export default function Home() {
           description={globalCommunity.description?.[lang] || globalCommunity.description?.en}
         />
 
-        <FeatureCard
+        {/* <FeatureCard
           title="ರಸಪ್ರಶ್ನೆ"
           subtitle="ನಿತ್ಯ ಸಾಧನೆಗೆ, ಸವಾಲುಗಳ ಪರೀಕ್ಷೆ"
           image={`/images/features/quiz-cover-photo.webp`}
           link="/quiz"
-        />
+        /> */}
         
         <EventsWidget />
 
