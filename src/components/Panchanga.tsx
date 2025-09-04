@@ -4,7 +4,7 @@ import Loader from './Loader';
 
 type PanchangaData = {
     sections?: {
-        items?: { content: { content: string } }[];
+        items?: { content: { content: string, subtitle: string } }[];
     }[];
 };
 
@@ -44,6 +44,7 @@ export default function Panchanga() {
     }
     const panchang = `
 ### ಇಂದಿನ ಪಂಚಾಂಗ
+${data.sections?.[1]?.items?.[0]?.content?.subtitle || ''}
 ${data.sections?.[1]?.items?.[0]?.content?.content || ''}
 `;
 
