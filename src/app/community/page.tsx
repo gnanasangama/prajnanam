@@ -24,8 +24,8 @@ export default function CommunityTab() {
       <AppBar title={`ಪ್ರಜ್ಞಾನಂ - ${community.name?.[lang] || community.community_id}`} />
       {community.features.routine &&
         <FeatureCard
-          title="ಶಾಖಾ ದಿನಚರಿ"
-          subtitle="ಶ್ರೀ ವಿಶ್ವಾವಸು ಸಂವತ್ಸರ"
+          title={community.properties?.routine.header.title ?? "ಶಾಖಾ ದಿನಚರಿ"}
+          subtitle={community.properties?.routine.header.subtitle ?? "ಶ್ರೀ ವಿಶ್ವಾವಸು ಸಂವತ್ಸರ"}
           image={`/images/features/${community.community_id}.webp`}
           link="/community/routine"
         />}

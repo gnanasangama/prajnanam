@@ -5,7 +5,7 @@ import React, { useEffect } from "react";
 import CustomMarkdown from "./CustomMarkdown";
 import { EventModel } from "@/models/Events";
 import { formatLabel } from "@/utils/string_utils";
-import AdsterraAd320x50 from "./AdsterraAd/320x50";
+// import AdsterraAd320x50 from "./AdsterraAd/320x50";
 
 interface EventDetailsSheetProps {
     open: boolean;
@@ -95,9 +95,9 @@ export default function EventDetailsSheet({ open, onClose, event }: EventDetails
                     </div>
                 </div>
             </div>
-            <div className="fixed bottom-2 left-0 w-full flex justify-center items-center z-100 bg-white">
+            {/* <div className="fixed bottom-2 left-0 w-full flex justify-center items-center z-100 bg-white">
                 <AdsterraAd320x50 />
-            </div>
+            </div> */}
         </>
     );
 }

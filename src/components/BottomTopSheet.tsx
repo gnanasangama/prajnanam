@@ -1,7 +1,7 @@
 import { XMarkIcon } from "@heroicons/react/24/solid";
 import React, { useEffect } from "react";
 import CustomMarkdown from "./CustomMarkdown";
-import AdsterraAd320x50 from "./AdsterraAd/320x50";
+// import AdsterraAd320x50 from "./AdsterraAd/320x50";
 
 export default function BottomTopSheet({
   open,
@@ -50,9 +50,9 @@ export default function BottomTopSheet({
           </div>
         </div>
       </div>
-      <div className="fixed bottom-2 left-0 w-full flex justify-center items-center z-100 bg-white">
+      {/* <div className="fixed bottom-2 left-0 w-full flex justify-center items-center z-100 bg-white">
         <AdsterraAd320x50 />
-      </div>
+      </div> */}
     </>
   );
 }
