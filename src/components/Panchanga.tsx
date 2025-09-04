@@ -49,8 +49,17 @@ ${data.sections?.[1]?.items?.[0]?.content?.content || ''}
 `;
 
     return (
-        <div>
-            <CustomMarkdown content={panchang || 'No Panchanga data available'} />
+        <div className="relative mb-3 w-full max-w-md rounded-lg overflow-hidden cursor-pointer select-none">
+            {/* Background image layer */}
+            <div
+                className="absolute inset-0 bg-contain bg-center bg-no-repeat opacity-30"
+                style={{ backgroundImage: `url('/images/brand/icon-without-bg.png')` }}
+            ></div>
+
+            {/* Foreground content layer */}
+            <div className="relative z-10">
+                <CustomMarkdown content={panchang || 'No Panchanga data available'} />
+            </div>
         </div>
     );
 }
