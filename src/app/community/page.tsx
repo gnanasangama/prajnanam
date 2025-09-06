@@ -10,6 +10,8 @@ import WhatsAppFloatButton from "@/components/WhatsAppFloatButton";
 
 export default function CommunityTab() {
   const { community, lang } = useApp();
+  const pdfUrl =
+    "https://hwgsfolehabqnxcegeyr.supabase.co/storage/v1/object/sign/knowledge-items/prarthana-sapthaha.pdf?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV80ZjIzN2FlOC0wNWJkLTRmYWEtYjE1Ni00OWFlMmMyZjYzMGEiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJrbm93bGVkZ2UtaXRlbXMvcHJhcnRoYW5hLXNhcHRoYWhhLnBkZiIsImlhdCI6MTc1NzE0ODQ0NCwiZXhwIjoxNzU3NzUzMjQ0fQ.EQP1rrw0DOOWWovWqT4L3i10B-6OouZXW6Kk_zfMQ04";
 
   useEffect(() => {
     if (community) {
@@ -32,6 +34,14 @@ export default function CommunityTab() {
 
       {community.features.annual_plan &&
         <FeatureCard
+          title="ಪ್ರಾರ್ಥನಾ ಸಪ್ತಾಹ"
+          subtitle="▶ ಪದ ▶ ಉಚ್ಛಾರ ▶ ರಾಗ ▶ ಭಾವಾಧ್ಧ"
+          image={`/images/prarthana-sapthaha.png`}
+          link={pdfUrl}
+        />}
+
+      {community.features.annual_plan &&
+        <FeatureCard
           title="ವಾರ್ಷಿಕ ಯೋಜನೆ"
           subtitle="ಶ್ರೀ ವಿಶ್ವಾವಸು ಸಂವತ್ಸರ"
           image={`/images/features/annual-plan.webp`}
@@ -40,7 +50,6 @@ export default function CommunityTab() {
 
       {community.features.wiki &&
         <WikiWidget />}
-
       <WhatsAppFloatButton />
 
       <BottomBar
