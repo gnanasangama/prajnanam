@@ -10,8 +10,8 @@ import WhatsAppFloatButton from "@/components/WhatsAppFloatButton";
 
 export default function CommunityTab() {
   const { community, lang } = useApp();
-  const pdfUrl =
-    "https://hwgsfolehabqnxcegeyr.supabase.co/storage/v1/object/sign/knowledge-items/prarthana-sapthaha.pdf?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV80ZjIzN2FlOC0wNWJkLTRmYWEtYjE1Ni00OWFlMmMyZjYzMGEiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJrbm93bGVkZ2UtaXRlbXMvcHJhcnRoYW5hLXNhcHRoYWhhLnBkZiIsImlhdCI6MTc1NzE0ODQ0NCwiZXhwIjoxNzU3NzUzMjQ0fQ.EQP1rrw0DOOWWovWqT4L3i10B-6OouZXW6Kk_zfMQ04";
+  // const pdfUrl =
+  //   "https://hwgsfolehabqnxcegeyr.supabase.co/storage/v1/object/sign/knowledge-items/prarthana-sapthaha.pdf?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV80ZjIzN2FlOC0wNWJkLTRmYWEtYjE1Ni00OWFlMmMyZjYzMGEiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJrbm93bGVkZ2UtaXRlbXMvcHJhcnRoYW5hLXNhcHRoYWhhLnBkZiIsImlhdCI6MTc1NzE0ODQ0NCwiZXhwIjoxNzU3NzUzMjQ0fQ.EQP1rrw0DOOWWovWqT4L3i10B-6OouZXW6Kk_zfMQ04";
 
   useEffect(() => {
     if (community) {
