@@ -37,7 +37,7 @@ export default function CommunityTab() {
           title="ಪ್ರಾರ್ಥನಾ ಸಪ್ತಾಹ"
           subtitle="▶ ಪದ ▶ ಉಚ್ಛಾರ ▶ ರಾಗ ▶ ಭಾವಾಧ್ಧ"
           image={`/images/prarthana-sapthaha.png`}
-          link={pdfUrl}
+          link={`/images/prarthana-sapthaha.pdf`}
         />}
 
       {community.features.annual_plan &&
