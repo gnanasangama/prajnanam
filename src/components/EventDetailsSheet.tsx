@@ -59,7 +59,7 @@ export default function EventDetailsSheet({ open, onClose, event }: EventDetails
 
                         <hr className="mb-2 border-gray-300" />
 
-                        <p className="text-md text-gray-600">
+                        { event.start_time && <p className="text-md text-gray-600">
                             <strong>Date: </strong>
                             {new Date(event.start_time).toLocaleString("en-IN", {
                                 day: "2-digit",
@@ -69,7 +69,7 @@ export default function EventDetailsSheet({ open, onClose, event }: EventDetails
                                 minute: "2-digit",
                                 hour12: true,
                             })}
-                        </p>
+                        </p>}
 
                         {event.organizer &&
                             <p className="text-sm text-gray-600">

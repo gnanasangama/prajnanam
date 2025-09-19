@@ -73,7 +73,7 @@ export default function EventsWidget() {
                                     {event.title}
                                 </h2>
                                 <p className="text-md text-gray-600 mb-1">
-                                    {new Date(event.start_time).toLocaleString("en-IN", {
+                                    { event.start_time && new Date(event.start_time).toLocaleString("en-IN", {
                                         day: "2-digit",
                                         month: "short",
                                         year: "numeric",
