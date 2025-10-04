@@ -32,13 +32,13 @@ export default function CommunityTab() {
           link="/community/routine"
         />}
 
-      {community.features.annual_plan &&
+      {/* {community.features.annual_plan &&
         <FeatureCard
           title="ಪ್ರಾರ್ಥನಾ ಸಪ್ತಾಹ"
           subtitle="▶ ಪದ ▶ ಉಚ್ಛಾರ ▶ ರಾಗ ▶ ಭಾವಾಧ್ಧ"
           image={`/images/prarthana-sapthaha.png`}
           link={`/images/prarthana-sapthaha.pdf`}
-        />}
+        />} */}
 
       {community.features.annual_plan &&
         <FeatureCard
