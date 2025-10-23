@@ -59,9 +59,11 @@ export default function EventDetailsSheet({ open, onClose, event }: EventDetails
 
                         <hr className="mb-2 border-gray-300" />
 
-                        { event.start_time && <p className="text-md text-gray-600">
-                            <strong>Date: </strong>
-                            {new Date(event.start_time).toLocaleString("en-IN", {
+                        <p className="text-md text-gray-600">
+                            {event.organizer && (
+                                <b>{event.organizer}<br /></b>
+                            )}
+                            {event.start_time && new Date(event.start_time).toLocaleString("en-IN", {
                                 day: "2-digit",
                                 month: "short",
                                 year: "numeric",
@@ -69,12 +71,7 @@ export default function EventDetailsSheet({ open, onClose, event }: EventDetails
                                 minute: "2-digit",
                                 hour12: true,
                             })}
-                        </p>}
-
-                        {event.organizer &&
-                            <p className="text-sm text-gray-600">
-                                <strong>ಅಯೋಜಕರು: </strong> {event.organizer}
-                            </p>}
+                        </p>
 
 
                         <Chip label={`${formatLabel(event.event_type)}`} className="bg-blue-200 text-blue-800" />

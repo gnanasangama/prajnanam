@@ -69,11 +69,14 @@ export default function EventsWidget() {
 
                             {/* Event Info */}
                             <div className="p-3 flex flex-col justify-between">
-                                <h2 className="text-lg font-semibold mb-1 line-clamp-2" title={event.title}>
+                                <h2 className="text-lg font-semibold text-pink-400 line-clamp-2" title={event.title}>
                                     {event.title}
                                 </h2>
-                                <p className="text-md text-gray-600 mb-1">
-                                    { event.start_time && new Date(event.start_time).toLocaleString("en-IN", {
+                                <p className="text-md text-gray-600">
+                                    {event.organizer && (
+                                        <b>{event.organizer}<br /></b>
+                                    )}
+                                    {event.start_time && new Date(event.start_time).toLocaleString("en-IN", {
                                         day: "2-digit",
                                         month: "short",
                                         year: "numeric",
