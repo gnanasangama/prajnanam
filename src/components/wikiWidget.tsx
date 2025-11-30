@@ -93,8 +93,7 @@ export default function WikiWidget() {
             setShowSheet(false);
             setSelectedItem(null);
           }}
-          title={selectedItem.title}
-          description={selectedItem.content || "ವಿವರಗಳು ಲಭ್ಯವಿಲ್ಲ"}
+          knowledgeItem={selectedItem}
         />
       )}
     </>

@@ -1,6 +1,7 @@
 import { XMarkIcon } from "@heroicons/react/24/solid";
 import React, { useEffect } from "react";
 import CustomMarkdown from "./CustomMarkdown";
+import { KnowledgeItem } from "@/models/KnowledgeItem";
 // import AdsterraAd320x50 from "./AdsterraAd/320x50";
 
 export default function BottomTopSheet({
@@ -8,11 +9,13 @@ export default function BottomTopSheet({
   onClose,
   title,
   description,
+  knowledgeItem,
 }: {
   open: boolean;
   onClose: () => void;
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
+  knowledgeItem?: KnowledgeItem;
 }) {
   // 🧠 Prevent body scroll when modal is open
   useEffect(() => {
@@ -34,7 +37,7 @@ export default function BottomTopSheet({
         <div className="bg-white rounded-t-2xl w-full max-w-md shadow-lg animate-slideup h-[70vh] flex flex-col">
           {/* Header (fixed) */}
           <div className="px-4 py-3 flex items-start justify-between border-b border-gray-300">
-            <h2 className="text-lg font-semibold text-pink-400">{title}</h2>
+            <h2 className="text-lg font-semibold text-pink-400">{knowledgeItem ? knowledgeItem.title : title}</h2>
             <button
               onClick={onClose}
               className="text-gray-400 hover:text-pink-400 transition"
@@ -46,7 +49,26 @@ export default function BottomTopSheet({
 
           {/* Scrollable Content */}
           <div className="px-4 py-2 overflow-y-auto flex-1">
-            <CustomMarkdown content={description} />
+            {knowledgeItem && knowledgeItem.media && (knowledgeItem.media.type === "audio" || knowledgeItem.media.type === "video") && (
+              <div className="my-3">
+                {knowledgeItem.media.type === "audio" ? (
+                  <audio controls
+                    controlsList="nodownload"
+                    className="w-full">
+                    <source src={knowledgeItem.media.url} type="audio/mpeg" />
+                    Your device does not support the audio element.
+                  </audio>
+                ) : (
+                  <video controls
+                    controlsList="nodownload"
+                    className="w-full rounded-md">
+                    <source src={knowledgeItem.media.url} type="video/mp4" />
+                    Your device does not support the video tag.
+                  </video>
+                )}
+              </div>
+            )}
+            <CustomMarkdown content={knowledgeItem ? knowledgeItem.content : description || ""} />
           </div>
         </div>
       </div>
