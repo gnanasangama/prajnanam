@@ -23,6 +23,13 @@ export default function Home() {
 
   if (!community || !globalCommunity) return null;
 
+
+  const isAndroid =
+    typeof navigator !== "undefined" &&
+    /Android/i.test(navigator.userAgent);
+
+  console.log("Detected platform is Android:", isAndroid);
+
   return (
     <>
       <AppBar title={globalCommunity.name?.[lang] || "ಪ್ರಜ್ಞಾನಂ"} />
@@ -32,6 +39,38 @@ export default function Home() {
           description={globalCommunity.description?.[lang] || globalCommunity.description?.en}
           onMore={() => setShowSheet(true)}
         />
+
+        {isAndroid && (
+          <div className="bg-pink-50 border border-pink-200 rounded-xl pt-2 mb-2 text-center">
+            <div className="text-center">
+              {/* <h5 className="text-red-600 font-semibold mb-2">
+              ಸೂಚನೆ
+            </h5> */}
+
+              <p className="text-gray-700 text-md leading-relaxed">
+                {/* ಈ ಆಪ್‌ನಲ್ಲಿ <span className="font-semibold">ಮಾರ್ಚ್ 1 ರಿಂದ ಹೊಸ ಅಪ್‌ಡೇಟ್‌ಗಳು ಲಭ್ಯವಿರುವುದಿಲ್ಲ.</span>.
+              <br />
+              ದಯವಿಟ್ಟು  */}
+                ನಮ್ಮ ಹೊಸ
+                <span className="font-semibold text-pink-500"> Prajnanam </span>
+                ಆಪ್ ಅನ್ನು Play Store ನಿಂದ ಇನ್‌ಸ್ಟಾಲ್ ಮಾಡಿ
+                ಮತ್ತು ನಿಮ್ಮ ಕಲಿಕೆಯ ಪಯಣವನ್ನು ಮುಂದುವರಿಸಿ.
+              </p>
+
+              {/* Play Store Button */}
+              <a
+                href="https://play.google.com/store/apps/details?id=app.gnanasangama"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block"
+              >
+                <img
+                  src="/images/google-play-badge.png" // 👈 your image
+                  alt="Get it on Google Play"
+                />
+              </a>
+            </div>
+          </div>)}
         <BottomTopSheet
           open={showSheet}
           onClose={() => setShowSheet(false)}
@@ -45,7 +84,7 @@ export default function Home() {
           image={`/images/features/quiz-cover-photo.webp`}
           link="/quiz"
         /> */}
-        
+
         <EventsWidget />
 
         <a

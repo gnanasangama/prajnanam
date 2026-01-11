@@ -38,11 +38,13 @@ export default function InstallBanner() {
     const handleInstall = async () => {
         if (!deferredPrompt) return;
 
-        setShowBanner(false);
+        window.location.href = "https://play.google.com/store/apps/details?id=app.gnanasangama";
+
+        // setShowBanner(false);
         try {
-            await deferredPrompt.prompt();
+            // await deferredPrompt.prompt();
             const { outcome } = await deferredPrompt.userChoice;
-            trackEvent('pwa_install', {
+            trackEvent('app_install', {
                 event_category: 'engagement',
                 event_label: outcome,
             });
