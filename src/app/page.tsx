@@ -2,13 +2,13 @@
 import { useEffect, useState } from "react";
 import AppBar from "@/components/app-bar";
 import BottomBar from "@/components/bottom-bar";
-import ClippedBanner from "@/components/ClippedBanner";
 import BottomTopSheet from "@/components/BottomTopSheet";
 import { getGlobalCommunity } from "@/api/getGlobalCommunity";
 import type { Community } from "@/models/community";
 import { useApp } from "@/context/AppContext";
 import WhatsAppFloatButton from "@/components/WhatsAppFloatButton";
 import EventsWidget from "@/components/eventWidget";
+import AndroidPwaToAppModal from "@/components/AndroidPwaToAppModal";
 import { BsFillChatDotsFill } from "react-icons/bs";
 // import FeatureCard from "@/components/FeatureCard";
 
@@ -33,6 +33,7 @@ export default function Home() {
   return (
     <>
       <AppBar title={globalCommunity.name?.[lang] || "ಪ್ರಜ್ಞಾನಂ"} />
+      <AndroidPwaToAppModal />
       <main className="flex flex-col min-h-[70vh]">
         {/* <ClippedBanner
           title={globalCommunity.name?.[lang] || globalCommunity.name?.en || "Prajnanam"}
