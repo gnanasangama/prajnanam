@@ -69,6 +69,12 @@ export default function AndroidPwaToAppModal() {
 
     return (
         <>
+            {/* Backdrop */}
+            <div
+                className="fixed inset-0 bg-black opacity-50 z-40"
+                onClick={handleClose}
+                aria-hidden="true"
+            />
 
             {/* Modal */}
             <div
@@ -94,10 +100,6 @@ export default function AndroidPwaToAppModal() {
                             className="w-32 h-20 mx-auto"
                         />
                     </div>
-
-                    <h2 className="text-2xl font-bold text-gray-800 mb-2">
-                        ಸೂಚನೆ
-                    </h2>
 
                     <p className="text-gray-700 text-base leading-relaxed mb-3">
                         ಈ ಆಪ್‌ನಲ್ಲಿ{' '}
