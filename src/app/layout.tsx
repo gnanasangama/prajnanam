@@ -1,14 +1,13 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Footer from "@/components/footer";
-import AppBar from "@/components/app-bar";
 import { AppProvider } from "@/context/AppContext";
 import InstallBanner from "@/components/InstallBanner";
 import Script from "next/script";
 import Analytics from "@/components/analytics";
 import { Suspense } from "react";
 import { GA_MEASUREMENT_ID } from "@/utils/analytics";
+import { LayoutWrapper } from "@/components/LayoutWrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -117,12 +116,12 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased pt-17 pb-20 px-3 min-h-screen bg-gray-50`}
       >
         <AppProvider>
-          <AppBar />
-          <Suspense>
-            <Analytics />
-          </Suspense>
-          {children}
-          <Footer />
+          <LayoutWrapper>
+            <Suspense>
+              <Analytics />
+            </Suspense>
+            {children}
+          </LayoutWrapper>
           <InstallBanner />
         </AppProvider>
       </body>

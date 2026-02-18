@@ -5,7 +5,7 @@ export interface KnowledgeItem {
   community: string; // e.g., 'prajnanam', 'mysore'
   zone?: string | null; // optional zone
   type: 'quote' | 'song' | 'shloka' | 'annual_plan';
-  scope: 'global' | 'community' | 'zone';
+  subtype?: string | null; // e.g., 'patriotic', 'devotional', 'cultural'
   category: 'routine' | 'wiki' | 'calendar';
   media: { type: string, url: string } | null; // e.g., { type: 'image', url: 'http://...' }
   is_visible: boolean;

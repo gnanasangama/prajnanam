@@ -1,9 +1,16 @@
 'use client';
 
+import React from 'react';
 import AdminSidebar from '@/components/AdminSidebar';
-import AdminDashboard from '@/components/AdminDashboard';
+import AdminCommunityDetails from '@/components/AdminCommunityDetails';
 
-export default function AdminPage() {
+export default function CommunityPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const paramsSync = React.use(params);
+
   return (
     <>
       {/* Sidebar */}
@@ -12,7 +19,7 @@ export default function AdminPage() {
       {/* Main Content */}
       <main className="flex-1 overflow-auto bg-gray-50">
         <div className="p-8 max-w-7xl mx-auto">
-          <AdminDashboard />
+          <AdminCommunityDetails communityId={paramsSync.id} />
         </div>
       </main>
     </>
