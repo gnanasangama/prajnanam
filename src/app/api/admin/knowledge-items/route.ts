@@ -1,5 +1,32 @@
 import { supabase } from "@/lib/supabaseClient";
 
+export async function GET(request: Request) {
+  try {
+    const { searchParams } = new URL(request.url);
+    const community = searchParams.get('community');
+    const category = searchParams.get('category');
+    const type = searchParams.get('type');
+
+    let query = supabase.from('knowledge_items').select('*');
+
+    if (community) query = query.eq('community', community);
+    if (category) query = query.eq('category', category);
+    if (type) query = query.eq('type', type);
+
+    const { data, error } = await query.order('sequence', { ascending: true }).order('created_at', { ascending: false });
+
+    if (error) throw error;
+
+    return Response.json(data || []);
+  } catch (error) {
+    console.error('Failed to fetch knowledge items:', error);
+    return Response.json(
+      { error: error instanceof Error ? error.message : 'Failed to fetch knowledge items' },
+      { status: 500 }
+    );
+  }
+}
+
 export async function POST(request: Request) {
   try {
     const body = await request.json();

@@ -100,7 +100,7 @@ export default function AdminDashboard() {
 
               {/* Card Footer */}
               <div className="px-6 py-4 bg-gray-50 border-t border-gray-300 flex items-center justify-between group-hover:bg-blue-50 transition">
-                <span className="text-sm font-medium text-gray-700">View Metrics</span>
+                <span className="text-sm font-medium text-gray-700">View Community</span>
                 <FiArrowRight className="w-4 h-4 text-blue-600 group-hover:translate-x-1 transition-transform" />
               </div>
             </div>
