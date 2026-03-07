@@ -104,7 +104,7 @@ export default function AndroidPwaToAppModal() {
                     <p className="text-gray-700 text-base leading-relaxed mb-3">
                         ಈ ಆಪ್‌ನಲ್ಲಿ{' '}
                         <span className="font-semibold">
-                            ಮಾರ್ಚ್ 1 ರಿಂದ ಹೊಸ ಅಪ್‌ಡೇಟ್‌ಗಳು ಲಭ್ಯವಿರುವುದಿಲ್ಲ.
+                            ಮಾರ್ಚ್ 31 ರಿಂದ ಹೊಸ ಅಪ್‌ಡೇಟ್‌ಗಳು ಲಭ್ಯವಿರುವುದಿಲ್ಲ.
                         </span>
                         <br />
                         <br />

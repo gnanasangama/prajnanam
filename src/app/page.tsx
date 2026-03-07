@@ -49,7 +49,7 @@ export default function Home() {
               </h4>
 
               <p className="text-gray-700 text-md leading-relaxed">
-                ಈ ಆಪ್‌ನಲ್ಲಿ <span className="font-semibold">ಮಾರ್ಚ್ 1 ರಿಂದ ಹೊಸ ಅಪ್‌ಡೇಟ್‌ಗಳು ಲಭ್ಯವಿರುವುದಿಲ್ಲ.</span>.
+                ಈ ಆಪ್‌ನಲ್ಲಿ <span className="font-semibold">ಮಾರ್ಚ್ 31 ರಿಂದ ಹೊಸ ಅಪ್‌ಡೇಟ್‌ಗಳು ಲಭ್ಯವಿರುವುದಿಲ್ಲ.</span>.
                 <br />
                 ದಯವಿಟ್ಟು
                 ನಮ್ಮ ಹೊಸ
